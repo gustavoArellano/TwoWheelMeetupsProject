@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from django.shortcuts import render, HttpResponse, redirect
+from django.shortcuts import render, HttpResponse, HttpResponseRedirect, redirect
+from django.http import HttpResponseRedirect
+
 def index(request):
-    response = "Hello, I am your first request!"
-    return HttpResponse(response)
+    return render(request, "MainApp/index.html")

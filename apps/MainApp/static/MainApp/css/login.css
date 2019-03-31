@@ -1,0 +1,68 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    scroll-behavior: smooth;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+#header {
+    background-color: whitesmoke;
+    padding: 5px;
+    width: 100hh;
+    text-align: center;
+}
+
+#header h1, h1 strong {
+    cursor: default;
+    color: #F53756;
+    font-family: 'Pacifico', cursive;
+}
+
+#landingPage {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../images/indexImage4.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    width: 100hh;
+    height: 100%;
+    padding: 100px 20px 500px 20px;
+    text-align: center;
+}
+
+.loginForm {
+    width: 330px;
+    height: 340px;
+    background-color: rgb(245, 245, 245);
+    padding: 5px;
+    margin: 0px auto;
+    border-radius: 5px;
+    box-shadow: 2px 2px 6px rgba(19, 19, 19, 0.945);
+}
+
+.loginForm h1 {
+    margin-top: 15px;
+}
+
+.loginForm p {
+    margin: 0px;
+    margin-top: 20px;
+}
+
+.loginForm input {
+    height: 30px;
+    width: 300px;
+    margin-top: 5px;
+    border-radius: 5px;
+    font-size: 10pt;
+}
+
+.btn {
+    margin: 50px 0px;
+    display: block;
+}
+
+.btn a {
+    color: white;
+    text-decoration: none;
+}

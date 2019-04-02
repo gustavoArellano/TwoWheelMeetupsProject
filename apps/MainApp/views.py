@@ -13,5 +13,7 @@ def index(request):
 def RegistrationPage(request):
     return render(request, "MainApp/register.html")
 
+
+
 def LoginPage(request):
     return render(request, "MainApp/login.html")

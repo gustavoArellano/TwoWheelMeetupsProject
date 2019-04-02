@@ -1,12 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Hello Registration Page</h1>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>2Wheel Meetups - SIGN UP</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'MainApp/css/register.css' %}">
+        <link href="https://fonts.googleapis.com/css?family=Cedarville+Cursive|Josefin+Sans|Pacifico" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    </head>
+
+    <body>
+
+        <div id="header">
+            <h1><strong>2Wheel Meetups</strong></h1>
+        </div>
+
+        <div id="landingPage">
+
+            <div class="registerForm">
+
+                <h1>Sign Up</h1>
+
+                <form action="welcome.html">
+                    <p>First Name:</p>
+                    <input type="text">
+
+                    <p>Last Name:</p>
+                    <input type="text">
+
+                    <p>Email:</p>
+                    <input type="text">
+
+                    <p>State:</p>
+                    <input type="text">
+
+                    <p>City:</p>
+                    <input type="text">
+
+                    <p>Zip Code:</p>
+                    <input type="text">
+
+                    <p>Password:</p>
+                    <input type="password">
+
+                    <p>Confirm Password:</p>
+                    <input type="password"> 
+                </form>
+
+                <button type="button" class="btn btn-danger"><a href="welcome.html">SIGN UP</a></button>
+
+            </div>
+
+        </div>
+
+    </body>
 </html>

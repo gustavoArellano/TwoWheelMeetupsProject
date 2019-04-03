@@ -20,7 +20,7 @@
 
         <div id="landingPage">
 
-            <form action="#" method="POST">
+            <form class="formStyle" action="#" method="POST">
                 {% csrf_token %}
             
                 <h1>Sign Up</h1>
@@ -48,7 +48,9 @@
             
                 <p>Confirm Password:</p>
                 <input type="password" name="ConfirmPassword"> 
-            
+                
+                <br><br>
+
                 <button type="submit" class="btn btn-danger">SUBMIT</button>
             </form>
 

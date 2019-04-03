@@ -8,45 +8,53 @@
         {% load static %}
         <link rel="stylesheet" href="{% static 'MainApp/css/register.css' %}">
         <link href="https://fonts.googleapis.com/css?family=Cedarville+Cursive|Josefin+Sans|Pacifico" rel="stylesheet">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     </head>
     <body>
+
         <div id="header">
             <h1><strong>2Wheel Meetups</strong></h1>
         </div>
 
-            <form action="/RegisterProcess" method="POST">
+        <div id="landingPage">
+
+            <form class="formStyle" action="#" method="POST">
                 {% csrf_token %}
-
+            
                 <h1>Sign Up</h1>
-
+            
                 <p>First Name:</p>
                 <input type="text" name="FirstName">
-
+            
                 <p>Last Name:</p>
                 <input type="text" name="LastName">
-
+            
                 <p>Email:</p>
                 <input type="text" id="Email" name="Email">
-
+            
                 <p>State:</p>
                 <input type="text" name="State">
-
+            
                 <p>City:</p>
                 <input type="text" name="City">
-
+            
                 <p>Zip Code:</p>
                 <input type="text" name="ZipCode">
-
+            
                 <p>Password:</p>
                 <input type="password" name="Password">
-
+            
                 <p>Confirm Password:</p>
                 <input type="password" name="ConfirmPassword"> 
+                
+                <br><br>
 
                 <button type="submit" class="btn btn-danger">SUBMIT</button>
             </form>
+
+        </div>
 
     </body>
 </html>

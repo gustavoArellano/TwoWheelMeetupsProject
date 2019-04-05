@@ -20,7 +20,13 @@
 
         <div id="landingPage">
 
-            <form class="formStyle" action="#" method="POST">
+            <form class="formStyle" action="/RegistrationProcess" method="POST">
+                {% if messages %}
+                    {% for message in messages %}
+                        <p>{{message}}</p>
+                    {% endfor %}
+                {% endif %}
+
                 {% csrf_token %}
             
                 <h1>Sign Up</h1>
@@ -51,7 +57,9 @@
                 
                 <br><br>
 
-                <button type="submit" class="btn btn-danger">SUBMIT</button>
+                <!-- <a href="/RegistrationProcess"> -->
+                    <button type="submit" class="btn btn-danger">SUBMIT</button>
+                <!-- </a> -->
             </form>
 
         </div>

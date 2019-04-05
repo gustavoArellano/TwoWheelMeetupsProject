@@ -22,10 +22,10 @@ class UserManager(models.Manager):
             errors['LastName'] = "LAST NAME cannot be blank!"
         elif len(postData['LastName']) < 2:
             errors['LastName'] = "LAST NAME must contain at least 2 letters MINIMUM!" 
-        elif not postData['Last Name'].isalpha():
+        elif not postData['LastName'].isalpha():
             errors['LastName'] = "LAST NAME must contain letter's ONLY"
 
-        if User.objects.filter(email = postData['email']):
+        if User.objects.filter(Email = postData['Email']):
             errors['EmailExists'] = "An account has already been created with this EMAIL!"
         if EMAIL_REGEX.match(postData['Email']) == None:
             errors['EmailFormat'] = "Invalid EMAIL FORMAT!"
@@ -40,10 +40,10 @@ class UserManager(models.Manager):
 
         if len(postData['ZipCode']) < 1:
             errors['ZipCode'] = "You must enter your ZIP CODE!"
-        if len(postData['ZipCode']) > 5:
+        if len(postData['ZipCode']) != 5:
             errors['ZipCode'] = "You must enter a valid ZIP CODE!"
-        elif not postData['ZipCode'].isinteger():
-            errors['ZipCode'] = "ZIP CODE must contain numbers ONLY!"
+        # elif not postData['ZipCode'].isinteger():
+            # errors['ZipCode'] = "ZIP CODE must contain numbers ONLY!"
 
         if len(postData['Password']) < 1:
             errors['Password'] = "PASSWORD cannot be BLANK!"

@@ -3,6 +3,8 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.index, name="index"),
-    url(r'^register', views.RegistrationPage, name="register"),
-    url(r'login', views.LoginPage, name="login")
+    url(r'^Register', views.RegistrationPage, name="register"),
+    url(r'^Login', views.LoginPage, name="login"),
+    url(r'^RegistrationProcess$', views.RegistrationProcess, name="RegistrationProcess"),
+    url(r'^Home$', views.Home, name="home")
 ]

@@ -7,7 +7,7 @@ import datetime
 from time import strftime
 import bcrypt
 
-def index(request):
+def Index(request):
     return render(request, "MainApp/index.html")
 
 def RegistrationPage(request):
@@ -33,8 +33,8 @@ def RegistrationProcess(request):
         request.session['LoggedIn'] = user.id
         request.session['FirstName'] = user.FirstName
         request.session['LastName'] = user.LastName
-        return redirect('/home')
-    return redirect('/register')
+        return redirect('/Home')
+    return redirect('/Register')
 
 def LoginPage(request):
     return render(request, "MainApp/login.html")

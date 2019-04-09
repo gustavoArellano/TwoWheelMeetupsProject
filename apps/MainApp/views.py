@@ -54,12 +54,17 @@ def LoginProcess(request):
 
 def Logout(request):
     request.session.clear()
-    return redirect('/LogoutProcess')
-
-def LogoutProcess(request):
-    request.session.clear()
     return redirect('/')
 
 def Home(request):
-    
+    # if User.objects.get(id = request.session['LoggedIn']) == User.objects.last():
+    #     print('registered')
+    #     status = 'registered'
+    # else: 
+    #     print('loggedin')
+    #     status = 'Logged In'
+
+    # context = {'user': User.objects.get(id = request.session['LoggedIn']), 'status': status}
+
+    if requst.session['']
     return render(request, "MainApp/home.html")

@@ -8,6 +8,5 @@ urlpatterns = [
     url(r'^Login$', views.LoginPage, name="Login"),
     url(r'^LoginProcess$', views.LoginProcess, name="LoginProcess"),
     url(r'^Logout$', views.Logout, name="Logout"),
-    url(r'^LogoutProcess$', views.LogoutProcess, name="LogoutProcess"),
     url(r'^Home$', views.Home, name="Home")
 ]

@@ -55,6 +55,17 @@ class UserManager(models.Manager):
 
         return errors
 
+    def LoginValidation(self, postData):
+        user = User.objects.filter(Email = postData['LoginEmail'])
+        errors = {}
+        if not user:
+            errors['Email'] = "Invalid EMAIL or PASSWORD!"
+
+        if user and not bcrypt.checkpw(postData['LoginPassword'].encode('utf8'), user[0].Password.encode('utf8')):
+            errors['Password'] = "Invalid EMAIL or PASSWORD!"
+
+        return errors
+
 class User(models.Model): 
     FirstName = models.CharField(max_length = 20) 
     LastName = models.CharField(max_length = 20)

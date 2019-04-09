@@ -39,5 +39,27 @@ def RegistrationProcess(request):
 def LoginPage(request):
     return render(request, "MainApp/login.html")
 
+def LoginProcess(request):
+    errors = User.objects.LoginValidation(request.POST)
+    if len(errors):
+        for key, value in errors.items():
+            messages.error(request, value, extra_tags = key)
+    else:
+        user = User.objects.get(Email = request.POST['LoginEmail'])
+        request.session['LoggedIn'] = user.id
+        request.session['FirstName'] = user.FirstName
+        request.session['LastName'] = user.LastName
+        return redirect('/Home')
+    return redirect('/Login')
+
+def Logout(request):
+    request.session.clear()
+    return redirect('/LogoutProcess')
+
+def LogoutProcess(request):
+    request.session.clear()
+    return redirect('/')
+
 def Home(request):
+    
     return render(request, "MainApp/home.html")

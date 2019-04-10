@@ -66,5 +66,5 @@ def Home(request):
 
     # context = {'user': User.objects.get(id = request.session['LoggedIn']), 'status': status}
 
-    if requst.session['']
+    # if requst.session['']
     return render(request, "MainApp/home.html")

@@ -46,6 +46,7 @@
     text-align: center; 
 }
 
+
 @media only screen and (max-width: 549px) {
     #landingPage {
         padding-top: 50px;

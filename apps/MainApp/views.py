@@ -57,6 +57,10 @@ def Logout(request):
     return redirect('/')
 
 def Home(request):
+    context = {
+        'users': User.objects.all(),
+        'UserLoggedIn': User.objects.get(id = request.session['LoggedIn'])
+    }
     # if User.objects.get(id = request.session['LoggedIn']) == User.objects.last():
     #     print('registered')
     #     status = 'registered'
@@ -65,4 +69,16 @@ def Home(request):
     #     status = 'Logged In'
     # context = {'user': User.objects.get(id = request.session['LoggedIn']), 'status': status}
     # if requst.session['']
-    return render(request, "MainApp/home.html")
+    return render(request, "MainApp/home.html", context)
+
+def UserProfile(request, id):
+    if request.method == "POST":
+
+        ThisUser = User.objects.get(id = request.POST['DisplayUserInfo'])
+
+        context = {
+            'DisplayUserInfo': ThisUser,
+            'User': User.objects.all(id = url(r'(?P<id>\w+)$'))
+        }
+
+    return render(request, "MainApp/profile.html")

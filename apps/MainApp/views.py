@@ -63,8 +63,6 @@ def Home(request):
     # else: 
     #     print('loggedin')
     #     status = 'Logged In'
-
     # context = {'user': User.objects.get(id = request.session['LoggedIn']), 'status': status}
-
     # if requst.session['']
     return render(request, "MainApp/home.html")

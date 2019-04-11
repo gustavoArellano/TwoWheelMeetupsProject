@@ -73,12 +73,6 @@ def Home(request):
 
 def UserProfile(request, id):
     if request.method == "POST":
-
-        ThisUser = User.objects.get(id = request.POST['DisplayUserInfo'])
-
-        context = {
-            'DisplayUserInfo': ThisUser,
-            'User': User.objects.all(id = url(r'(?P<id>\w+)$'))
-        }
-
-    return render(request, "MainApp/profile.html")
+        ThisUser = User.objects.get(id = request.POST['Rider'])
+    
+        return render(request, "MainApp/profile.html")

@@ -74,5 +74,9 @@ def Home(request):
 def UserProfile(request, id):
     if request.method == "POST":
         ThisUser = User.objects.get(id = request.POST['Rider'])
+
+        context = {
+            'rider': ThisUser
+        }
     
-        return render(request, "MainApp/profile.html")
+        return render(request, "MainApp/profile.html", context)

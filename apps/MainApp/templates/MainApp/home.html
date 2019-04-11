@@ -21,19 +21,13 @@
 
                 <div id="links">
                     <ul>
-                        <!-- <li><a href="#">Profile</a></li> -->
                         <li>
-                            {% for user in users %}
-                            {% if request.session.LoggedIn == user.id %}
-                            <form id="ProfileForm" action="/Rider/{{user.id}}" method="POST">
+                            <form id="ProfileForm" action="/Rider/{{UserLoggedIn.id}}" method="POST">
                                 {% csrf_token %}
-                                <input type="hidden" name="Rider" value="{{user.id}}">
+                                <input type="hidden" name="Rider" value="{{UserLoggedIn.id}}">
                                 <a href="javascript:{}" onclick="document.getElementById('ProfileForm').submit();">Profile</a>
                             </form>
-                            {% endif %}
-                            {% endfor %}
                         </li>
-
 
                         <li><a href="#">Explore</a></li>
                         <li><a href="#">Create</a></li>
@@ -46,7 +40,13 @@
                     <button onclick="myFunction()" class="menuButton"><i class="fas fa-bars"></i> MENU</button>
 
                     <div id="tabletDropdown" class="dropdown-content">
-                        <a href="#">Profile</a>
+
+                        <form id="ProfileForm" action="/Rider/{{UserLoggedIn.id}}" method="POST">
+                            {% csrf_token %}
+                            <input type="hidden" name="Rider" value="{{UserLoggedIn.id}}">
+                            <a href="javascript:{}" onclick="document.getElementById('ProfileForm').submit();">Profile</a>
+                        </form>
+
                         <a href="#">Explore</a>
                         <a href="#">Create</a>
                         <a href="/Logout">Log Out</a>
@@ -58,10 +58,15 @@
 
             <div id="mobileLinks">
 
-                <a href="#">
-                    <i class="fas fa-user fa-2x"></i>
-                    <p>Profile</p>
-                </a>
+                <form id="ProfileForm" action="/Rider/{{UserLoggedIn.id}}" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="Rider" value="{{UserLoggedIn.id}}">
+                    <a href="javascript:{}" onclick="document.getElementById('ProfileForm').submit();">
+                        <i class="fas fa-user fa-2x"></i>
+                        <p>Profile</p>
+                    </a>
+                </form>
+
                 <a href="#">
                     <i class="fas fa-search fa-2x"></i>
                     <p>Explore</p>

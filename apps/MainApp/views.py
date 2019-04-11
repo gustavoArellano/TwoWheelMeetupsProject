@@ -61,14 +61,7 @@ def Home(request):
         'users': User.objects.all(),
         'UserLoggedIn': User.objects.get(id = request.session['LoggedIn'])
     }
-    # if User.objects.get(id = request.session['LoggedIn']) == User.objects.last():
-    #     print('registered')
-    #     status = 'registered'
-    # else: 
-    #     print('loggedin')
-    #     status = 'Logged In'
-    # context = {'user': User.objects.get(id = request.session['LoggedIn']), 'status': status}
-    # if requst.session['']
+
     return render(request, "MainApp/home.html", context)
 
 def UserProfile(request, id):

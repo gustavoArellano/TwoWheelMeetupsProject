@@ -30,6 +30,7 @@ def RegistrationProcess(request):
             Password = hash_pw
             )
         user = User.objects.last() 
+        user = User.objects.get(Email = request.POST['LoginEmail'])
         request.session['LoggedIn'] = user.id
         request.session['FirstName'] = user.FirstName
         request.session['LastName'] = user.LastName
@@ -56,13 +57,16 @@ def Logout(request):
     request.session.clear()
     return redirect('/')
 
-def Home(request):
-    context = {
+def Home(request):  
+    if request.user.is_authenticated():
+        context = {
         'users': User.objects.all(),
         'UserLoggedIn': User.objects.get(id = request.session['LoggedIn'])
-    }
+        }
 
-    return render(request, "MainApp/home.html", context)
+        return render(request, "MainApp/home.html", context)
+
+    return redirect('/Login')
 
 def UserProfile(request, id):
     if request.method == "POST":

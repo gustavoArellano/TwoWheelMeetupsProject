@@ -6,6 +6,7 @@ from .models import User
 import datetime
 from time import strftime
 import bcrypt
+from django.contrib.auth import authenticate, login
 
 def Index(request):
     return render(request, "MainApp/index.html")
@@ -58,15 +59,12 @@ def Logout(request):
     return redirect('/')
 
 def Home(request):  
-    if request.user.is_authenticated():
-        context = {
+    # if request.session.['LoggedIn']:
+    context = {
         'users': User.objects.all(),
         'UserLoggedIn': User.objects.get(id = request.session['LoggedIn'])
         }
-
-        return render(request, "MainApp/home.html", context)
-
-    return redirect('/Login')
+    return render(request, "MainApp/home.html", context) 
 
 def UserProfile(request, id):
     if request.method == "POST":

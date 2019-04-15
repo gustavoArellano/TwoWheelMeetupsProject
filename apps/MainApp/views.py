@@ -3,10 +3,13 @@ from django.http import HttpResponseRedirect
 from django.contrib import messages
 from django.contrib.messages import get_messages 
 from .models import User
+from django import template
 import datetime
+register = template.Library()
 from time import strftime
 import bcrypt
 from django.contrib.auth import authenticate, login
+
 
 def Index(request):
     return render(request, "MainApp/index.html")
@@ -69,9 +72,11 @@ def Home(request):
 def UserProfile(request, id):
     if request.method == "POST":
         ThisUser = User.objects.get(id = request.POST['Rider'])
-
+        DateJoined = ThisUser.created_at
+        FormatedDate = DateJoined.strftime("%B %Y")
         context = {
-            'rider': ThisUser
+            'rider': ThisUser,
+            'date': FormatedDate
         }
     
         return render(request, "MainApp/profile.html", context)

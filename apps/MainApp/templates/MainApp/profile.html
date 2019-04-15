@@ -13,7 +13,77 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="{% static 'MainApp/js/profile.js' %}"></script>
     </head>
+
     <body>
+        <div id="container">
+            <div id="header">
+                <h1><strong>2Wheel Meetups</strong></h1>
+
+                <div id="links">
+                    <ul>
+                        <li><a href="/Home">Home</a></li>
+                        <li><a href="#">Explore</a></li>
+                        <li><a href="#">Create</a></li>
+                        <li><a href="/Logout">Sign Out</a></li>
+                    </ul>
+                </div>
+            
+                <div class="dropdown">
+
+                    <button onclick="myFunction()" class="menuButton"><i class="fas fa-bars"></i> MENU</button>
+
+                    <div id="tabletDropdown" class="dropdown-content">
+                        <a href="/Home">Home</a>
+                        <a href="#">Explore</a>
+                        <a href="#">Create</a>
+                        <a href="/Logout">Sign Out</a>
+                    </div>
+
+                </div>
         
+            </div>
+            
+            <div id="mobileLinks">
+
+                <a href="/Home">
+                    <i class="fas fa-home fa-2x"></i>
+                    <p>Home</p>
+                </a>
+                <a href="#">
+                    <i class="fas fa-search fa-2x"></i>
+                    <p>Explore</p>
+                </a>
+                <a href="#">
+                    <i class="fas fa-motorcycle fa-2x"></i>
+                    <p>Create</p>
+                </a>
+                <a href="/Logout">
+                    <i class="fas fa-sign-out-alt fa-2x"></i>
+                    <p>Sign Out</p>
+                </a>
+                    
+            </div>
+        </div>  
+        
+        <div id="mobileProfileView">
+            <div class="title">
+                <h2>{{rider.FirstName}} {{rider.LastName}}</h2>
+                <p>{{rider.City}}, {{rider.State}}</p>
+                <img src="{% static 'MainApp/images/placeholder.png' %}" alt="">
+            </div>
+            
+            <div class="details">
+                <h4>Member Since</h4>
+                <p><i class="fas fa-calendar-alt"></i> {{date}} <i class="fas fa-calendar-alt"></i></p>
+                <br>
+                <h4>Rides Attended</h4>
+                <p><i class="fas fa-motorcycle"></i> 1 <i class="fas fa-motorcycle"></i></p>
+            </div>
+
+        </div>
+    
+        <div id="footer">
+            <p>2Wheel Meetups &reg; by Gustavo Arellano<p>
+        </div>
     </body>
 </html>

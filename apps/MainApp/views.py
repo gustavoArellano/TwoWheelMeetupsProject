@@ -80,3 +80,6 @@ def UserProfile(request, id):
         }
     
         return render(request, "MainApp/profile.html", context)
+
+def CreateEvent(request):
+    return render(request, "MainApp/create.html")

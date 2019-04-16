@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>2Wheel Meetups - CREATE</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'MainApp/css/profile.css' %}">
+        <link href="https://fonts.googleapis.com/css?family=Cedarville+Cursive|Josefin+Sans|Pacifico" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="{% static 'MainApp/js/profile.js' %}"></script>
+    </head>
+
+    <body>
+        <div id="container">
+            <div id="header">
+                <h1><strong>2Wheel Meetups</strong></h1>
+
+                <div id="links">
+                    <ul>
+                        <li><a href="/Home">Home</a></li>
+                        <li><a href="#">Profile</a></li>
+                        <li><a href="#">Explore</a></li>
+                        <li><a href="/Logout">Sign Out</a></li>
+                    </ul>
+                </div>
+
+                <div class="dropdown">
+
+                    <button onclick="myFunction()" class="menuButton"><i class="fas fa-bars"></i> MENU</button>
+
+                    <div id="tabletDropdown" class="dropdown-content">
+                        <a href="/Home">Home</a>
+                        <a href="#">Profile</a>
+                        <a href="#">Explore</a>
+                        <a href="/Logout">Sign Out</a>
+                    </div>
+
+                </div>
+            </div>
+            
+            <div id="mobileLinks">
+
+                <a href="/Home">
+                    <i class="fas fa-user fa-2x"></i>
+                    <p>Home</p>
+                </a>
+                <a href="#">
+                    <i class="fas fa-user fa-2x"></i>
+                    <p>Profile</p>
+                </a>
+                <a href="#">
+                    <i class="fas fa-search fa-2x"></i>
+                    <p>Explore</p>
+                </a>
+                <a href="/Logout">
+                    <i class="fas fa-sign-out-alt fa-2x"></i>
+                    <p>Sign Out</p>
+                </a>
+            </div>
+        </div> 
+    </body>
+</html>

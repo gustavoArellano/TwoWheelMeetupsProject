@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect
 from django.contrib import messages
 from django.contrib.messages import get_messages 
 from .models import User
+from .models import Event
 from django import template
 import datetime
 register = template.Library()
@@ -83,3 +84,26 @@ def UserProfile(request, id):
 
 def CreateEvent(request):
     return render(request, "MainApp/create.html")
+
+def CreateEventProcess(request):
+    errors = Event.objects.EventValidation(request.POST)
+    if len(errors):
+        for key, value in errors.items():
+            messeges.error(request, value, extra_tags = key)
+
+    else: 
+
+        ThisUser = User.objests.get(id = request.session['LoggedIn'])
+
+        Create = Event.objects.create(
+            EventByUser = ThisUser,
+            Title = request.POST['Title'],
+            Description = request.POST['Description'],
+            EventDate = request.POST['EventDate'],
+            Address = request.POST['Address'],
+            City = request.POST['City'],
+            State = request.POST['State'],
+            ZipCode = request.POST['ZipCode']
+        )
+        return redirect('/Home')
+    return redirect('/CreateEvent')

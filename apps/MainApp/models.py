@@ -66,6 +66,13 @@ class UserManager(models.Manager):
 
         return errors
 
+class EventManager(models.Manager):
+    def EventValidation(self, postData):
+        return errors
+
+    def UpdateValidaton(self, postData):
+        return errors
+
 class User(models.Model): 
     FirstName = models.CharField(max_length = 20) 
     LastName = models.CharField(max_length = 20)
@@ -89,7 +96,7 @@ class Event(models.Model):
     created_at = models.DateTimeField(auto_now_add = True)
     updated_at = models.DateTimeField(auto_now = True)
     EventByUser = models.ForeignKey(User, related_name = "EventsByUser")
-    # objects = EventManager()
+    objects = EventManager()
 
 class EventComment(models.Model):
     Comment = models.CharField(max_length = 255)

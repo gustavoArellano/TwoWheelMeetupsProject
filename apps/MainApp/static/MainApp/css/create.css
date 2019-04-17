@@ -181,6 +181,15 @@
         display: block;
     }
 
+    /* FORM */
+    .createPage {
+        padding-top: 140px;
+    }
+
+    .createForm {
+        margin-top: 25px;
+    }
+
 }
 
 @media only screen and (min-width: 701px) {
@@ -279,6 +288,15 @@
       
     .show {
         display: block;
+    }
+
+    /* FORM */
+    .createPage {
+        padding-top: 20px;
+    }
+
+    .createForm {
+        margin-top: 25px;
     }
 
 }

@@ -56,7 +56,7 @@
 
 .createForm {
     width: 330px;
-    height: 450px;
+    height: 680px;
     background-color: rgb(245, 245, 245);
     padding: 5px;
     margin: 0px auto;
@@ -184,6 +184,7 @@
     /* FORM */
     .createPage {
         padding-top: 140px;
+        padding-bottom: 80px;
     }
 
     .createForm {
@@ -293,6 +294,7 @@
     /* FORM */
     .createPage {
         padding-top: 20px;
+        padding-bottom: 80px;
     }
 
     .createForm {

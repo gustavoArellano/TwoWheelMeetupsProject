@@ -68,9 +68,11 @@ class UserManager(models.Manager):
 
 class EventManager(models.Manager):
     def EventValidation(self, postData):
+        errors = {}
         return errors
 
     def UpdateValidaton(self, postData):
+        errors = {}
         return errors
 
 class User(models.Model): 

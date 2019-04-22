@@ -89,7 +89,7 @@ def CreateEventProcess(request):
     errors = Event.objects.EventValidation(request.POST)
     if len(errors):
         for key, value in errors.items():
-            messeges.error(request, value, extra_tags = key)
+            messages.error(request, value, extra_tags = key)
 
     else: 
 

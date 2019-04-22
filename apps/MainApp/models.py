@@ -71,9 +71,9 @@ class EventManager(models.Manager):
         errors = {}
         return errors
 
-    def UpdateValidaton(self, postData):
-        errors = {}
-        return errors
+    # def UpdateValidaton(self, postData):
+    #     errors = {}
+    #     return errors
 
 class User(models.Model): 
     FirstName = models.CharField(max_length = 20) 

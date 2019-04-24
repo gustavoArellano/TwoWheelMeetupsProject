@@ -69,6 +69,17 @@ class UserManager(models.Manager):
 class EventManager(models.Manager):
     def EventValidation(self, postData):
         errors = {}
+
+        if len(postData['Title']) < 1:
+            errors['Title'] = "Title cannot be blank!"
+        elif len(postData['Title']) < 6:
+            errors['Title'] = "Title must contain at least 5 letters!"
+
+        if len(postData['Description']) < 1:
+            errors['Description'] = "Description cannot be blank!"
+        elif len(postData['Description']) < 11:
+            errors['Description'] = "Description must contain at least 10 letters!"
+
         return errors
 
     # def UpdateValidaton(self, postData):

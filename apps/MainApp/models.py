@@ -80,6 +80,9 @@ class EventManager(models.Manager):
         elif len(postData['Description']) < 11:
             errors['Description'] = "Description must contain at least 10 letters!"
 
+        if len(postData['EventDate']) < 1:
+            errors['EventDate'] = "Event date cannot be blank!"
+
         return errors
 
     # def UpdateValidaton(self, postData):

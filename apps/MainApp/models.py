@@ -83,6 +83,18 @@ class EventManager(models.Manager):
         if len(postData['EventDate']) < 1:
             errors['EventDate'] = "Event date cannot be blank!"
 
+        if len(postData['Address']) < 1:
+            errors['Address'] = "Address cannot be blank!"
+
+        if len(postData['City']) < 1:
+            errors['City'] = "City cannot be blank!"
+
+        if len(postData['State']) < 1:
+            errors['State'] = "State cannot be blank!"
+
+        if len(postData['ZipCode']) < 1:
+            errors['ZipCode'] = "Zip code cannot be blank!"
+
         return errors
 
     # def UpdateValidaton(self, postData):

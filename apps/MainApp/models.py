@@ -42,8 +42,6 @@ class UserManager(models.Manager):
             errors['ZipCode'] = "You must enter your ZIP CODE!"
         if len(postData['ZipCode']) != 5:
             errors['ZipCode'] = "You must enter a valid ZIP CODE!"
-        # elif not postData['ZipCode'].isinteger():
-            # errors['ZipCode'] = "ZIP CODE must contain numbers ONLY!"
 
         if len(postData['Password']) < 1:
             errors['Password'] = "PASSWORD cannot be BLANK!"

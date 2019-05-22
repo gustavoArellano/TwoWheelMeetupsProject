@@ -41,7 +41,7 @@ class UserManager(models.Manager):
         if len(postData['ZipCode']) < 1:
             errors['ZipCode'] = "You must enter your ZIP CODE!"
         if len(postData['ZipCode']) != 5:
-            errors['ZipCode'] = "You must enter a valid ZIP CODE!"
+            errors['ZipCode'] = "You must enter a valid ZIP CODE!" 
 
         if len(postData['Password']) < 1:
             errors['Password'] = "PASSWORD cannot be BLANK!"
@@ -81,6 +81,9 @@ class EventManager(models.Manager):
         if len(postData['EventDate']) < 1:
             errors['EventDate'] = "Event date cannot be blank!"
 
+        if len(postData['EventTime']) < 1:
+            errors['EventTime'] = "Event time cannot be blank!"
+
         if len(postData['Address']) < 1:
             errors['Address'] = "Address cannot be blank!"
 
@@ -115,7 +118,8 @@ class Event(models.Model):
     Title = models.CharField(max_length = 255)
     Description = models.CharField(max_length = 255)
     EventDate = models.CharField(max_length = 255)
-    Address = models.CharField(max_length = 255, unique = True)
+    EventTime = models.TimeField(null=True, blank=True)
+    Address = models.CharField(max_length = 255)
     City = models.CharField(max_length = 20)
     State = models.CharField(max_length = 3)
     ZipCode = models.CharField(max_length = 6)
@@ -124,17 +128,17 @@ class Event(models.Model):
     EventByUser = models.ForeignKey(User, related_name = "EventsByUser")
     objects = EventManager()
 
-class EventComment(models.Model):
-    Comment = models.CharField(max_length = 255)
-    created_at = models.DateTimeField(auto_now_add = True)
-    updated_at = models.DateTimeField(auto_now = True)
-    Event = models.ForeignKey(Event, related_name = "Comments")
-    CommentByUser = models.ForeignKey(User, related_name = "CommentsByUser")
+# class EventComment(models.Model):
+#     Comment = models.CharField(max_length = 255)
+#     created_at = models.DateTimeField(auto_now_add = True)
+#     updated_at = models.DateTimeField(auto_now = True)
+#     Event = models.ForeignKey(Event, related_name = "Comments")
+#     CommentByUser = models.ForeignKey(User, related_name = "CommentsByUser")
 
-class EventAttendant(models.Model):
-    created_at = models.DateTimeField(auto_now_add = True)
-    updated_at = models.DateTimeField(auto_now = True)
-    Event = models.ForeignKey(User, related_name = "UsersGoing")
+# class EventAttendant(models.Model):
+#     created_at = models.DateTimeField(auto_now_add = True)
+#     updated_at = models.DateTimeField(auto_now = True)
+#     Event = models.ForeignKey(User, related_name = "UsersGoing")
 
 
 

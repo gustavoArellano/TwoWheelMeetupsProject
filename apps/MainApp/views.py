@@ -90,16 +90,16 @@ def CreateEventProcess(request):
     if len(errors):
         for key, value in errors.items():
             messages.error(request, value, extra_tags = key)
-
     else: 
 
-        ThisUser = User.objests.get(id = request.session['LoggedIn'])
+        ThisUser = User.objects.get(id = request.session['LoggedIn'])
 
         Create = Event.objects.create(
             EventByUser = ThisUser,
             Title = request.POST['Title'],
             Description = request.POST['Description'],
             EventDate = request.POST['EventDate'],
+            EventTime = request.POST['EventTime'],
             Address = request.POST['Address'],
             City = request.POST['City'],
             State = request.POST['State'],

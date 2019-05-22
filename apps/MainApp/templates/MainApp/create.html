@@ -11,13 +11,13 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="{% static 'MainApp/js/profile.js' %}"></script>
+        <script src="{% static 'MainApp/js/create.js' %}"></script>
     </head>
 
     <body>
         <div id="container">
             <div id="header">
-                <h1><strong>2Wheel Meetups - CREATE EVENT</strong></h1>
+                <h1><strong>2Wheel Meetups</strong></h1>
 
                 <div id="links">
                     <ul>
@@ -67,30 +67,40 @@
 
             <h1 class="formTitle">Create Event</h1>
 
-            <form class="createForm" action="welcome.html">
+            <form class="createForm" action="/CreateEventProcess" method="POST">
+                {% if messages %}
+                    {% for message in messages %}
+                        <p>{{message}}</p>
+                    {% endfor %}
+                {% endif %}
+
+                {% csrf_token %}
 
                 <p>Title:</p>
-                <input type="text">
+                <input type="text" name="Title">
 
                 <p>Description:</p>
-                <input type="text">
+                <input type="text" name="Description">
 
                 <p>Date:</p>
-                <input type="text">
+                <input type="text" name="EventDate">
+
+                <p>Time:</p>
+                <input type="text" name="EventTime">
 
                 <p>Address:</p>
-                <input type="text">
+                <input type="text" name="Address">
 
                 <p>City:</p>
-                <input type="text"> 
+                <input type="text" name="City"> 
 
                 <p>State:</p>
-                <input type="text">
+                <input type="text" name="State">
 
                 <p>Zip Code:</p>
-                <input type="number">
+                <input type="text" name="ZipCode">
 
-                <button type="button" class="btn btn-danger"><a href="welcome.html">SIGN UP</a></button>
+                <button type="submit" class="btn btn-danger">CREATE</button>
                 
             </form>
 

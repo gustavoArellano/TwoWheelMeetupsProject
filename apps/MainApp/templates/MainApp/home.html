@@ -141,7 +141,7 @@
     
             <div id="mobileAvailableMeetups">
     
-                <h5><strong>ALL AVAILABLE MEETUPS</strong></h5>
+                <h5><strong>UPCOMING MEETUPS</strong></h5>
                 <div class="event">
     
                     <p class="date">Friday, December 25, 2019, 5:00 PM</p>
@@ -225,13 +225,14 @@
                     </div>
                     
                 </div>
-    
+                
+                {% for event in events %}
                 <div class="event">
     
-                    <p class="date">Friday, December 25, 2019, 5:00 PM</p>
+                    <p class="date">{{event.EventDate}}, {{event.EventTime}}</p>
                     <img src="{% static 'MainApp/images/routeImage.png' %}" alt="">
-                    <p class="address"><a href="#">3095 Yerba Buena Rd, San Jose, CA 95135</a></p>
-                    <p class="title"><a href="#">San Felipe Road</a></p>
+                    <p class="address"><a href="#">{{event.Address}}, {{event.City}}, {{event.State}} {{event.ZipCode}}</a></p>
+                    <p class="title"><a href="#">{{event.Title}}</a></p>
     
                     <div class="goingComment">
                         <a href="#">
@@ -246,6 +247,7 @@
                     </div>
                     
                 </div>
+                {% endfor %}
     
             </div>
     

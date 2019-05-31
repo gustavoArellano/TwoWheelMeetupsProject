@@ -66,7 +66,8 @@ def Home(request):
     # if request.session.['LoggedIn']:
     context = {
         'users': User.objects.all(),
-        'UserLoggedIn': User.objects.get(id = request.session['LoggedIn'])
+        'UserLoggedIn': User.objects.get(id = request.session['LoggedIn']),
+        'events': Event.objects.all()
         }
     return render(request, "MainApp/home.html", context) 
 

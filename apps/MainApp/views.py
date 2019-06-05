@@ -63,11 +63,18 @@ def Logout(request):
     return redirect('/')
 
 def Home(request):  
-    # if request.session.['LoggedIn']:
+    AllEvents = Event.objects.all()
+    ThisUser = User.objects.get(id = request.session['LoggedIn'])
+    # EventsNotAttendingByUser = Event.objects.get(id = 5)
+    # UsersNotAttendingEvent = User.objects.get(ThisUser = Event.UsersGoing.user_id)
+
+    print('***********************************************************')
+    # print(AllEvents.UsersGoing)
     context = {
         'users': User.objects.all(),
         'UserLoggedIn': User.objects.get(id = request.session['LoggedIn']),
-        'events': Event.objects.all()
+        'events': AllEvents,
+        # 'NoneJoined': Test2.objects.exclude(user_id = request.session['LoggedIn'])
         }
     return render(request, "MainApp/home.html", context) 
 
@@ -106,5 +113,17 @@ def CreateEventProcess(request):
             State = request.POST['State'],
             ZipCode = request.POST['ZipCode']
         )
+        Create.UsersGoing.add(ThisUser)
+
         return redirect('/Home')
     return redirect('/CreateEvent')
+
+def Join(request, id):
+    if request.method == "POST":
+        user = User.objects.get(id = request.session['LoggedIn'])
+        event = Event.objects.get(id=id)
+        event.UsersGoing.add(user)
+        return redirect ("/Home")
+    else:
+        request.session.clear()
+        return redirect ("/Index")

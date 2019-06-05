@@ -11,5 +11,6 @@ urlpatterns = [
     url(r'^Home$', views.Home, name="Home"),
     url(r'^Rider/(?P<id>\w+)$', views.UserProfile, name="Rider"),
     url(r'^CreateEvent$', views.CreateEvent, name="CreateEvent"),
-    url(r'^CreateEventProcess$', views.CreateEventProcess, name="CreateEventProcess")
+    url(r'^CreateEventProcess$', views.CreateEventProcess, name="CreateEventProcess"),
+    url(r'^Join/(?P<id>\d+)$', views.Join, name="Join")
 ]

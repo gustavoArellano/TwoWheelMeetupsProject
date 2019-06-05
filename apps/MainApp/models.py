@@ -123,6 +123,7 @@ class Event(models.Model):
     City = models.CharField(max_length = 20)
     State = models.CharField(max_length = 3)
     ZipCode = models.CharField(max_length = 6)
+    UsersGoing = models.ManyToManyField(User, related_name = "UsersGoing")
     created_at = models.DateTimeField(auto_now_add = True)
     updated_at = models.DateTimeField(auto_now = True)
     EventByUser = models.ForeignKey(User, related_name = "EventsByUser")

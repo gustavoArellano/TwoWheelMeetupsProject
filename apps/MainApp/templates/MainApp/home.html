@@ -142,115 +142,27 @@
             <div id="mobileAvailableMeetups">
     
                 <h5><strong>UPCOMING MEETUPS</strong></h5>
-                <div class="event">
-    
-                    <p class="date">Friday, December 25, 2019, 5:00 PM</p>
-                    <img src="{% static 'MainApp/images/routeImage.png' %}" alt="">
-                    <p class="address"><a href="#">3095 Yerba Buena Rd, San Jose, CA 95135</a></p>
-                    <p class="title"><a href="#">San Felipe Road</a></p>
-    
-                    <div class="goingComment">
-                        <a href="#">
-                            <i class="fas fa-motorcycle"></i>
-                            <p>0 Riders Going</p>
-                        </a>
-    
-                        <a class="comment" href="#">
-                            <i class="fas fa-comment-alt"></i>
-                            <p>Comment</p>
-                        </a>
-                    </div>
-                    
-                </div>
-    
-                <div class="event">
-    
-                    <p class="date">Friday, December 25, 2019, 5:00 PM</p>
-                    <img src="{% static 'MainApp/images/routeImage.png' %}" alt="">
-                    <p class="address"><a href="#">3095 Yerba Buena Rd, San Jose, CA 95135</a></p>
-                    <p class="title"><a href="#">San Felipe Road</a></p>
-    
-                    <div class="goingComment">
-                        <a href="#">
-                            <i class="fas fa-motorcycle"></i>
-                            <p>0 Riders Going</p>
-                        </a>
-    
-                        <a class="comment" href="#">
-                            <i class="fas fa-comment-alt"></i>
-                            <p>Comment</p>
-                        </a>
-                    </div>
-                    
-                </div>
-    
-                <div class="event">
-    
-                    <p class="date">Friday, December 25, 2019, 5:00 PM</p>
-                    <img src="{% static 'MainApp/images/routeImage.png' %}" alt="">
-                    <p class="address"><a href="#">3095 Yerba Buena Rd, San Jose, CA 95135</a></p>
-                    <p class="title"><a href="#">San Felipe Road</a></p>
-    
-                    <div class="goingComment">
-                        <a href="#">
-                            <i class="fas fa-motorcycle"></i>
-                            <p>30 Riders Going</p>
-                        </a>
-    
-                        <a class="comment" href="#">
-                            <i class="fas fa-comment-alt"></i>
-                            <p>Comment</p>
-                        </a>
-                    </div>
-                    
-                </div>
-    
-                <div class="event">
-    
-                    <p class="date">Friday, December 25, 2019, 5:00 PM</p>
-                    <img src="{% static 'MainApp/images/routeImage.png' %}" alt="">
-                    <p class="address"><a href="#">3095 Yerba Buena Rd, San Jose, CA 95135</a></p>
-                    <p class="title"><a href="#">San Felipe Road</a></p>
-    
-                    <div class="goingComment">
-                        <a href="#">
-                            <i class="fas fa-motorcycle"></i>
-                            <p>30 Riders Going</p>
-                        </a>
-    
-                        <a class="comment" href="#">
-                            <i class="fas fa-comment-alt"></i>
-                            <p>Comment</p>
-                        </a>
-                    </div>
-                    
-                </div>
                 
                 {% for event in events %}
                 <div class="event">
     
-                    <p class="date">{{event.EventDate}}, {{event.EventTime}}</p>
+                    <p class="date">{{event.EventDate}}, {{event.EventTime}} </p>
+
                     <img src="{% static 'MainApp/images/routeImage.png' %}" alt="">
                     <p class="address"><a href="#">{{event.Address}}, {{event.City}}, {{event.State}} {{event.ZipCode}}</a></p>
                     <p class="title"><a href="#">{{event.Title}}</a></p>
-    
-                    <div class="goingComment">
-                        <a href="#">
-                            <i class="fas fa-motorcycle"></i>
-                            <p>30 Riders Going</p>
-                        </a>
-    
-                        <a class="comment" href="#">
-                            <i class="fas fa-comment-alt"></i>
-                            <p>Comment</p>
-                        </a>
-                    </div>
-                    
+                    <p class="attending"><i class="fas fa-motorcycle"></i> {{event.UsersGoing.count}} Riders Going</p>
+
+                    <form action="/Join/{{event.id}}" method="POST">
+                        {% csrf_token %}
+                        <input type="submit" value="Join!">
+                    </form>
+     
                 </div>
                 {% endfor %}
     
             </div>
-    
+            
             <div id="footer">
                 <p>2Wheel Meetups &reg; by Gustavo Arellano<p>
             </div>

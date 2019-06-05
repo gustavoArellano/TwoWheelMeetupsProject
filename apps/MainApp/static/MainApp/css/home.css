@@ -200,14 +200,14 @@
         color: gray;
     }
 
-    .goingComment {
+    /* .goingComment {
         padding: 0px;
         margin: 0px;
         width: 100%;
         border-top: 1px solid gray;
-    }
+    } */
 
-    .goingComment a {
+    /* .goingComment a {
         padding: 5px;
         text-decoration: none;
         width: 45%;
@@ -226,7 +226,7 @@
         padding: 0px;
         display: inline-block;
         vertical-align: top;
-    }
+    } */
     
     /* ALL AVAILABLE MEETUPS */
     #mobileAvailableMeetups {
@@ -279,14 +279,14 @@
         color: gray;
     }
 
-    .goingComment {
+    /* .goingComment {
         padding: 0px;
         margin: 0px;
         width: 100%;
         border-top: 1px solid gray;
-    }
+    } */
 
-    .goingComment a {
+    /* .goingComment a {
         padding: 5px;
         text-decoration: none;
         width: 45%;
@@ -298,14 +298,14 @@
 
     .goingComment a:hover {
         color: black;
-    }
+    } */
 
-    .goingComment a i, p {
+    /* .goingComment a i, p {
         margin: 5px 0px;
         padding: 0px;
         display: inline-block;
         vertical-align: top;
-    }
+    } */
 
 }
 
@@ -465,6 +465,7 @@
 
     .event .date {
         margin: 5px 10px;
+        width: 100%;
     }
 
     .event img {
@@ -491,43 +492,23 @@
     .event .title a {
         color: black;
         text-decoration: none;
+        
     }
 
     .event .title a:hover {
         color: gray;
     }
 
-    .goingComment {
-        padding: 0px;
-        margin: 0px;
-        width: 100%;
-        border-top: 1px solid gray;
+    .event .attending {
+        display: block;
+        margin: 0px 10px;
+
     }
 
-    .goingComment a {
+    .join {
+        display: block;
         padding: 5px;
-        text-decoration: none;
-        width: 45%;
-        margin: 0px;
-        display: inline-block;
-        text-align: center;
-        color: gray;
     }
-
-    .goingComment a:hover {
-        color: black;
-    }
-
-    .goingComment a i, p {
-        margin: 5px 0px;
-        padding: 0px;
-        display: inline-block;
-        vertical-align: top;
-    }
-
-    /* #mobileAvailableMeetups .goingComment a p {
-        font-size: 8pt;
-    } */
 
     #mobileAvailableMeetups h5 {
         width: 100%;
@@ -635,10 +616,6 @@
         margin: 20px;
     }
 
-    /* #mobileAvailableMeetups .event p {
-        font-size: 11pt;
-    } */
-
     #mobileAvailableMeetups .goingComment a p {
         text-align: center;
     }
@@ -651,6 +628,17 @@
 
     .address, .title {
         display: block;
+    }
+
+    .attending {
+        display: block;
+        width: 100%;
+        margin: auto;
+    }
+
+    .join {
+        display: block;
+        width: 100%;
     }
 
 }

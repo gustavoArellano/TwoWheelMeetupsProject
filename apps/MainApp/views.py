@@ -67,28 +67,26 @@ def Home(request):
     AllUsers = User.objects.all()
     ThisUser = User.objects.get(id = request.session['LoggedIn'])
     UserAttending = ThisUser.UsersGoingRelated.all()
-    UserNotAttending = User.objects.raw(
-        "SELECT * FROM MainApp_user"
-    )
+    EventsNotAttending = Event.objects.exclude(UsersGoing=ThisUser.id)
 
-    print('***********************************************************')
-    print(UserNotAttending)
-    
     context = {
         'users': AllUsers,
         'events': AllEvents,
         'UserLoggedIn': User.objects.get(id = request.session['LoggedIn']),
         'UserAttending': UserAttending,
-        # 'UserNotAttending': UserNotAttending
+        'EventsNotAttending': EventsNotAttending
         }
     return render(request, "MainApp/home.html", context) 
 
 def UserProfile(request, id):
     if request.method == "POST":
         ThisUser = User.objects.get(id = request.POST['Rider'])
+        UserAttending = ThisUser.UsersGoingRelated.all()
         DateJoined = ThisUser.created_at
         FormatedDate = DateJoined.strftime("%B %Y")
+
         context = {
+            'UserAttending': UserAttending,
             'rider': ThisUser,
             'date': FormatedDate
         }

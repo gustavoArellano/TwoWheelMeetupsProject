@@ -143,7 +143,7 @@
     
                 <h5><strong>UPCOMING MEETUPS</strong></h5>
 
-                {% for event in UserAttending %}
+                {% for event in EventsNotAttending %}
                 <div class="event">
     
                     <p class="date">{{event.EventDate}}, {{event.EventTime}} </p>
@@ -166,16 +166,5 @@
             <div id="footer">
                 <p>2Wheel Meetups &reg; by Gustavo Arellano<p>
             </div>
-
-            <p><strong>Testing Querries</strong></p><br>
-            
-            {% for event in events %}
-                <!-- {% if UserLoggedIn.id != UserAttending.id %} -->
-                <p><strong>--- {{event.Title}}  --- </strong></p>
-                <!-- {% endif %} -->
-            {% endfor %}
-
-            
-
     </body>
 </html>

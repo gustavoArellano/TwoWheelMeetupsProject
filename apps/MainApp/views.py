@@ -34,8 +34,8 @@ def RegistrationProcess(request):
             ZipCode = request.POST['ZipCode'],
             Password = hash_pw
             )
-        user = User.objects.last() 
-        user = User.objects.get(Email = request.POST['LoginEmail'])
+
+        user = User.objects.last()
         request.session['LoggedIn'] = user.id
         request.session['FirstName'] = user.FirstName
         request.session['LastName'] = user.LastName
@@ -64,17 +64,22 @@ def Logout(request):
 
 def Home(request):  
     AllEvents = Event.objects.all()
+    AllUsers = User.objects.all()
     ThisUser = User.objects.get(id = request.session['LoggedIn'])
-    # EventsNotAttendingByUser = Event.objects.get(id = 5)
-    # UsersNotAttendingEvent = User.objects.get(ThisUser = Event.UsersGoing.user_id)
+    UserAttending = ThisUser.UsersGoingRelated.all()
+    UserNotAttending = User.objects.raw(
+        "SELECT * FROM MainApp_user"
+    )
 
     print('***********************************************************')
-    # print(AllEvents.UsersGoing)
+    print(UserNotAttending)
+    
     context = {
-        'users': User.objects.all(),
-        'UserLoggedIn': User.objects.get(id = request.session['LoggedIn']),
+        'users': AllUsers,
         'events': AllEvents,
-        # 'NoneJoined': Test2.objects.exclude(user_id = request.session['LoggedIn'])
+        'UserLoggedIn': User.objects.get(id = request.session['LoggedIn']),
+        'UserAttending': UserAttending,
+        # 'UserNotAttending': UserNotAttending
         }
     return render(request, "MainApp/home.html", context) 
 

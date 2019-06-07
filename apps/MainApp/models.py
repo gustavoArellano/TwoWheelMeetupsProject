@@ -115,6 +115,7 @@ class User(models.Model):
     objects = UserManager()
 
 class Event(models.Model):
+    UsersGoing = models.ManyToManyField(User, related_name = "UsersGoingRelated")
     Title = models.CharField(max_length = 255)
     Description = models.CharField(max_length = 255)
     EventDate = models.CharField(max_length = 255)
@@ -123,7 +124,6 @@ class Event(models.Model):
     City = models.CharField(max_length = 20)
     State = models.CharField(max_length = 3)
     ZipCode = models.CharField(max_length = 6)
-    UsersGoing = models.ManyToManyField(User, related_name = "UsersGoing")
     created_at = models.DateTimeField(auto_now_add = True)
     updated_at = models.DateTimeField(auto_now = True)
     EventByUser = models.ForeignKey(User, related_name = "EventsByUser")

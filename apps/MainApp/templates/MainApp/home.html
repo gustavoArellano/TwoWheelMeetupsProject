@@ -153,9 +153,9 @@
                     <p class="title"><a href="#">{{event.Title}}</a></p>
                     <p class="attending"><i class="fas fa-motorcycle"></i> {{event.UsersGoing.count}} Riders Going</p>
 
-                    <form action="/Join/{{event.id}}" method="POST">
+                    <form class="joinButton" action="/Join/{{event.id}}" method="POST">
                         {% csrf_token %}
-                        <input type="submit" value="Join!">
+                        <button type="submit" class="btn btn-danger">Join!</button>
                     </form>
      
                 </div>

@@ -65,14 +65,29 @@
     margin: 10px;
 }
 
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 700px) {
+    .tablet {
+        display: none;
+    }
+    .desktop {
+        display: none;
+    }
+
+    #desktopUpcomingEvent {
+        display: none;
+    }
+
     .dropdown {
+        display: none;
+    }
+
+    #tabletUpcomingEvent {
         display: none;
     }
 
     #container {
         position: fixed;
-        width: 100%;
+        width: 100%
     }
 
     /* HEADER */
@@ -84,7 +99,7 @@
 
     #header h1{
         margin: auto;
-        font-size: 10px;
+        font-size: 15px;
     }
 
     #links {
@@ -157,6 +172,12 @@
         border: 1px gray solid;
         box-shadow: 1px 1px 4px gray; 
     }
+
+    .joinButton button {
+        width: 500px    ;
+    }
+
+
 
 }
 
@@ -338,6 +359,7 @@
     }
     .title h2 {
         font-size: 45pt;
+
     }
 
     .title p {

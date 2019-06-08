@@ -82,7 +82,22 @@
 
         </div>
 
-        
+        <div id="attending">
+            <h2>Event's You Are Attending</h2>
+
+            {% for event in UserAttending %}
+            <div class="event">
+
+                <p class="date">{{event.EventDate}}, {{event.EventTime}} </p>
+
+                <img src="{% static 'MainApp/images/routeImage.png' %}" alt="">
+                <p class="address"><a href="#">{{event.Address}}, {{event.City}}, {{event.State}} {{event.ZipCode}}</a></p>
+                <p class="title"><a href="#">{{event.Title}}</a></p>
+                <p class="attending"><i class="fas fa-motorcycle"></i> {{event.UsersGoing.count}} Riders Going</p>
+
+            </div>
+            {% endfor %}
+        </div>
     
         <div id="footer">
             <p>2Wheel Meetups &reg; by Gustavo Arellano<p>

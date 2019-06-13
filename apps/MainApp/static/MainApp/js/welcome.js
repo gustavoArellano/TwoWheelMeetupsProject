@@ -15,7 +15,3 @@ function myFunction() {
       }
     }
   }
-
-function joinFunction() {
-  document.getElementById("changeMe").innerHTML = "<p>Joined!</p>";
-}

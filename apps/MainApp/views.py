@@ -130,3 +130,5 @@ def Join(request, id):
     else:
         request.session.clear()
         return redirect ("/Index")
+
+# def EventDetails(request, id):

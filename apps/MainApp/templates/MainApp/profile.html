@@ -80,27 +80,41 @@
                 <p><i class="fas fa-motorcycle"></i> {{UserAttending.count}} <i class="fas fa-motorcycle"></i></p>
             </div>
 
-        </div>
+            <div class="mobileAttendingEvent">
+                {% if UserAttending.count != 0 %}
+                <h2>Event's You Are Attending: </h2>
+                {% endif %}
 
-        <div id="attending">
-            <h2>Event's You Are Attending</h2>
+                <table class="table row-no-padding">
+                    <thead>
+                        <tr>
+                            <th scope="col">Title</th>
+                            <th scope="col">Date</th>
+                        </tr>
+                    </thead>
 
-            {% for event in UserAttending %}
-            <div class="event">
-
-                <p class="date">{{event.EventDate}}, {{event.EventTime}} </p>
-
-                <img src="{% static 'MainApp/images/routeImage.png' %}" alt="">
-                <p class="address"><a href="#">{{event.Address}}, {{event.City}}, {{event.State}} {{event.ZipCode}}</a></p>
-                <p class="title"><a href="#">{{event.Title}}</a></p>
-                <p class="attending"><i class="fas fa-motorcycle"></i> {{event.UsersGoing.count}} Riders Going</p>
-
+                    {% for event in UserAttending %}
+                    <tbody>
+                        <tr>
+                            <td>{{event.Title}}</td>
+                            <td>{{event.EventDate}}</td>
+                            <td class="buttons">
+                                <form class="joinButton" action="#" method="#">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-danger joinButton">Details</button>
+                                </form>
+                            </td>
+                        </tr>
+                        
+                    </tbody>
+                    {% endfor %}
+                </table>
             </div>
-            {% endfor %}
         </div>
     
+    
         <div id="footer">
-            <p>2Wheel Meetups &reg; by Gustavo Arellano<p>
+            <p>2Wheel Meetups &reg; by Gustavo Arellano</p>
         </div>
     </body>
 </html>

@@ -6,10 +6,10 @@
 }
 
 #container {
-    width: 100%
+    width: 100%;
 }
 
-/* HEADER */
+/* ***************HEADER*************** */
 #header {
     background-color: whitesmoke;
     display: flex;
@@ -47,8 +47,8 @@
     padding-bottom: 15px;
 }
 
-/* UPCOMING */
-#upcomingEvent {
+/* ***************UPCOMING*************** */
+#attending {
     background-color: whitesmoke;
 }
 
@@ -58,7 +58,10 @@
     display: flex;
     justify-content: center;
     padding: 0px;
-    margin-top: 400px;
+    width: 100%;
+    min-height:100%;
+    position: relative;
+    bottom: 0;
 }
 
 #footer p {
@@ -90,11 +93,12 @@
         width: 100%
     }
 
-    /* HEADER */
+    /* ***************HEADER*************** */
     #header {
         background-color: whitesmoke;
         padding: 5px;
         width: 100%;
+        
     } 
 
     #header h1{
@@ -123,7 +127,7 @@
         text-decoration: none;
         color: gray;
         padding: 0px;
-        margin: 5px 22px 0px 22px;
+        margin: 10px 22px 0px 22px;
         display: inline-block;
         vertical-align: top;
     }
@@ -140,13 +144,17 @@
         display: block;
     }
 
-    /* PROFILE VIEW */
+    /* ***************PROFILE VIEW*************** */
+    #attending {
+        display: none;
+    }
+
     #mobileProfileView {
         background-color: whitesmoke;
         padding: 25px;
         margin-bottom: 0px;
-        display: block;
-        height: 100vh;
+        height: 100%;
+        width: 100%;
     }
 
     #mobileProfileView img {
@@ -173,15 +181,12 @@
         box-shadow: 1px 1px 4px gray; 
     }
 
-    .joinButton button {
-        width: 500px    ;
+    .btn {
+        margin: 5px 0px;
     }
-
-
-
 }
 
-@media only screen and (min-width: 481px) {
+@media only screen and (min-width: 701px) {
     #mobileLinks {
         display: none;
     }
@@ -194,7 +199,7 @@
         display: none;
     }
 
-    /* HEADER */
+    /* ***************HEADER*************** */
     #container {
         /* position: fixed; */
         width: 100%
@@ -213,7 +218,7 @@
         font-size: 25pt;
     }
 
-    /* DROPDOWN MENU FOR TABLET */
+    /* ***************DROPDOWN MENU FOR TABLET*************** */
     .dropdown {
         position: fixed;
         top: 0;
@@ -264,7 +269,7 @@
         display: block;
     }
 
-    /* PROFILE VIEW */
+    /* ***************PROFILE VIEW*************** */
     #mobileProfileView {
         background-color: white;
         padding: 25px;
@@ -296,7 +301,13 @@
         box-shadow: 1px 1px 4px gray; 
     }
 
+    .mobileAttendingEvent h2 {
+        margin: 50px 0px;
+    }
 
+    #footer {
+        margin-top: 200px;
+    }
 }
 
 @media only screen and (min-width: 1024px) {
@@ -312,7 +323,7 @@
         display: none;
     }
 
-    /* HEADER */
+    /* ***************HEADER*************** */
     #container #header {
         background-color: whitesmoke;
         display: flex;
@@ -351,8 +362,8 @@
         padding-bottom: 15px;
     }
 
-    /* PROFILE VIEW */
-    #mobilePorfileView {
+    /* ***************PROFILE VIEW*************** */
+    #mobileAttendingEvent {
         display: flex;
         flex-wrap: wrap;
         align-items: center;

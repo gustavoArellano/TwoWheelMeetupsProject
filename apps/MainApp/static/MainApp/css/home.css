@@ -9,7 +9,7 @@
     width: 100%
 }
 
-/* HEADER */
+/* ***************HEADER*************** */
 #header {
     background-color: whitesmoke;
     display: flex;
@@ -47,11 +47,13 @@
     padding-bottom: 15px;
 }
 
-/* UPCOMING */
-#upcomingEvent {
+/* ***************UPCOMING*************** */
+#upcoming {
     background-color: whitesmoke;
 }
 
+
+/* ***************FOOTER*************** */
 #footer {
     background-color: #363E47;
     color: white;
@@ -81,20 +83,21 @@
         display: none;
     }
 
-    #tabletUpcomingEvent {
+    #tabletUpcoming {
         display: none;
     }
 
-    #container {
+    #container { 
         position: fixed;
         width: 100%
     }
 
-    /* HEADER */
+    /* ***************HEADER*************** */
     #header {
         background-color: whitesmoke;
         padding: 5px;
         width: 100%;
+        
     } 
 
     #header h1{
@@ -123,7 +126,7 @@
         text-decoration: none;
         color: gray;
         padding: 0px;
-        margin: 5px 22px 0px 22px;
+        margin: 10px 22px 0px 22px;
         display: inline-block;
         vertical-align: top;
     }
@@ -140,172 +143,154 @@
         display: block;
     }
 
-    /* UPCOMING EVENT */
-    #mobileUpcomingEvent h4 {
+    /* ***************UPCOMING EVENT*************** */
+    #upcoming {
+        display: block;
+        margin: 0px;
+        background-color: whitesmoke;
+        width: 100%;
+        padding: 20px;
+    }
+
+    #upcoming h4 {
         margin-top: 110px;
     }
 
-    #mobileUpcomingEvent .secondHeader {
-        margin-top: 0px;
+    #upcoming .secondHeader {
+        margin-top: 30px;
     }
 
-    #mobileUpcomingEvent {
-        display: block;
-        margin: 0px;
-        background-color: whitesmoke;
-        width: 100%;
-        padding: 20px;
-    }
-
-    .event {
+    .upcomingEvent {
         padding: 0px;
-        margin: 20px 5px;
         background-color: white;
         border: 1px solid gray;
-        border-radius: 3px;
+        border-radius: 10px;
         box-shadow: 1px 1px 6px gray;
+        text-align: center;
     }
 
-    .event .date {
-        margin: 5px 10px;
+    .upcomingEvent .upcomingDate {
+        border-radius: 8px;
+        margin-bottom: 0px;
+        padding: 10px 5px;
+        background-color: #F53756;
+        color: white;
     }
 
-    .event img {
+    .upcomingEvent .upcomingImage {
         border-top: 1px gray solid;
         border-bottom: 1px gray solid;
         width: 100%;
-        height: 200px;
-        margin: 5px 0px;
+        height: 250px;
     }
 
-    .event .address {
+    .upcomingEvent .upcomingAddress {
         font-size: 15px;
-        margin: 5px 10px 0px 10px;
+        margin: 10px;
+        height: 20px;
     }
 
-    .event .address a {
+    .upcomingEvent .upcomingAddress a {
+        color: black;
+        margin-top: 10px;
+    }
+
+
+    .upcomingEvent .upcomingTitle {
+        margin: 0px 10px 10px 10px;
+        height: 20px;
+    }
+
+    .upcomingEvent .upcomingTitle a {
+        color: black;
+        text-decoration: none;
+    }
+
+    .upcomingEvent .upcomingTitle a:hover {
         color: gray;
     }
 
-    .event .title {
+    .upcomingEvent .upcomingAttending {
+        height: 20px;
         margin: 0px 10px 10px 10px;
     }
-
-    .event .title a {
-        color: black;
-        text-decoration: none;
-    }
-
-    .event .title a:hover {
-        color: gray;
-    }
-
-    /* .goingComment {
-        padding: 0px;
-        margin: 0px;
-        width: 100%;
-        border-top: 1px solid gray;
-    } */
-
-    /* .goingComment a {
-        padding: 5px;
-        text-decoration: none;
-        width: 45%;
-        margin: 0px;
-        display: inline-block;
-        text-align: center;
-        color: gray;
-    }
-
-    .goingComment a:hover {
-        color: black;
-    }
-
-    .goingComment a i, p {
-        margin: 5px 0px;
-        padding: 0px;
-        display: inline-block;
-        vertical-align: top;
-    } */
     
-    /* ALL AVAILABLE MEETUPS */
-    #mobileAvailableMeetups {
+    /* ***************ALL AVAILABLE MEETUPS*************** */
+    #available {
+        display: block;
+        margin: 0px;
         background-color: whitesmoke;
         width: 100%;
         padding: 20px;
-        display: block;
-        margin-top: -10px;
     }
 
-    .event {
+    #available h5 {
+        margin-top: 10px;
+    }
+
+    .availableEvent {
         padding: 0px;
         background-color: white;
         border: 1px solid gray;
-        border-radius: 3px;
+        border-radius: 10px;
         box-shadow: 1px 1px 6px gray;
+        text-align: center;
+        margin-bottom: 25px;
     }
 
-    .event .date {
-        margin: 5px 10px;
+    .availableEvent .availableDate {
+        border-radius: 8px;
+        margin-bottom: 0px;
+        padding: 10px 5px;
     }
 
-    .event img {
+    
+
+    .availableEvent .availableImage {
         border-top: 1px gray solid;
         border-bottom: 1px gray solid;
         width: 100%;
-        height: 200px;
-        margin: 5px 0px;
+        height: 250px;
     }
 
-    .event .address {
+    .availableEvent .availableAddress {
         font-size: 15px;
-        margin: 5px 10px 0px 10px;
+        margin: 10px 0px;
+        height: 20px;
     }
 
-    .event .address a {
+    .availableEvent .availableAddress a {
+        color: black;
+        margin-top: 10px;
+    }
+
+    .availableEvent .availableAddress a:hover {
         color: gray;
     }
 
-    .event .title {
+
+    .availableEvent .availableTitle {
+        margin: 10px 0px;
+        height: 20px;
+    }
+
+    .availableEvent .availableTitle a {
+        color: black;
+        text-decoration: none;
+    }
+
+    .availableEvent .availableTitle a:hover {
+        color: gray;
+    }
+
+    .availableEvent .availableAttending {
+        height: 20px;
         margin: 0px 10px 10px 10px;
     }
 
-    .event .title a {
-        color: black;
-        text-decoration: none;
-    }
-
-    .event .title a:hover {
-        color: gray;
-    }
-
-    /* .goingComment {
-        padding: 0px;
-        margin: 0px;
+    .joinButton, .btn{
         width: 100%;
-        border-top: 1px solid gray;
-    } */
-
-    /* .goingComment a {
-        padding: 5px;
-        text-decoration: none;
-        width: 45%;
-        margin: 0px;
-        display: inline-block;
-        text-align: center;
-        color: gray;
-    }
-
-    .goingComment a:hover {
-        color: black;
-    } */
-
-    /* .goingComment a i, p {
-        margin: 5px 0px;
-        padding: 0px;
-        display: inline-block;
-        vertical-align: top;
-    } */
+    } 
 
 }
 
@@ -314,22 +299,11 @@
         display: none;
     }
 
-    .mobile {
-        display: none;
-    }
-    .desktop {
-        display: none;
-    }
-
-    #desktopUpcomingEvent {
-        display: none;
-    }
-
     #links {
         display: none;
     }
 
-    #mobileUpcomingEvent {
+    #upcoming {
         display: none;
     }
 
@@ -337,7 +311,7 @@
         display: none;
     }
 
-    /* HEADER */
+    /* ***************HEADER*************** */
     #container {
         /* position: fixed; */
         width: 100%
@@ -356,7 +330,7 @@
         font-size: 25pt;
     }
 
-    /* DROPDOWN MENU FOR TABLET */
+    /* ***************DROPDOWN MENU FOR TABLET*************** */
     .dropdown {
         position: fixed;
         top: 0;
@@ -408,8 +382,8 @@
     }
 
 
-    /* UPCOMING EVENT */
-    #tabletUpcomingEvent {
+    /* ***************UPCOMING EVENT*************** */
+    #tabletUpcoming {
         padding: 30px 50px;
         margin: 0px auto;
         height: 300px;
@@ -441,8 +415,8 @@
         margin-left: 30px;
     }
 
-    /* ALL AVAILABLE MEETUPS */
-    #mobileAvailableMeetups {
+    /* ***************ALL AVAILABLE MEETUPS*************** */
+    #available {
         display: flex;
         justify-content: space-evenly;
         flex-wrap: wrap;
@@ -451,24 +425,32 @@
         padding: 20px;
     }
 
-    .event {
+    #available h5 {
+        width: 100%;
+        
+    }
+
+    .availableEvent{
         display: inline-block;
         vertical-align: top;
-        width: 80%;
+        width: 45%;
         padding: 0px;
         margin: 20px 10px; 
         background-color: white;
         border: 1px solid gray;
-        border-radius: 3px;
+        border-radius: 5px;
         box-shadow: 1px 1px 6px gray;
+        text-align: center;
     }
 
-    .event .date {
-        margin: 5px 10px;
-        width: 100%;
+    .availableEvent .availableDate {
+        border-radius: 8px;
+        margin-bottom: 0px;
+        padding: 5px;
+
     }
 
-    .event img {
+    .availableEvent .availableImage {
         border-top: 1px gray solid;
         border-bottom: 1px gray solid;
         width: 100%;
@@ -476,48 +458,53 @@
         margin: 5px 0px;
     }
 
-    .event .address {
+    .availableEvent .availableAddress {
         font-size: 15px;
-        margin: 5px 10px 0px 10px;
+        margin: 15px 0px;
+        height: 20px;
     }
 
-    .event .address a {
-        color: gray;
-    }
-
-    .event .title {
-        margin: 0px 10px 10px 10px;
-    }
-
-    .event .title a {
+    .availableEvent .availableAddress a {
         color: black;
-        text-decoration: none;
-        
     }
 
-    .event .title a:hover {
+    .availableEvent .availableAddress a:hover {
         color: gray;
     }
 
-    .event .attending {
+    .availableEvent .availableTitle {
+        font-size: 15px;
+        margin: 15px 0px;
+        height: 20px;
+    }
+
+    .availableEvent .availableTitle a {
+        color: black;        
+    }
+
+    .availableEvent .availableTitle a:hover {
+        color: gray;
+    }
+
+    .availableEvent .availableAttending {
         display: block;
-        margin: 0px 10px;
+        color: black;
+        font-size: 15px;
+        margin: 15px 0px;
+        height: 20px;
 
     }
 
-    .join {
+    .joinButton .btn{
         display: block;
         padding: 5px;
+        width: 100%;
     }
 
-    #mobileAvailableMeetups h5 {
-        width: 100%;
-        
-    }
 
 }
 
-@media only screen and (min-width: 700px) and (max-width: 1023px) {
+/* @media only screen and (min-width: 700px) and (max-width: 1023px) {
     .event {
         width: 40%
     }
@@ -525,7 +512,7 @@
     .icons {
         margin: 0px;
     }
-}
+} */
 
 @media only screen and (min-width: 1024px) {
     #mobileLinks {
@@ -548,7 +535,7 @@
         display: none;
     }
 
-    /* HEADER */
+    /* ***************HEADER*************** */
     #container #header {
         background-color: whitesmoke;
         display: flex;
@@ -587,6 +574,7 @@
         padding-bottom: 15px;
     }
 
+    /* ***************UPCOMING EVENT*************** */
     .infoLeft, .infoRight {
         display: inline-block;
         vertical-align: top;
@@ -599,46 +587,28 @@
         height: 130px;
         margin: 0px 50px;
         padding: 0px;
-        /* white-space: nowrap; */
     }
 
-    #mobileAvailableMeetups {
+    /* ***************ALL AVAILABLE MEETUPS*************** */
+    #available {
         padding: 0px;
     }
 
-    #mobileAvailableMeetups h5 {
+    #available h5 {
         padding-top: 20px;
         margin-left: 25px;
     }
 
-    #mobileAvailableMeetups .event {
+    #available .availableEvent {
         width: 350px;
-        margin: 20px;
-    }
+        margin: 20px 5px;
 
-    #mobileAvailableMeetups .goingComment a p {
-        text-align: center;
     }
-
+    /* .ICON WILL KEEP UPCOMINGEVENT ITEMS INTACT */
     .icons {
         display: inline-block;
         vertical-align: top;
         margin: 0px;
-    }
-
-    .address, .title {
-        display: block;
-    }
-
-    .attending {
-        display: block;
-        width: 100%;
-        margin: auto;
-    }
-
-    .join {
-        display: block;
-        width: 100%;
     }
 
 }

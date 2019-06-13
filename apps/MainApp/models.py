@@ -136,10 +136,6 @@ class Event(models.Model):
 #     Event = models.ForeignKey(Event, related_name = "Comments")
 #     CommentByUser = models.ForeignKey(User, related_name = "CommentsByUser")
 
-# class EventAttendant(models.Model):
-#     created_at = models.DateTimeField(auto_now_add = True)
-#     updated_at = models.DateTimeField(auto_now = True)
-#     Event = models.ForeignKey(User, related_name = "UsersGoing")
 
 
 

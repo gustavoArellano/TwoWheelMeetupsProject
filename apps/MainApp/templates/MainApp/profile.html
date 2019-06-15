@@ -15,6 +15,8 @@
     </head>
 
     <body>
+
+        <!-- THE BELOW CONTAINER HOLDS ALL THE LINK STYLES -->
         <div id="container">
             <div id="header">
                 <h1><strong>2Wheel Meetups</strong></h1>
@@ -65,7 +67,8 @@
             </div>
         </div>  
         
-        <div id="mobileProfileView">
+        <div id="profileInfo">
+
             <div class="title">
                 <h2>{{rider.FirstName}} {{rider.LastName}}</h2>
                 <p>{{rider.City}}, {{rider.State}}</p>
@@ -73,48 +76,57 @@
             </div>
             
             <div class="details">
+
                 <h4>Member Since</h4>
                 <p><i class="fas fa-calendar-alt"></i> {{date}} <i class="fas fa-calendar-alt"></i></p>
                 <br>
                 <h4>Rides Attended</h4>
                 <p><i class="fas fa-motorcycle"></i> {{UserAttending.count}} <i class="fas fa-motorcycle"></i></p>
-            </div>
 
-            <div class="mobileAttendingEvent">
-                {% if UserAttending.count != 0 %}
-                <h2>Event's You Are Attending: </h2>
-                {% endif %}
-
-                <table class="table row-no-padding">
-                    <thead>
-                        <tr>
-                            <th scope="col">Title</th>
-                            <th scope="col">Date</th>
-                        </tr>
-                    </thead>
-
-                    {% for event in UserAttending %}
-                    <tbody>
-                        <tr>
-                            <td>{{event.Title}}</td>
-                            <td>{{event.EventDate}}</td>
-                            <td class="buttons">
-                                <form class="joinButton" action="#" method="#">
-                                    {% csrf_token %}
-                                    <button type="submit" class="btn btn-danger joinButton">Details</button>
-                                </form>
-                            </td>
-                        </tr>
-                        
-                    </tbody>
-                    {% endfor %}
-                </table>
             </div>
         </div>
-    
-    
+
+        <div class="eventsAttending">
+            {% if UserAttending.count != 0 %}
+            <h2>Event's You Are Attending: </h2>
+            {% endif %}
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Title</th>
+                        <th scope="col">Date</th>
+                        <th class="tabletDesktopOnly" scope="col">Details / Cancel</th>
+                    </tr>
+                </thead>
+
+                {% for event in UserAttending %}
+                <tbody>
+                    <tr>
+                        <td>{{event.Title}}</td>
+                        <td>{{event.EventDate}}</td>
+                        <td class="buttons">
+                            <form class="joinButton" action="/Event/{{event.id}}" method="POST">
+                                {% csrf_token %}
+                                <input type="hidden" name="EventDetail" value="{{event.id}}">
+                                <button type="submit" class="btn btn-secondary joinButton">Details</button>
+                            </form>
+
+                            <form class="joinButton tabletDesktopOnly" action="/RemoveProcess/{{event.id}}" method="POST">
+                                {% csrf_token %}
+                                <input type="hidden" name="Event" value="{{event.id}}">
+                                <button type="submit" class="btn btn-danger joinButton">Cancel</button>
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+                {% endfor %}
+            </table>
+        </div>
+
         <div id="footer">
-            <p>2Wheel Meetups &reg; by Gustavo Arellano</p>
-        </div>
+            <p class="footer">2Wheel Meetups &reg; by Gustavo Arellano</p>
+        </div>    
+
     </body>
 </html>

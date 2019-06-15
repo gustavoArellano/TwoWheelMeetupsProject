@@ -12,5 +12,7 @@ urlpatterns = [
     url(r'^Rider/(?P<id>\w+)$', views.UserProfile, name="Rider"),
     url(r'^CreateEvent$', views.CreateEvent, name="CreateEvent"),
     url(r'^CreateEventProcess$', views.CreateEventProcess, name="CreateEventProcess"),
-    url(r'^Join/(?P<id>\d+)$', views.Join, name="Join")
+    url(r'^Join/(?P<id>\d+)$', views.Join, name="Join"),
+    url(r'^RemoveProcess/(?P<id>\d+)$', views.RemoveUserFromEvent, name="RemoveProcess"),
+    url(r'^Event/(?P<id>\d+)$', views.EventDetails, name="Event")
 ]

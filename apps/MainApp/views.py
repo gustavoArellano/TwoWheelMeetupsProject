@@ -131,4 +131,18 @@ def Join(request, id):
         request.session.clear()
         return redirect ("/Index")
 
-# def EventDetails(request, id):
+def RemoveUserFromEvent(request, id):
+    if request.method == "POST":
+        ThisEvent = Event.objects.get(id=id)
+        ThisUser = User.objects.get(id = request.session['LoggedIn'])
+        ThisEvent.UsersGoing.remove(ThisUser)        
+        return redirect('/Home')
+
+def EventDetails(request, id):
+    if request.method == "POST":
+        ThisEvent = Event.objects.get(id = request.POST['EventDetail'])  
+        
+        context = {
+            'Event': ThisEvent
+        }
+        return render(request, 'MainApp/eventDetail.html', context)

@@ -504,16 +504,6 @@
 
 }
 
-/* @media only screen and (min-width: 700px) and (max-width: 1023px) {
-    .event {
-        width: 40%
-    }
-
-    .icons {
-        margin: 0px;
-    }
-} */
-
 @media only screen and (min-width: 1024px) {
     #mobileLinks {
         display: none;

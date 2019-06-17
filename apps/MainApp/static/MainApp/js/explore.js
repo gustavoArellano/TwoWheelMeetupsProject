@@ -1,7 +1,6 @@
 //DROP DOWN MENU FOR TABLET MODE
 function myFunction() {
     document.getElementById("tabletDropdown").classList.toggle("show");
-  }
   
   window.onclick = function(event) {
     if (!event.target.matches('.menuButton')) {
@@ -15,3 +14,4 @@ function myFunction() {
       }
     }
   }
+}

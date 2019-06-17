@@ -1,0 +1,15 @@
+{% for event in events %}
+<div class="availableEvent">
+
+    <p class="availableDate">{{event.EventDate}}, {{event.EventTime}} </p>
+    <p class="availableAddress"><a href="#">{{event.Address}}, {{event.City}}, {{event.State}} {{event.ZipCode}}</a></p>
+    <p class="availableTitle"><a href="#">{{event.Title}}</a></p>
+    <p class="availableAttending"><i class="fas fa-motorcycle"></i> {{event.UsersGoing.count}} Riders Going</p>
+
+    <form id="joinButton" class="joinButton" action="/Join/{{event.id}}" method="POST">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger joinButton">Join!</button>
+    </form>
+
+</div>
+{% endfor %}

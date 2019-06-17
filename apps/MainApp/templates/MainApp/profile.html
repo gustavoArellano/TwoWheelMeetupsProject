@@ -26,7 +26,7 @@
                         <li><a href="/Home">Home</a></li>
                         <li><a href="#">Explore</a></li>
                         <li><a href="/CreateEvent">Create</a></li>
-                        <li><a href="/Logout">Sign Out</a></li>
+                        <li><a href="/Logout">Log Out</a></li>
                     </ul>
                 </div>
             
@@ -38,7 +38,7 @@
                         <a href="/Home">Home</a>
                         <a href="#">Explore</a>
                         <a href="/CreateEvent">Create</a>
-                        <a href="/Logout">Sign Out</a>
+                        <a href="/Logout">Log Out</a>
                     </div>
 
                 </div>
@@ -61,7 +61,7 @@
                 </a>
                 <a href="/Logout">
                     <i class="fas fa-sign-out-alt fa-2x"></i>
-                    <p>Sign Out</p>
+                    <p>Log Out</p>
                 </a>
                     
             </div>
@@ -86,12 +86,11 @@
             </div>
         </div>
 
-        <div class="eventsAttending">
+        <div id="eventsAttending" class="eventsAttending">
             {% if UserAttending.count != 0 %}
             <h2>Event's You Are Attending: </h2>
-            {% endif %}
 
-            <table class="table">
+            <table id="table" class="table">
                 <thead>
                     <tr>
                         <th scope="col">Title</th>
@@ -101,27 +100,79 @@
                 </thead>
 
                 {% for event in UserAttending %}
-                <tbody>
+                <tbody id="tbodyID">
                     <tr>
                         <td>{{event.Title}}</td>
                         <td>{{event.EventDate}}</td>
                         <td class="buttons">
+
                             <form class="joinButton" action="/Event/{{event.id}}" method="POST">
                                 {% csrf_token %}
                                 <input type="hidden" name="EventDetail" value="{{event.id}}">
                                 <button type="submit" class="btn btn-secondary joinButton">Details</button>
                             </form>
-
-                            <form class="joinButton tabletDesktopOnly" action="/RemoveProcess/{{event.id}}" method="POST">
+                            
+                            <form id="CancelButton" class="joinButton tabletDesktopOnly" action="/RemoveProcess/{{event.id}}" method="POST">
                                 {% csrf_token %}
                                 <input type="hidden" name="Event" value="{{event.id}}">
-                                <button type="submit" class="btn btn-danger joinButton">Cancel</button>
+                                <button type="submit" id="cancel" class="btn btn-danger joinButton" >Cancel</button>
                             </form>
+
+                            <script>
+                                $(document).ready(function(){
+                                // THE '.off' PREVENTS AJAX FROM RUNNING FORM MULTIPLE TIMES!!!
+                                    $(document).off('submit');
+                                    $(document).on('submit', '#CancelButton', function(event) {
+                                        event.preventDefault();
+
+                                        // THE BELOW GETS THE COOKIES FOR THE CSRF TOKEN, THAT IS REQUIRED FOR THE FORM TO ALLOW AJAX TO PASS THE ID VALUE!!!
+                                        function getCookie(name) {
+                                            var cookieValue = null;
+                                            if (document.cookie && document.cookie !== '') {
+                                                var cookies = document.cookie.split(';');
+                                                for (var i = 0; i < cookies.length; i++) {
+                                                    var cookie = cookies[i].trim();
+                                                    // Does this cookie string begin with the name we want?
+                                                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                                                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                                                        break;
+                                                    }
+                                                }
+                                            }
+                                            return cookieValue;
+                                        }
+                                        var csrftoken = getCookie('csrftoken');
+
+                                        // CREATES CSRF FUNCTION TO BE CALLED IN AJAX SETUP!!!
+                                        function csrfSafeMethod(method) {
+                                            return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+                                        }
+                                        // AJAX SETUP FOR CSRF TOKEN TO BE PASSED FOR AJAX TO RUN!!
+                                        $.ajaxSetup({
+                                            beforeSend: function(xhr, settings) {
+                                                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                                                    xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                                                }
+                                            }
+                                        });    
+                                                    
+                                        // AJAX CALL TO SUBMIT FORM!!
+                                        $.ajax({
+                                        url: "/RemoveProcess/{{event.id}}",
+                                        type: 'POST',
+                                        success: 
+                                            alert("YOU ARE NO LONGER ATTENDING THIS {{event.Title}}")
+                                    
+                                        });
+                                    });
+                                });
+                            </script>
                         </td>
                     </tr>
                 </tbody>
                 {% endfor %}
             </table>
+            {% endif %}
         </div>
 
         <div id="footer">

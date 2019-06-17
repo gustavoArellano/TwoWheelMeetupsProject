@@ -29,7 +29,7 @@
                             </form>
                         </li>
 
-                        <li><a href="#">Explore</a></li>
+                        <li><a href="/Explore">Explore</a></li>
                         <li><a href="/CreateEvent">Create</a></li>
                         <li><a href="/Logout">Log Out</a></li>
                     </ul>
@@ -47,7 +47,7 @@
                             <a href="javascript:{}" onclick="document.getElementById('ProfileForm').submit();">Profile</a>
                         </form>
 
-                        <a href="#">Explore</a>
+                        <a href="/Explore">Explore</a>
                         <a href="/CreateEvent">Create</a>
                         <a href="/Logout">Log Out</a>
                     </div>
@@ -67,7 +67,7 @@
                     </a>
                 </form>
 
-                <a href="#">
+                <a href="/Explore">
                     <i class="fas fa-search fa-2x"></i>
                     <p>Explore</p>
                 </a>
@@ -140,7 +140,7 @@
                 <p class="availableTitle"><a href="#">{{event.Title}}</a></p>
                 <p class="availableAttending"><i class="fas fa-motorcycle"></i> {{event.UsersGoing.count}} Riders Going</p>
 
-                <form class="joinButton" action="/Join/{{event.id}}" method="POST">
+                <form id="joinButton" class="joinButton" action="/Join/{{event.id}}" method="POST">
                     {% csrf_token %}
                     <button type="submit" class="btn btn-danger joinButton">Join!</button>
                 </form>

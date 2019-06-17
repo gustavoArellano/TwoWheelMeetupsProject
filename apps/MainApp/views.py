@@ -10,6 +10,7 @@ register = template.Library()
 from time import strftime
 import bcrypt
 from django.contrib.auth import authenticate, login
+from django.core import serializers
 
 
 def Index(request):
@@ -135,7 +136,7 @@ def RemoveUserFromEvent(request, id):
     if request.method == "POST":
         ThisEvent = Event.objects.get(id=id)
         ThisUser = User.objects.get(id = request.session['LoggedIn'])
-        ThisEvent.UsersGoing.remove(ThisUser)        
+        ThisEvent.UsersGoing.remove(ThisUser)   
         return redirect('/Home')
 
 def EventDetails(request, id):
@@ -146,3 +147,17 @@ def EventDetails(request, id):
             'Event': ThisEvent
         }
         return render(request, 'MainApp/eventDetail.html', context)
+
+def Explore(request):
+    users = User.objects.all()
+    context = {
+        'users': users
+    }
+    return render(request, 'MainApp/explore.html')
+
+def ExploreApi(request):
+    events = Event.objects.filter(ZipCode__startswith = request.POST['StartsWith'])
+    context = {
+        'events': events
+    }
+    return render(request, "MainApp/exploreApi.html", context)

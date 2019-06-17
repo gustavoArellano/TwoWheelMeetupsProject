@@ -11,6 +11,7 @@ from time import strftime
 import bcrypt
 from django.contrib.auth import authenticate, login
 from django.core import serializers
+from django.db.models import Q
 
 
 def Index(request):
@@ -156,8 +157,21 @@ def Explore(request):
     return render(request, 'MainApp/explore.html')
 
 def ExploreApi(request):
-    events = Event.objects.filter(ZipCode__startswith = request.POST['StartsWith'])
+    events = Event.objects.filter(
+        Q(ZipCode__startswith = request.POST['StartsWith']) |
+        Q(City__startswith = request.POST['StartsWith']) |
+        Q(State__startswith = request.POST['StartsWith'])
+    )
+
+    # eventsByZipCode = Event.objects.filter(ZipCode__startswith = request.POST['StartsWith'])
+    # eventsByCity = Event.objects.filter(City__startswith = request.POST['StartsWith'])
+    # eventsByState = Event.objects.filter(State__startswith = request.POST['StartsWith'])
+
+
     context = {
         'events': events
+        # 'eventsByZipCode': eventsByZipCode,
+        # 'eventsByCity': eventsByCity,
+        # 'eventsByState': eventsByState
     }
     return render(request, "MainApp/exploreApi.html", context)

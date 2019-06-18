@@ -5,17 +5,11 @@
     font-family: 'Josefin Sans', sans-serif;
 }
 
-body {
-    height: 100%;
-    position: relative;
+#container {
+    width: 100%
 }
 
 /* ***************HEADER*************** */
-/* THIS CONTAINER HOLDS ALL THE LINKS */
-#container {
-    width: 100%;
-}
-
 #header {
     background-color: whitesmoke;
     display: flex;
@@ -46,6 +40,7 @@ body {
     color: gray;
     border-bottom: 0px solid gray; 
     transition: border 150ms, padding 150ms;
+    
 }
 
 #links ul li a:hover {
@@ -53,11 +48,41 @@ body {
     padding-bottom: 15px;
 }
 
-/* ***************UPCOMING*************** */
+/* ***************TITLE*************** */
+#exploreHeader {
+    font-family: 'Pacifico', cursive;
+    cursor: default;
+    color: #F53756;
+    text-decoration: underline;
+}
 
+/* ***************FORM & INPUT*************** */
+#myForm {
+    text-align: center;
+}
+
+#AjaxStartsWith {
+    border-radius: 10px;
+    border: 3px solid gray;
+    text-align: center;
+}
+
+#AjaxStartsWith, h5 {
+    display: inline-block;
+    margin: 0px 10px;
+}
+
+/* ***************FOOTER*************** */
+#list {
+    display: block;
+    height: 100%;
+    margin-bottom: 30px;
+}
+
+/* ***************FOOTER*************** */
 #footer {
     display: block;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     background-color: #363E47;
     text-align: center;
@@ -67,11 +92,16 @@ body {
 } 
 
  #footer .footer {
+    background-color: #363E47;
     padding: 10px;
     margin: 0;
 }
 
+
 @media only screen and (max-width: 700px) {
+    * {
+        background-color: whitesmoke;
+    }
     .tablet {
         display: none;
     }
@@ -87,24 +117,17 @@ body {
         display: none;
     }
 
-    #tabletUpcomingEvent {
+    #tabletUpcoming {
         display: none;
     }
 
-    .tabletDesktopOnly {
-        display: none;
-    }
-
-    body {
-        background-color: whitesmoke !important;
+    #container { 
+        position: fixed;
+        width: 100%;
+        display: block;
     }
 
     /* ***************HEADER*************** */
-    #container {
-        position: fixed;
-        width: 100%
-    }
-
     #header {
         background-color: whitesmoke;
         padding: 5px;
@@ -119,6 +142,7 @@ body {
 
     #links {
         display: none;
+        
     }
 
     #mobileLinks {
@@ -135,6 +159,7 @@ body {
     }
 
     #mobileLinks a {
+        background-color: white;
         text-decoration: none;
         color: gray;
         padding: 0px;
@@ -144,6 +169,7 @@ body {
     }
 
     #mobileLinks p {
+        background-color: white;
         font-size: 9pt;
     }
 
@@ -151,67 +177,33 @@ body {
         filter: brightness(25%);
     }
 
-    #mobileLinks a p, i {
-        display: block;
-    }
-
-    /* ***************PROFILE VIEW*************** */
-    #profileInfo {
-        background-color: whitesmoke;
-        padding: 25px;
-        margin-bottom: 0px;
-        height: 100%;
-        width: 100%;
-    }
-
-    #profileInfo img {
-        margin: 0px 10px;
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
-    }
-
-    #profileInfo .title, .details {
-        text-align: center;
-        display: block;
-    }
-
-    .title {
-        margin-top: 120px;
-    }
-
-    .details {
-        padding: 20px;
-        margin: 50px 0px;
+    #mobileLinks a p, i, #ProfileForm {
         background-color: white;
-        border: 1px gray solid;
-        box-shadow: 1px 1px 4px gray; 
+        display: block;
     }
 
-    /* ***************EVENTS ATTENDING SECTION*************** */
-    .eventsAttending {
-        margin: 10px 0px 120px 0px;
-        background-color: whitesmoke
+    /* ***************TITLE*************** */
+    #exploreHeader {
+        margin-bottom: 0px;
+        padding-top: 130px;
+        width: 100%;
+        text-align: center;
+        background-color: whitesmoke; 
     }
 
-    .eventsAttending h2 {
-        font-size: 25px;
-        margin-bottom: 30px;
-        text-decoration: black underline;
+    /* ***************FORM & INPUT*************** */
+    #myForm {
+        height: 100%;
     }
 
-    .table {
-        margin-bottom: 200px;
+    #AjaxStartsWith {
+        background-color: white;
+        margin-top: 50px;
     }
 
-    /* .table  tbody tr td {
-        font-size: 12px;
-    } */
-
-    .btn {
-        margin: 5px 0px;
-
-    } 
+    #AjaxStartsWith, h5 {
+        background-color: whitesmoke;
+    }
 }
 
 @media only screen and (min-width: 701px) {
@@ -219,16 +211,21 @@ body {
         display: none;
     }
 
-    #desktopUpcomingEvent {
+    #links {
         display: none;
     }
 
-    #links {
+    #upcoming {
         display: none;
-    } 
+    }
+
+    .roadImage {
+        display: none;
+    }
 
     /* ***************HEADER*************** */
     #container {
+        /* position: fixed; */
         width: 100%
     } 
 
@@ -265,11 +262,11 @@ body {
         cursor: pointer;
         border-radius: 5px;
     }
-      
+        
     .menuButton:hover, .menuButton:focus {
         filter: brightness(120%);
     }
-      
+        
     .dropdown-content {
         margin-left: 20px;
         display: none;
@@ -280,82 +277,37 @@ body {
         box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
         z-index: 1;
     }
-      
+        
     .dropdown-content a {
         color: black;
         padding: 12px 16px;
         text-decoration: none;
         display: block;
     }
-      
+        
     .dropdown a:hover {
         background-color: #ddd;
     }
-      
+        
     .show {
         display: block;
-    }
-
-    /* ***************PROFILE VIEW*************** */
-    #profileInfo {
-        background-color: white;
-        padding: 25px;
-        margin: 0px;
-        display: block;
-        width: 100%;
-    }
-
-    #profileInfo .title img {
-        margin: 0px 10px;
-        width: 150px;
-        height: 150px;
-        border-radius: 50%;
-    }
-
-    #profileInfo .title, .details {
-        text-align: center;
-        display: block;
-    }
-
-    .details {
-        margin: auto;
-        margin-top: 50px;
-        width: 400px;
-        padding: 20px;
-        background-color: whitesmoke;
-        border: 1px gray solid;
-        box-shadow: 1px 1px 4px gray; 
-    }
-
-    /* ***************EVENTS ATTENDING SECTION*************** */
-    .eventsAttending {
-        margin: auto;
-        margin-bottom: 200px;
-        width: 85%;
-    }
-
-
-    .eventsAttending h2 {
-        font-size: 25px;
-        margin: 50px 0px;
-        text-decoration: black underline;
-    }
-
-    .table {
-        margin-bottom: 200px;
-    }
-
-    .btn {
-        margin: 5px 0px;
-    } 
-
-    .joinButton {
-        display: inline-block;
     }
 }
 
 @media only screen and (min-width: 1024px) {
     #mobileLinks {
+        display: none;
+    }
+
+    #mobileUpcomingEvent{
+        display: none;
+    }
+
+    .mobile {
+        display: none;
+    }
+
+    .tablet {
         display: none;
     }
 
@@ -400,5 +352,10 @@ body {
     #links ul li a:hover {
         border-bottom: 2px solid gray;
         padding-bottom: 15px;
+    }
+
+    #myForm {
+        display: block;
+        margin-top: 100px;
     }
 }

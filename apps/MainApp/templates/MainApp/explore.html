@@ -24,7 +24,13 @@
                 <div id="links">
                     <ul>
                         <li><a href="/Home">Home</a></li>
-                        <li><a href="#">Explore</a></li>
+                        <li>
+                            <form id="ProfileForm" action="/Rider/{{UserLoggedIn.id}}" method="POST">
+                                {% csrf_token %}
+                                <input type="hidden" name="Rider" value="{{UserLoggedIn.id}}">
+                                <a href="javascript:{}" onclick="document.getElementById('ProfileForm').submit();">Profile</a>
+                            </form>
+                        </li>
                         <li><a href="/CreateEvent">Create</a></li>
                         <li><a href="/Logout">Log Out</a></li>
                     </ul>
@@ -36,7 +42,13 @@
 
                     <div id="tabletDropdown" class="dropdown-content">
                         <a href="/Home">Home</a>
-                        <a href="#">Explore</a>
+                        <li>
+                            <form id="ProfileForm" action="/Rider/{{UserLoggedIn.id}}" method="POST">
+                                {% csrf_token %}
+                                <input type="hidden" name="Rider" value="{{UserLoggedIn.id}}">
+                                <a href="javascript:{}" onclick="document.getElementById('ProfileForm').submit();">Profile</a>
+                            </form>
+                        </li>
                         <a href="/CreateEvent">Create</a>
                         <a href="/Logout">Log Out</a>
                     </div>
@@ -51,10 +63,14 @@
                     <i class="fas fa-home fa-2x"></i>
                     <p>Home</p>
                 </a>
-                <a href="#">
-                    <i class="fas fa-search fa-2x"></i>
-                    <p>Explore</p>
-                </a>
+                <form id="ProfileForm" action="/Rider/{{UserLoggedIn.id}}" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="Rider" value="{{UserLoggedIn.id}}">
+                    <a href="javascript:{}" onclick="document.getElementById('ProfileForm').submit();">
+                        <i class="fas fa-user fa-2x"></i>
+                        <p>Profile</p>
+                    </a>
+                </form>
                 <a href="CreateEvent">
                     <i class="fas fa-motorcycle fa-2x"></i>
                     <p>Create</p>
@@ -67,20 +83,14 @@
             </div>
         </div>  
 
-        <h1>Hi, Explore!</h1>
 
-        <!-- <ul>
-            {% for event in events %}
-            <li>{{event.Title}}</li>
-            {% endfor %}
-        </ul>  -->
+        <h1 id="exploreHeader">Explore</h1>
 
-        <p>Find all zip codes that start with 
-            <form id='myForm' class="myForm" method='POST' action='/Explore/Api'>
-                {% csrf_token %}  
-                <input type='text' id='AjaxStartsWith' name='StartsWith'>
-            </form>
-        </p>
+        <form id='myForm' class="myForm" method='POST' action='/Explore/Api'>
+            {% csrf_token %}  
+            <h5>Enter:</h5>
+            <input type='text' id='AjaxStartsWith' name='StartsWith' value="City, State, Zip Code" onfocus="if (this.value == 'City, State, Zip Code') this.value='';" size=25 />
+        </form>
 
         <div id='list'></div>
 
@@ -99,6 +109,10 @@
                 });
             });
         </script>
+
+        <div id="footer">
+            <p class="footer">2Wheel Meetups &reg; by Gustavo Arellano</p>
+        </div> 
         
     </body>
 </html>

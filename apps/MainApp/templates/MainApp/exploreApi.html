@@ -1,15 +1,31 @@
-{% for event in events %}
-<div class="availableEvent">
+{% load static %}
+<link rel="stylesheet" href="{% static 'MainApp/css/exploreApi.css' %}">
+<link href="https://fonts.googleapis.com/css?family=Cedarville+Cursive|Josefin+Sans|Pacifico" rel="stylesheet">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="{% static 'MainApp/js/welcome.js' %}"></script>
 
-    <p class="availableDate">{{event.EventDate}}, {{event.EventTime}} </p>
-    <p class="availableAddress"><a href="#">{{event.Address}}, {{event.City}}, {{event.State}} {{event.ZipCode}}</a></p>
-    <p class="availableTitle"><a href="#">{{event.Title}}</a></p>
-    <p class="availableAttending"><i class="fas fa-motorcycle"></i> {{event.UsersGoing.count}} Riders Going</p>
 
-    <form id="joinButton" class="joinButton" action="/Join/{{event.id}}" method="POST">
-        {% csrf_token %}
-        <button type="submit" class="btn btn-danger joinButton">Join!</button>
-    </form>
+<div id="available">
+
+    <h5><strong>MEETUPS</strong></h5>
+    
+    {% for event in events %}
+    <div class="availableEvent">
+
+        <p class="availableDate">{{event.EventDate}}, {{event.EventTime}} </p>
+        <img class="availableImage" src="{% static 'MainApp/images/routeImage.png' %}" alt="">
+        <p class="availableAddress"><a href="#">{{event.Address}}, {{event.City}}, {{event.State}} {{event.ZipCode}}</a></p>
+        <p class="availableTitle"><a href="#">{{event.Title}}</a></p>
+        <p class="availableAttending"><i class="fas fa-motorcycle"></i> {{event.UsersGoing.count}} Riders Going</p>
+
+        <form id="joinButton" class="joinButton" action="/Join/{{event.id}}" method="POST">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger joinButton">Join!</button>
+        </form>
+
+    </div>
+    {% endfor %}
 
 </div>
-{% endfor %}

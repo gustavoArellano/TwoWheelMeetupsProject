@@ -163,15 +163,7 @@ def ExploreApi(request):
         Q(State__startswith = request.POST['StartsWith'])
     )
 
-    # eventsByZipCode = Event.objects.filter(ZipCode__startswith = request.POST['StartsWith'])
-    # eventsByCity = Event.objects.filter(City__startswith = request.POST['StartsWith'])
-    # eventsByState = Event.objects.filter(State__startswith = request.POST['StartsWith'])
-
-
     context = {
         'events': events
-        # 'eventsByZipCode': eventsByZipCode,
-        # 'eventsByCity': eventsByCity,
-        # 'eventsByState': eventsByState
     }
     return render(request, "MainApp/exploreApi.html", context)

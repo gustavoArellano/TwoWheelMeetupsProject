@@ -290,6 +290,14 @@ a b {
         display: block;
         text-align: center;
     }  
+
+    /* ***************FOOTER*************** */
+    #footer .footer {
+        font-size: 12px;
+        background-color: #363E47;
+        padding: 2px;
+        margin: 0;
+    }
 }
 
 @media only screen and (min-width: 550px) {

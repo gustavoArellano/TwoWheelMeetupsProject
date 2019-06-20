@@ -292,6 +292,15 @@
         width: 100%;
     } 
 
+    /* ***************FOOTER*************** */
+    #footer .footer {
+        font-size: 12px;
+        background-color: #363E47;
+        padding: 2px;
+        margin: 0;
+    }
+
+
 }
 
 @media only screen and (min-width: 701px) {

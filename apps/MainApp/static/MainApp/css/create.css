@@ -55,8 +55,8 @@
 }
 
 .createForm {
-    width: 330px;
-    height: 680px;
+    width: 350px;
+    height: 800px;
     background-color: rgb(245, 245, 245);
     padding: 5px;
     margin: 0px auto;
@@ -181,7 +181,7 @@
         display: block;
     }
 
-    /* FORM */
+    /* ***************FORM*************** */
     .createPage {
         padding-top: 140px;
         padding-bottom: 80px;
@@ -189,6 +189,14 @@
 
     .createForm {
         margin-top: 25px;
+    }
+
+    /* ***************FOOTER*************** */
+    #footer .footer {
+        font-size: 12px;
+        background-color: #363E47;
+        padding: 2px;
+        margin: 0;
     }
 
 }

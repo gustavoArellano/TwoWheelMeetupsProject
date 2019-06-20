@@ -13,7 +13,6 @@
 #header {
     background-color: whitesmoke;
     display: flex;
-    /* flex-wrap: wrap; */
     justify-content: space-between;
     width: 100%;
 }
@@ -72,7 +71,7 @@
     margin: 0px 10px;
 }
 
-/* ***************FOOTER*************** */
+/* ***************EVENTS*************** */
 #list {
     display: block;
     height: 100%;
@@ -99,9 +98,6 @@
 
 
 @media only screen and (max-width: 700px) {
-    * {
-        background-color: whitesmoke;
-    }
     .tablet {
         display: none;
     }
@@ -123,8 +119,7 @@
 
     #container { 
         position: fixed;
-        width: 100%;
-        display: block;
+        width: 100%
     }
 
     /* ***************HEADER*************** */
@@ -142,7 +137,6 @@
 
     #links {
         display: none;
-        
     }
 
     #mobileLinks {
@@ -159,7 +153,6 @@
     }
 
     #mobileLinks a {
-        background-color: white;
         text-decoration: none;
         color: gray;
         padding: 0px;
@@ -169,7 +162,6 @@
     }
 
     #mobileLinks p {
-        background-color: white;
         font-size: 9pt;
     }
 
@@ -177,32 +169,71 @@
         filter: brightness(25%);
     }
 
-    #mobileLinks a p, i, #ProfileForm {
-        background-color: white;
+    #mobileLinks a p, i {
         display: block;
     }
-
+    
     /* ***************TITLE*************** */
     #exploreHeader {
         margin-bottom: 0px;
-        padding-top: 130px;
+        padding-top: 150px;
         width: 100%;
         text-align: center;
         background-color: whitesmoke; 
+        font-size: 35px;
     }
 
     /* ***************FORM & INPUT*************** */
     #myForm {
         height: 100%;
+        background-color: whitesmoke;
+    }
+
+    #myForm h5 {
+        font-size: 15px;
+        margin: 0px;
     }
 
     #AjaxStartsWith {
-        background-color: white;
+        margin: 0px 5px;
         margin-top: 50px;
+        font-size: 12px;
     }
+     
+    #AjaxStartsWithButton {
+        margin: 0px;
+        font-size: 13px;
+        background-color: #DC3545;
+        width: 100px;
+        color: white;
+        padding: 2px;
+        border-radius: 4px;
+        border: none;
+    }
+
+    
 
     #AjaxStartsWith, h5 {
         background-color: whitesmoke;
+    }
+
+    #listContainer {
+        background-color: whitesmoke;
+        height: 600px;
+        padding: 0px;
+        margin: 0px
+    }
+
+    #AjaxStartsWith, #AjaxStartsWithButton {
+        display: inline-block;
+    }
+
+    /* ***************FOOTER*************** */
+    #footer .footer {
+        font-size: 12px;
+        background-color: #363E47;
+        padding: 2px;
+        margin: 0;
     }
 }
 
@@ -292,6 +323,52 @@
     .show {
         display: block;
     }
+
+    /* ***************TITLE*************** */
+    #exploreHeader {
+        margin-bottom: 0px;
+        padding-top: 30px;
+        width: 100%;
+        text-align: center;
+        font-size: 50px;
+    }
+
+    /* ***************FORM & INPUT*************** */
+    #myForm {
+        height: 100%;
+    }
+
+    #myForm h5 {
+        font-size: 18px;
+        margin: 0px;
+    }
+
+    #AjaxStartsWith {
+        margin: 0px 5px;
+        margin-top: 80px;
+        font-size: 14px;
+    }
+     
+    #AjaxStartsWithButton {
+        margin: 0px;
+        font-size: 16px;
+        background-color: #DC3545;
+        width: 100px;
+        color: white;
+        padding: 2px;
+        border-radius: 4px;
+        border: none;
+    }
+
+    #listContainer {
+        height: 600px;
+        padding: 0px;
+        margin: 0px
+    }
+
+    #AjaxStartsWith, #AjaxStartsWithButton {
+        display: inline-block;
+    }
 }
 
 @media only screen and (min-width: 1024px) {
@@ -354,8 +431,49 @@
         padding-bottom: 15px;
     }
 
+    /* ***************TITLE*************** */
+    #exploreHeader {
+        margin-bottom: 0px;
+        padding-top: 30px;
+        width: 100%;
+        text-align: center;
+        font-size: 50px;
+    }
+
+    /* ***************FORM & INPUT*************** */
     #myForm {
-        display: block;
-        margin-top: 100px;
+        height: 100%;
+    }
+
+    #myForm h5 {
+        font-size: 18px;
+        margin: 0px;
+    }
+
+    #AjaxStartsWith {
+        margin: 0px 5px;
+        margin-top: 80px;
+        font-size: 14px;
+    }
+        
+    #AjaxStartsWithButton {
+        margin: 0px;
+        font-size: 16px;
+        background-color: #DC3545;
+        width: 100px;
+        color: white;
+        padding: 2px;
+        border-radius: 4px;
+        border: none;
+    }
+
+    #listContainer {
+        height: 600px;
+        padding: 0px;
+        margin: 0px
+    }
+
+    #AjaxStartsWith, #AjaxStartsWithButton {
+        display: inline-block;
     }
 }

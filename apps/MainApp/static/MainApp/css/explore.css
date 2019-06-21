@@ -75,7 +75,6 @@
 #list {
     display: block;
     height: 100%;
-    margin-bottom: 30px;
 }
 
 /* ***************FOOTER*************** */
@@ -210,22 +209,15 @@
         border-radius: 4px;
         border: none;
         cursor: pointer;
-        opacity: 0.7;
     }
     
-    #myForm #AjaxStartsWithButton:hover {
-        cursor: pointer;
-    }
-
-    
-
     #AjaxStartsWith, h5 {
         background-color: whitesmoke;
     }
 
     #listContainer {
         background-color: whitesmoke;
-        height: 600px;
+        height: 100%;
         padding: 0px;
         margin: 0px
     }
@@ -366,15 +358,17 @@
         border: none;
     }
 
-    #listContainer {
-        height: 600px;
-        padding: 0px;
-        margin: 0px;
-        background-color: white;
-    }
-
     #AjaxStartsWith, #AjaxStartsWithButton {
         display: inline-block;
+    }
+
+    /* ***************FORM & INPUT*************** */
+    #listContainer {
+        height: 100%;
+        padding: 0px;
+        margin: 0px;
+        margin-bottom: 100px;
+        background-color: white;
     }
 }
 

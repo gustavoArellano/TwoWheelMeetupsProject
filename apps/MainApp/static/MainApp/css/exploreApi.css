@@ -167,9 +167,10 @@
         display: flex;
         justify-content: space-evenly;
         flex-wrap: wrap;
-        background-color: whitesmoke;
+        background-color: white;
         width: 100%;
         padding: 20px;
+        margin-bottom: 50px;
     }
 
     #available h5 {

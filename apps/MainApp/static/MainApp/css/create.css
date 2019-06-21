@@ -56,7 +56,6 @@
 
 .createForm {
     width: 350px;
-    height: 800px;
     background-color: rgb(245, 245, 245);
     padding: 5px;
     margin: 0px auto;
@@ -155,7 +154,7 @@
         justify-content: space-evenly;
         width: 100%;
         margin: auto;
-        padding: 5px 0px;
+        padding: 10px 0px;
         border-top: 1px solid gray;
         border-bottom: 1px solid gray;
     }
@@ -164,7 +163,7 @@
         text-decoration: none;
         color: gray;
         padding: 0px;
-        margin: 5px 22px 0px 22px;
+        margin: 10px 22px 0px 22px;
         display: inline-block;
         vertical-align: top;
     }
@@ -189,6 +188,7 @@
 
     .createForm {
         margin-top: 25px;
+        height: 750px;
     }
 
     /* ***************FOOTER*************** */
@@ -307,6 +307,7 @@
 
     .createForm {
         margin-top: 25px;
+        height: 780px;
     }
 
 }

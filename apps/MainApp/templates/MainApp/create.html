@@ -22,8 +22,14 @@
                 <div id="links">
                     <ul>
                         <li><a href="/Home">Home</a></li>
-                        <li><a href="#">Profile</a></li>
-                        <li><a href="#">Explore</a></li>
+                        <li>
+                            <form id="ProfileForm" action="/Rider/{{UserLoggedIn.id}}" method="POST">
+                                {% csrf_token %}
+                                <input type="hidden" name="Rider" value="{{UserLoggedIn.id}}">
+                                <a href="javascript:{}" onclick="document.getElementById('ProfileForm').submit();">Profile</a>
+                            </form>
+                        </li>
+                        <li><a href="/Explore">Explore</a></li>
                         <li><a href="/Logout">Sign Out</a></li>
                     </ul>
                 </div>
@@ -34,8 +40,12 @@
 
                     <div id="tabletDropdown" class="dropdown-content">
                         <a href="/Home">Home</a>
-                        <a href="#">Profile</a>
-                        <a href="#">Explore</a>
+                        <form id="ProfileForm" action="/Rider/{{UserLoggedIn.id}}" method="POST">
+                            {% csrf_token %}
+                            <input type="hidden" name="Rider" value="{{UserLoggedIn.id}}">
+                            <a href="javascript:{}" onclick="document.getElementById('ProfileForm').submit();">Profile</a>
+                        </form>
+                        <a href="/Explore">Explore</a>
                         <a href="/Logout">Sign Out</a>
                     </div>
 
@@ -48,11 +58,15 @@
                     <i class="fas fa-home fa-2x"></i>
                     <p>Home</p>
                 </a>
-                <a href="#">
-                    <i class="fas fa-user fa-2x"></i>
-                    <p>Profile</p>
-                </a>
-                <a href="#">
+                <form id="ProfileForm" action="/Rider/{{UserLoggedIn.id}}" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="Rider" value="{{UserLoggedIn.id}}">
+                    <a href="javascript:{}" onclick="document.getElementById('ProfileForm').submit();">
+                        <i class="fas fa-user fa-2x"></i>
+                        <p>Profile</p>
+                    </a>
+                </form>
+                <a href="/Explore">
                     <i class="fas fa-search fa-2x"></i>
                     <p>Explore</p>
                 </a>

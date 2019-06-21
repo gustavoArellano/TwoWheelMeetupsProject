@@ -45,6 +45,7 @@ def RegistrationProcess(request):
     return redirect('/Register')
 
 def LoginPage(request):
+
     return render(request, "MainApp/login.html")
 
 def LoginProcess(request):
@@ -96,7 +97,12 @@ def UserProfile(request, id):
         return render(request, "MainApp/profile.html", context)
 
 def CreateEvent(request):
-    return render(request, "MainApp/create.html")
+    UserLoggedIn = User.objects.get(id = request.session['LoggedIn'])
+
+    context = {
+        'UserLoggedIn': UserLoggedIn
+        }
+    return render(request, "MainApp/create.html", context)
 
 def CreateEventProcess(request):
     errors = Event.objects.EventValidation(request.POST)
@@ -150,11 +156,13 @@ def EventDetails(request, id):
         return render(request, 'MainApp/eventDetail.html', context)
 
 def Explore(request):
-    users = User.objects.all()
+    UserLoggedIn = User.objects.get(id = request.session['LoggedIn'])
+
     context = {
-        'users': users
-    }
-    return render(request, 'MainApp/explore.html')
+        'UserLoggedIn': UserLoggedIn
+        }
+        
+    return render(request, "MainApp/explore.html", context)
 
 def ExploreApi(request):
     events = Event.objects.filter(

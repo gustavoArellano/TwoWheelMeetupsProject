@@ -53,11 +53,10 @@ body {
     padding-bottom: 15px;
 }
 
-/* ***************UPCOMING*************** */
-
+/* ***************FOOTER*************** */
 #footer {
     display: block;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     background-color: #363E47;
     text-align: center;
@@ -67,6 +66,7 @@ body {
 } 
 
  #footer .footer {
+    background-color: #363E47;
     padding: 10px;
     margin: 0;
 }
@@ -155,63 +155,53 @@ body {
         display: block;
     }
 
-    /* ***************PROFILE VIEW*************** */
-    #profileInfo {
-        background-color: whitesmoke;
-        padding: 25px;
-        margin-bottom: 0px;
-        height: 100%;
+    /* ***************EVENT*************** */
+    #event {
+        padding-top: 150px;
         width: 100%;
-    }
-
-    #profileInfo img {
-        margin: 0px 10px;
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
-    }
-
-    #profileInfo .title, .details {
+        height: 100%;
+        margin-bottom: 100px;
         text-align: center;
-        display: block;
     }
 
-    .title {
-        margin-top: 120px;
+    #event h1 {
+        font-family: 'Pacifico', cursive;
+        cursor: default;
+        color: #F53756;
+        text-decoration: underline;
     }
 
-    .details {
-        padding: 20px;
-        margin: 50px 0px;
-        background-color: white;
-        border: 1px gray solid;
-        box-shadow: 1px 1px 4px gray; 
+    #event h2 {
+        margin-top: 50px; 
     }
 
-    /* ***************EVENTS ATTENDING SECTION*************** */
-    .eventsAttending {
-        margin: 10px 0px 120px 0px;
-        background-color: whitesmoke
+    #event img {
+        width: 95%;
+        border: solid gray 1px;
+        box-shadow: lightslategray 2px 2px 3px;
+        border-radius: 10px;
     }
 
-    .eventsAttending h2 {
-        font-size: 25px;
-        margin-bottom: 30px;
-        text-decoration: black underline;
+    #event .address {
+        margin-top: 25px;
     }
 
-    .table {
-        margin-bottom: 200px;
+    #event .description {
+        text-align: center;
+        padding: 10px;
     }
 
-    /* .table  tbody tr td {
+    #event .btn {
+        margin: 50px 30px;
+    }
+
+    /* ***************FOOTER*************** */
+    #footer .footer {
         font-size: 12px;
-    } */
-
-    .btn {
-        margin: 5px 0px;
-
-    } 
+        background-color: #363E47;
+        padding: 2px;
+        margin: 0;
+    }
 }
 
 @media only screen and (min-width: 701px) {
@@ -296,61 +286,44 @@ body {
         display: block;
     }
 
-    /* ***************PROFILE VIEW*************** */
-    #profileInfo {
-        background-color: white;
-        padding: 25px;
-        margin: 0px;
-        display: block;
+    /* ***************EVENT*************** */
+    #event {
+        padding-top: 30px;
         width: 100%;
-    }
-
-    #profileInfo .title img {
-        margin: 0px 10px;
-        width: 150px;
-        height: 150px;
-        border-radius: 50%;
-    }
-
-    #profileInfo .title, .details {
+        height: 100%;
+        margin-bottom: 100px;
         text-align: center;
-        display: block;
     }
 
-    .details {
-        margin: auto;
-        margin-top: 50px;
-        width: 400px;
-        padding: 20px;
-        background-color: whitesmoke;
-        border: 1px gray solid;
-        box-shadow: 1px 1px 4px gray; 
+    #event h1 {
+        font-family: 'Pacifico', cursive;
+        cursor: default;
+        color: #F53756;
+        text-decoration: underline;
     }
 
-    /* ***************EVENTS ATTENDING SECTION*************** */
-    .eventsAttending {
-        margin: auto;
-        margin-bottom: 200px;
-        width: 85%;
+    #event h2 {
+        margin-top: 50px; 
     }
 
-
-    .eventsAttending h2 {
-        font-size: 25px;
-        margin: 50px 0px;
-        text-decoration: black underline;
+    #event img {
+        width: 95%;
+        border: solid gray 1px;
+        box-shadow: lightslategray 2px 2px 3px;
+        border-radius: 10px;
     }
 
-    .table {
-        margin-bottom: 200px;
+    #event .address {
+        margin-top: 25px;
     }
 
-    .btn {
-        margin: 5px 0px;
-    } 
+    #event .description {
+        text-align: center;
+        padding: 10px;
+    }
 
-    .joinButton {
-        display: inline-block;
+    #event .btn {
+        margin: 50px 30px;
     }
 }
 
@@ -400,5 +373,45 @@ body {
     #links ul li a:hover {
         border-bottom: 2px solid gray;
         padding-bottom: 15px;
+    }
+
+    /* ***************EVENT*************** */
+    #event {
+        width: 100%;
+        height: 100%;
+        margin-bottom: 100px;
+        text-align: center;
+    }
+
+    #event h1 {
+        font-family: 'Pacifico', cursive;
+        cursor: default;
+        color: #F53756;
+        text-decoration: underline;
+    }
+
+    #event h2 {
+        margin-top: 50px; 
+    }
+
+    #event img {
+        width: 40%;
+        border: solid gray 1px;
+        box-shadow: lightslategray 2px 2px 3px;
+        border-radius: 10px;
+        display: inline-block;
+    }
+
+    #event .address {
+        margin-top: 25px;
+    }
+
+    #event .description {
+        text-align: center;
+        padding: 10px;
+    }
+
+    #event .btn {
+        margin: 50px 30px;
     }
 }

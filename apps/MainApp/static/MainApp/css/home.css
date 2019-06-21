@@ -390,6 +390,10 @@
         display: block;
     }
 
+    #tabletDropDown a, #tabletDropDown #ProfileForm a {
+        text-decoration: none;
+        color: gray;
+    }
 
     /* ***************UPCOMING EVENT*************** */
     #tabletUpcoming {

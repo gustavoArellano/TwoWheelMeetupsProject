@@ -11,10 +11,13 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC2npumInmVsMXS__t6l7GVvHMWwQO-ewk&callback=initMap"></script>
         <script src="{% static 'MainApp/js/eventDetail.js' %}"></script>
+        <script src="{% static 'MainApp/js/googleMaps.js' %}"></script>
+
     </head>
 
-    <body>
+    <body onload="initialize() & codeAddress()">
 
         <!-- THE BELOW CONTAINER HOLDS ALL THE LINK STYLES -->
         <div id="container">
@@ -67,14 +70,15 @@
             </div>
         </div>  
 
-        <div id="event">
+        <div id="event" style="height:100%; width:100%;">
             <h1><strong>Details</strong></h1>
             <h2><strong>{{Event.Title}}</strong></h2>
-            <h4><strong>{{Event.EventDate}}</strong></h4>
-            <img class="upcomingImage" src="{% static 'MainApp/images/routeImage.png' %}" alt="">
+            <h5><strong>{{Event.EventDate}}</strong></h5>
+            <div id="map"></div>
+            <input id="address" type="hidden" value="{{Event.Address}} {{Event.City}} {{Event.State}} {{Event.ZipCode}}">
             <p class="address"><strong>{{Event.Address}}, {{Event.City}}, {{Event.State}} {{Event.ZipCode}}</strong></p>
+            <p class="descriptionTitle"><strong><u>DESCRIPTION: </u></strong></p>
             <p class="description">{{Event.Description}}</p>
-
             <button type="submit" class="btn btn-danger"><i class="fas fa-arrow-circle-left"></i> Back To Profile </button>
             <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i> CANCEL EVENT!</button>
         </div>

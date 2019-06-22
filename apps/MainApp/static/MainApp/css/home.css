@@ -5,6 +5,13 @@
     font-family: 'Josefin Sans', sans-serif;
 }
 
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
 #container {
     width: 100%
 }
@@ -55,15 +62,20 @@
 
 /* ***************FOOTER*************** */
 #footer {
+    display: block;
+    position: fixed;
+    bottom: 0;
     background-color: #363E47;
+    text-align: center;
     color: white;
-    display: flex;
-    justify-content: center;
-    padding: 0px;
-}
+    width: 100%;
+} 
 
-#footer p {
-    margin: 10px;
+ #footer .footer {
+    display: inline-block;
+    background-color: #363E47;
+    margin: auto;
+    padding: 10px
 }
 
 
@@ -390,11 +402,6 @@
         display: block;
     }
 
-    #tabletDropDown a, #tabletDropDown #ProfileForm a {
-        text-decoration: none;
-        color: gray;
-    }
-
     /* ***************UPCOMING EVENT*************** */
     #tabletUpcoming {
         padding: 30px 50px;
@@ -595,6 +602,7 @@
     /* ***************ALL AVAILABLE MEETUPS*************** */
     #available {
         padding: 0px;
+        margin-bottom: 300px;
     }
 
     #available h5 {

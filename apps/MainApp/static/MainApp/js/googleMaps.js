@@ -1,5 +1,6 @@
 var geocoder;
 var map;
+
 function initialize() {
     geocoder = new google.maps.Geocoder();
 

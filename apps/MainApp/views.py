@@ -1,6 +1,7 @@
 from django.shortcuts import render, HttpResponse, HttpResponseRedirect, redirect
 from django.http import HttpResponseRedirect
 from django.contrib import messages
+from django.conf import settings
 from django.contrib.messages import get_messages 
 from .models import User
 from .models import Event
@@ -71,13 +72,15 @@ def Home(request):
     ThisUser = User.objects.get(id = request.session['LoggedIn'])
     UserAttending = ThisUser.UsersGoingRelated.all()
     EventsNotAttending = Event.objects.exclude(UsersGoing=ThisUser.id)
-
+    Key = settings.API_KEY
+    print(Key)
     context = {
         'users': AllUsers,
         'events': AllEvents,
         'UserLoggedIn': User.objects.get(id = request.session['LoggedIn']),
         'UserAttending': UserAttending,
-        'EventsNotAttending': EventsNotAttending
+        'EventsNotAttending': EventsNotAttending,
+        'myKey': Key
         }
     return render(request, "MainApp/home.html", context) 
 
@@ -149,10 +152,13 @@ def RemoveUserFromEvent(request, id):
 def EventDetails(request, id):
     if request.method == "POST":
         ThisEvent = Event.objects.get(id = request.POST['EventDetail'])  
+        Key = settings.API_KEY
         
         context = {
-            'Event': ThisEvent
+            'Event': ThisEvent,
+            'myKey': Key
         }
+        print(context)
         return render(request, 'MainApp/eventDetail.html', context)
 
 def Explore(request):

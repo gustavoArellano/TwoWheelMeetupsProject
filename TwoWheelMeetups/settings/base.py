@@ -7,7 +7,8 @@ BASE_DIR = os.path.dirname(
             os.path.dirname(
             os.path.abspath(__file__))))
 
-SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = 'fed4-twef1i0a3%)ppik9(0yi$th36-*4z=)w32b&#_c@l+ejf'
+# SECRET_KEY = config('SECRET_KEY')
 API_KEY = config('API_KEY')
 
 DEBUG = True

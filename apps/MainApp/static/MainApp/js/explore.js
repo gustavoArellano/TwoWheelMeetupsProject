@@ -15,3 +15,21 @@ function myFunction() {
     }
   }
 }
+
+// AJAX COMMAND FOR SEARCH
+function searchEvent() {
+  $('.myForm').click(function(e){
+    e.preventDefault()
+  });
+
+  $('#AjaxStartsWithButton').click(function() {
+    $.ajax({
+        url: "/Explore/Api",
+        method: "POST",
+        data: $(this).parent().serialize(), 
+            success: function(serverResponse) { 
+                $('#list').html(serverResponse)
+            }
+    });
+  });
+};

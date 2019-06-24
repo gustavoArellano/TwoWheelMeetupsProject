@@ -15,6 +15,7 @@ from django.core import serializers
 from django.db.models import Q
 
 
+
 def Index(request):
     return render(request, "MainApp/index.html")
 
@@ -72,15 +73,15 @@ def Home(request):
     ThisUser = User.objects.get(id = request.session['LoggedIn'])
     UserAttending = ThisUser.UsersGoingRelated.all()
     EventsNotAttending = Event.objects.exclude(UsersGoing=ThisUser.id)
-    Key = settings.API_KEY
-    print(Key)
+    apiKey = settings.API_KEY
+    print(apiKey)
     context = {
         'users': AllUsers,
         'events': AllEvents,
         'UserLoggedIn': User.objects.get(id = request.session['LoggedIn']),
         'UserAttending': UserAttending,
         'EventsNotAttending': EventsNotAttending,
-        'myKey': Key
+        'myKey': apiKey
         }
     return render(request, "MainApp/home.html", context) 
 

@@ -31,7 +31,7 @@
                         <li><a href="/Home">Home</a></li>
                         <li><a href="#">Explore</a></li>
                         <li><a href="/CreateEvent">Create</a></li>
-                        <li><a href="/Logout">Sign Out</a></li>
+                        <li><a href="/Logout">Log Out</a></li>
                     </ul>
                 </div>
             
@@ -43,7 +43,7 @@
                         <a href="/Home">Home</a>
                         <a href="#">Explore</a>
                         <a href="/CreateEvent">Create</a>
-                        <a href="/Logout">Sign Out</a>
+                        <a href="/Logout">Log Out</a>
                     </div>
 
                 </div>
@@ -66,7 +66,7 @@
                 </a>
                 <a href="/Logout">
                     <i class="fas fa-sign-out-alt fa-2x"></i>
-                    <p>Sign Out</p>
+                    <p>Log Out</p>
                 </a>
                     
             </div>
@@ -78,7 +78,7 @@
             <h5><strong>{{Event.EventDate}}</strong></h5>
             <div id="map"></div>
             <input id="address" type="hidden" value="{{Event.Address}} {{Event.City}} {{Event.State}} {{Event.ZipCode}}">
-            <p class="address"><strong>{{Event.Address}}, {{Event.City}}, {{Event.State}} {{Event.ZipCode}}</strong></p>
+            <p class="address"><strong><a href="http://maps.google.com/?q={{event.Address}}, {{event.City}}, {{event.State}} {{event.ZipCode}}" target="_blank">{{Event.Address}}, {{Event.City}}, {{Event.State}} {{Event.ZipCode}}</a></strong></p>
             <p class="descriptionTitle"><strong><u>DESCRIPTION: </u></strong></p>
             <p class="description">{{Event.Description}}</p>
             <button type="submit" class="btn btn-danger"><i class="fas fa-arrow-circle-left"></i> Back To Profile </button>

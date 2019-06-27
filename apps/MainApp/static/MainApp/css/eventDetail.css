@@ -178,9 +178,10 @@ html, body, #map {
         border-radius: 10px;
     }
 
-    #event .address {
+    #event .address, .address strong a {
         margin-top: 10px;
         width: 100%;
+        color: black;
     }
 
     #event .descriptionTitle {
@@ -320,8 +321,9 @@ html, body, #map {
         border-radius: 10px;
     }
 
-    #event .address {
+    #event .address, .address strong a {
         margin-top: 5px;
+        color: black;
     }
 
     #event .descriptionTitle {
@@ -423,8 +425,9 @@ html, body, #map {
         display: inline-block;
     }
 
-    #event .address {
+    #event .address, .address strong a {
         margin-top: 5px;
+        color: black;
     }
 
     #event .descriptionTitle {

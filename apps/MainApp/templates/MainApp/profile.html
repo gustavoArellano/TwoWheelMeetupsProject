@@ -88,14 +88,15 @@
 
         <div id="eventsAttending" class="eventsAttending">
             {% if UserAttending.count != 0 %}
-            <h2>Event's You Are Attending: </h2>
+            {% if rider.FirstName == request.session.FirstName %}<h2>Event's You Are Attending: </h2>{% endif %}
+            {% if rider.FirstName != request.session.FirstName %}<h2>Event's {{rider.FirstName}} is Attending: </h2>{% endif %}
 
             <table id="table" class="table">
                 <thead>
                     <tr>
                         <th scope="col">Title</th>
                         <th scope="col">Date</th>
-                        <th class="tabletDesktopOnly" scope="col">Details / Cancel</th>
+                        <th class="tabletDesktopOnly" scope="col">Details{% if rider.FirstName == request.session.FirstName %} / Cancel{% endif %}</th>
                     </tr>
                 </thead>
 
@@ -106,19 +107,17 @@
                         <td>{{event.EventDate}}</td>
                         <td class="buttons">
 
-                            <form class="joinButton" action="/Event/{{event.id}}" method="POST">
-                                {% csrf_token %}
-                                <input type="hidden" name="EventDetail" value="{{event.id}}">
-                                <button type="submit" class="btn btn-secondary joinButton">Details</button>
-                            </form>
+                            <a href="{% url 'Event' event.id %}"><button type="submit" class="btn btn-secondary joinButton">Details</button></a>
                             
-                            <form id="CancelButton" class="joinButton tabletDesktopOnly" action="/RemoveProcess/{{event.id}}" method="POST">
+                            {% if rider.FirstName == request.session.FirstName %}
+                            <!-- <form id="CancelButton" class="joinButton tabletDesktopOnly" action="/RemoveProcess/{{event.id}}" method="POST">
                                 {% csrf_token %}
-                                <input type="hidden" name="Event" value="{{event.id}}">
-                                <button type="submit" id="cancel" class="btn btn-danger joinButton" >Cancel</button>
-                            </form>
+                                <input type="hidden" name="Event" value="{{event.id}}"> -->
+                            <a href="{% url 'RemoveProcess' event.id %}"><button type="submit" id="cancel" class="btn btn-danger joinButton" >Leave</button></a>
+                            <!-- </form> -->
+                            {% endif %}
 
-                            <script>
+                            <!-- <script>
                                 $(document).ready(function(){
                                 // THE '.off' PREVENTS AJAX FROM RUNNING FORM MULTIPLE TIMES!!!
                                     $(document).off('submit');
@@ -161,12 +160,12 @@
                                         url: "/RemoveProcess/{{event.id}}",
                                         type: 'POST',
                                         success: 
-                                            alert("YOU ARE NO LONGER ATTENDING THIS {{event.Title}}")
+                                            alert("YOU ARE NO LONGER ATTENDING --- {{event.Title}} ---")
                                     
                                         });
                                     });
                                 });
-                            </script>
+                            </script> -->
                         </td>
                     </tr>
                 </tbody>

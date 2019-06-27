@@ -6,10 +6,11 @@
 }
 
 #container {
-    width: 100%
+    width: 100%;
+    padding-top: 0px;
 }
 
-/* HEADER */
+/* ***************HEADER*************** */
 #header {
     background-color: whitesmoke;
     display: flex;
@@ -47,7 +48,7 @@
     padding-bottom: 15px;
 }
 
-/* FORM */
+/* ***************FORM*************** */
 .createPage {
     min-height: 100vh;
     height: 100%;
@@ -90,8 +91,20 @@
     text-decoration: none;
 }
 
+.ui-datepicker-trigger { 
+    width: 35px;
+    height: 35px;
+}
 
+#datepicker {
+    width: 270px;
+}
 
+.createForm input {
+    text-align: center;
+}
+
+/* ***************FOOTER*************** */
 #footer {
     background-color: #363E47;
     color: white;
@@ -130,7 +143,7 @@
         width: 100%
     }
 
-    /* HEADER */
+    /* ***************HEADER*************** */
     #header {
         background-color: whitesmoke;
         padding: 5px;
@@ -184,11 +197,19 @@
     .createPage {
         padding-top: 140px;
         padding-bottom: 80px;
+        width: 100%;
+        text-align: center;
     }
 
     .createForm {
         margin-top: 25px;
         height: 750px;
+        width: 85%;
+    }
+
+
+    .btn {
+        margin: 30px 100px;
     }
 
     /* ***************FOOTER*************** */
@@ -308,6 +329,7 @@
     .createForm {
         margin-top: 25px;
         height: 780px;
+        
     }
 
 }

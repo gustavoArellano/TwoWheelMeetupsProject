@@ -2,6 +2,10 @@ import os
 
 from decouple import config
 
+BOOTSTRAP4 = {
+    'include_jquery': True,
+}
+
 BASE_DIR = os.path.dirname(
             os.path.dirname(    
             os.path.dirname(
@@ -9,7 +13,7 @@ BASE_DIR = os.path.dirname(
 
 
 SECRET_KEY = config('SECRET_KEY')
-API_KEY = config('API_KEY')
+API_KEY = config('API')
 
 DEBUG = True
 
@@ -23,6 +27,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'bootstrap_datepicker_plus'
 ]
 
 MIDDLEWARE = [

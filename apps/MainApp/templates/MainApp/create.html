@@ -12,6 +12,10 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="{% static 'MainApp/js/create.js' %}"></script>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script type="text/javascript" src="wickedpicker.js"></script>
     </head>
 
     <body>
@@ -30,7 +34,7 @@
                             </form>
                         </li>
                         <li><a href="/Explore">Explore</a></li>
-                        <li><a href="/Logout">Sign Out</a></li>
+                        <li><a href="/Logout">Log Out</a></li>
                     </ul>
                 </div>
 
@@ -46,7 +50,7 @@
                             <a href="javascript:{}" onclick="document.getElementById('ProfileForm').submit();">Profile</a>
                         </form>
                         <a href="/Explore">Explore</a>
-                        <a href="/Logout">Sign Out</a>
+                        <a href="/Logout">Log Out</a>
                     </div>
 
                 </div>
@@ -72,7 +76,7 @@
                 </a>
                 <a href="/Logout">
                     <i class="fas fa-sign-out-alt fa-2x"></i>
-                    <p>Sign Out</p>
+                    <p>Log Out</p>
                 </a>
             </div>
         </div> 
@@ -94,13 +98,50 @@
                 <input type="text" name="Title">
 
                 <p>Description:</p>
-                <input type="text" name="Description">
+                <input type="textbox" name="Description">
 
                 <p>Date:</p>
-                <input type="text" name="EventDate">
+                <input type="text" id="datepicker" class="buttonImage" name="EventDate" autocomplete="off">
+
+                <script>
+                    $( function() {
+                        $( "#datepicker" ).datepicker({
+                            minDate: 1,
+                            buttonImage: "../static/MainApp/images/calendar.png",
+                            showOn: "both",
+                            buttonImageOnly: true
+                        });
+                    });
+                </script>
 
                 <p>Time:</p>
-                <input type="text" name="EventTime">
+                <!-- <input type="text" name="EventTime"> -->
+                <input type="text" name="timepicker" class="timepicker"/>
+                <script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+                <script type="text/javascript" src="wickedpicker.js"></script>
+                <script>
+                    $( function() {
+                            var options = {
+                            now: "12:35", //hh:mm 24 hour format only, defaults to current time
+                            twentyFour: false,  //Display 24 hour format, defaults to false
+                            upArrow: 'wickedpicker__controls__control-up',  //The up arrow class selector to use, for custom CSS
+                            downArrow: 'wickedpicker__controls__control-down', //The down arrow class selector to use, for custom CSS
+                            close: 'wickedpicker__close', //The close class selector to use, for custom CSS
+                            hoverState: 'hover-state', //The hover state class to use, for custom CSS
+                            title: 'Timepicker', //The Wickedpicker's title,
+                            showSeconds: false, //Whether or not to show seconds,
+                            timeSeparator: ' : ', // The string to put in between hours and minutes (and seconds)
+                            secondsInterval: 1, //Change interval for seconds, defaults to 1,
+                            minutesInterval: 1, //Change interval for minutes, defaults to 1
+                            beforeShow: null, //A function to be called before the Wickedpicker is shown
+                            afterShow: null, //A function to be called after the Wickedpicker is closed/hidden
+                            show: null, //A function to be called when the Wickedpicker is shown
+                            clearable: false, //Make the picker's input clearable (has clickable "x")
+                            };
+                        $('.timepicker').wickedpicker(options);
+                    });
+                </script>
+                
 
                 <p>Address:</p>
                 <input type="text" name="Address">
@@ -112,13 +153,14 @@
                 <input type="text" name="State">
 
                 <p>Zip Code:</p>
-                <input type="text" name="ZipCode">
+                <input type="text" name="ZipCode" class="zipCode">
 
                 <button type="submit" class="btn btn-danger">CREATE</button>
                 
             </form>
 
         </div>
+          
 
         <div id="footer">
             <p class="footer">2Wheel Meetups &reg; by Gustavo Arellano<p>

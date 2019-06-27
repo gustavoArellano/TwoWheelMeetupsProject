@@ -23,14 +23,7 @@
 
                 <div id="links">
                     <ul>
-                        <li>
-                            <form id="ProfileForm" action="/Rider/{{UserLoggedIn.id}}" method="POST">
-                                {% csrf_token %}
-                                <input type="hidden" name="Rider" value="{{UserLoggedIn.id}}">
-                                <a href="javascript:{}" onclick="document.getElementById('ProfileForm').submit();">Profile</a>
-                            </form>
-                        </li>
-
+                        <li><a href="{% url 'Rider' UserLoggedIn.id %}">Profile</a></li>
                         <li><a href="/Explore">Explore</a></li>
                         <li><a href="/CreateEvent">Create</a></li>
                         <li><a href="/Logout">Log Out</a></li>
@@ -42,13 +35,7 @@
                     <button onclick="myFunction()" class="menuButton"><i class="fas fa-bars"></i> MENU</button>
 
                     <div id="tabletDropdown" class="dropdown-content">
-
-                        <form id="ProfileForm" action="/Rider/{{UserLoggedIn.id}}" method="POST">
-                            {% csrf_token %}
-                            <input type="hidden" name="Rider" value="{{UserLoggedIn.id}}">
-                            <a href="javascript:{}" onclick="document.getElementById('ProfileForm').submit();">Profile</a>
-                        </form>
-
+                        <a href="{% url 'Rider' UserLoggedIn.id %}">Profile</a>
                         <a href="/Explore">Explore</a>
                         <a href="/CreateEvent">Create</a>
                         <a href="/Logout">Log Out</a>
@@ -60,14 +47,10 @@
 
             <div id="mobileLinks">
 
-                <form id="ProfileForm" action="/Rider/{{UserLoggedIn.id}}" method="POST">
-                    {% csrf_token %}
-                    <input type="hidden" name="Rider" value="{{UserLoggedIn.id}}">
-                    <a href="javascript:{}" onclick="document.getElementById('ProfileForm').submit();">
-                        <i class="fas fa-user fa-2x"></i>
-                        <p>Profile</p>
-                    </a>
-                </form>
+                <a href="{% url 'Rider' UserLoggedIn.id %}">
+                    <i class="fas fa-user fa-2x"></i>
+                    <p>Profile</p>
+                </a>
 
                 <a href="/Explore">
                     <i class="fas fa-search fa-2x"></i>
@@ -138,8 +121,8 @@
 
                 <p class="availableDate">{{event.EventDate}}, {{event.EventTime}} </p>
                 <img class="availableImage" src="https://maps.googleapis.com/maps/api/staticmap?center={{event.Address}}+{{event.City}}+{{event.State}}+{{event.ZipCode}}&zoom=18&size=600x300&maptype=roadmap&style=gama:10.0|lightness:-8&markers=color:red%7Clabel:2WM%7C{{event.Address}},{{event.City}},{{event.State}},{{event.ZipCode}}&key={{myKey}}" alt="">
-                <p class="availableAddress"><a href="#">{{event.Address}}, {{event.City}}, {{event.State}} {{event.ZipCode}}</a></p>
-                <p class="availableTitle"><a href="#">{{event.Title}}</a></p>
+                <p class="availableAddress"><a href="http://maps.google.com/?q={{event.Address}}, {{event.City}}, {{event.State}} {{event.ZipCode}}" target="_blank">{{event.Address}}, {{event.City}}, {{event.State}} {{event.ZipCode}}</a></p>
+                <p class="availableTitle"><a href="{% url 'Event' event.id %}">{{event.Title}}</a></p>
                 <p class="availableAttending"><i class="fas fa-motorcycle"></i> {{event.UsersGoing.count}} Riders Going</p>
 
                 <form id="joinButton" class="joinButton" action="/Join/{{event.id}}" method="POST">

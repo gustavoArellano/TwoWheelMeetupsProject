@@ -15,3 +15,11 @@ function myFunction() {
       }
     }
   }
+
+  
+$(document).ready(function() {
+  $(function() {
+    $( "#datepicker").click.datepicker();
+  });
+});
+

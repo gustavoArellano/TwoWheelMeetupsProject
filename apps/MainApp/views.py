@@ -111,7 +111,6 @@ def Home(request):
 def Rider(request, uuid):
     if 'LoggedIn' not in request.session:
         return redirect('/Error')
-
     else:
         ThisUser = User.objects.get(id = uuid)
         UserAttending = ThisUser.UsersGoingRelated.all()
@@ -172,26 +171,39 @@ def Join(request, id):
         return redirect ("/Home")
     else:
         request.session.clear()
-        return redirect ("/Index")
+        return redirect ("/Home")
 
-def RemoveUserFromEvent(request, uuid):
-    ThisEvent = Event.objects.get(id=uuid)
-    ThisUser = User.objects.get(id = request.session['LoggedIn'])
-    ThisEvent.UsersGoing.remove(ThisUser)   
-    return redirect('/Home')
+def RemoveUserFromEvent(request, id):
+    if request.method == 'POST':
+        print(id)
+        ThisEvent = Event.objects.get(id = id)
+        ThisUser = User.objects.get(id = request.session['LoggedIn'])
+        ThisEvent.UsersGoing.remove(ThisUser)  
+        return redirect('/Home')
 
 def EventDetails(request, uuid):
     if 'LoggedIn' not in request.session:
         return redirect('/Error')
     else:
-        ThisEvent = Event.objects.get(id=uuid)
+        ThisUser = User.objects.get(id = request.session['LoggedIn'])
+        ThisEvent = Event.objects.get(id = uuid)
+        AllEvents = Event.objects.all()
         Key = settings.API_KEY
         
         context = {
             'Event': ThisEvent,
-            'myKey': Key
+            'ThisUser': ThisUser,
+            'events': AllEvents,
+            'myKey': Key,
+            'UserLoggedIn': User.objects.get(id = request.session['LoggedIn'])
         }
         return render(request, 'MainApp/eventDetail.html', context)
+
+def DeleteEvent(request, id):
+    if request.method == "POST":
+        ThisEvent = Event.objects.get(id = request.POST['Event'])
+        ThisEvent.delete()
+        return redirect('/Home')
 
 def Explore(request):
     if 'LoggedIn' not in request.session:

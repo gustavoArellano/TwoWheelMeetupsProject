@@ -342,6 +342,10 @@ html, body, #map {
     #event .btn {
         margin: 50px 30px;
     }
+
+    #event .cancelButton {
+        margin-bottom: 200px;
+    }
 }
 
 @media only screen and (min-width: 1024px) {
@@ -439,8 +443,12 @@ html, body, #map {
         padding: 10px;
     }
 
-    #event .btn {
-        margin: 100px 30px;
+    #event .profileButton {
+        margin: 100px 30px 0px 30px;
+    }
+
+    #event .cancelButton {
+        margin: 50px 30px 80px 30px;
     }
 
     .gm-style .gm-style-iw-c {

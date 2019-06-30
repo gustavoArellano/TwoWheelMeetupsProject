@@ -26,13 +26,7 @@
                 <div id="links">
                     <ul>
                         <li><a href="/Home">Home</a></li>
-                        <li>
-                            <form id="ProfileForm" action="/Rider/{{UserLoggedIn.id}}" method="POST">
-                                {% csrf_token %}
-                                <input type="hidden" name="Rider" value="{{UserLoggedIn.id}}">
-                                <a href="javascript:{}" onclick="document.getElementById('ProfileForm').submit();">Profile</a>
-                            </form>
-                        </li>
+                        <li><a href="{% url 'Rider' UserLoggedIn.id %}">Profile</a></li>
                         <li><a href="/Explore">Explore</a></li>
                         <li><a href="/Logout">Log Out</a></li>
                     </ul>
@@ -44,11 +38,7 @@
 
                     <div id="tabletDropdown" class="dropdown-content">
                         <a href="/Home">Home</a>
-                        <form id="ProfileForm" action="/Rider/{{UserLoggedIn.id}}" method="POST">
-                            {% csrf_token %}
-                            <input type="hidden" name="Rider" value="{{UserLoggedIn.id}}">
-                            <a href="javascript:{}" onclick="document.getElementById('ProfileForm').submit();">Profile</a>
-                        </form>
+                        <a href="{% url 'Rider' UserLoggedIn.id %}">Profile</a>
                         <a href="/Explore">Explore</a>
                         <a href="/Logout">Log Out</a>
                     </div>
@@ -62,14 +52,10 @@
                     <i class="fas fa-home fa-2x"></i>
                     <p>Home</p>
                 </a>
-                <form id="ProfileForm" action="/Rider/{{UserLoggedIn.id}}" method="POST">
-                    {% csrf_token %}
-                    <input type="hidden" name="Rider" value="{{UserLoggedIn.id}}">
-                    <a href="javascript:{}" onclick="document.getElementById('ProfileForm').submit();">
-                        <i class="fas fa-user fa-2x"></i>
-                        <p>Profile</p>
-                    </a>
-                </form>
+                <a href="javascript:{}" onclick="document.getElementById('ProfileForm').submit();">
+                    <i class="fas fa-user fa-2x"></i>
+                    <a href="{% url 'Rider' UserLoggedIn.id %}">Profile</a>
+                </a>
                 <a href="/Explore">
                     <i class="fas fa-search fa-2x"></i>
                     <p>Explore</p>
@@ -83,7 +69,7 @@
 
         <div class="createPage">
 
-            <h1 class="formTitle">Create Event</h1>
+            <h1 class="formTitle"><strong>Create Event<strong></strong></h1>
 
             <form class="createForm" action="/CreateEventProcess" method="POST">
                 {% if messages %}
@@ -115,34 +101,8 @@
                 </script>
 
                 <p>Time:</p>
-                <!-- <input type="text" name="EventTime"> -->
-                <input type="text" name="timepicker" class="timepicker"/>
-                <script type="text/javascript" src="jquery-1.11.3.min.js"></script>
-                <script type="text/javascript" src="wickedpicker.js"></script>
-                <script>
-                    $( function() {
-                            var options = {
-                            now: "12:35", //hh:mm 24 hour format only, defaults to current time
-                            twentyFour: false,  //Display 24 hour format, defaults to false
-                            upArrow: 'wickedpicker__controls__control-up',  //The up arrow class selector to use, for custom CSS
-                            downArrow: 'wickedpicker__controls__control-down', //The down arrow class selector to use, for custom CSS
-                            close: 'wickedpicker__close', //The close class selector to use, for custom CSS
-                            hoverState: 'hover-state', //The hover state class to use, for custom CSS
-                            title: 'Timepicker', //The Wickedpicker's title,
-                            showSeconds: false, //Whether or not to show seconds,
-                            timeSeparator: ' : ', // The string to put in between hours and minutes (and seconds)
-                            secondsInterval: 1, //Change interval for seconds, defaults to 1,
-                            minutesInterval: 1, //Change interval for minutes, defaults to 1
-                            beforeShow: null, //A function to be called before the Wickedpicker is shown
-                            afterShow: null, //A function to be called after the Wickedpicker is closed/hidden
-                            show: null, //A function to be called when the Wickedpicker is shown
-                            clearable: false, //Make the picker's input clearable (has clickable "x")
-                            };
-                        $('.timepicker').wickedpicker(options);
-                    });
-                </script>
-                
-
+                <input type="Text" name="EventTime">
+        
                 <p>Address:</p>
                 <input type="text" name="Address">
 

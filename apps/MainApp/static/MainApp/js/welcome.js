@@ -16,15 +16,6 @@ window.onclick = function(event) {
   }
 }
 
-// $(document).on('submit', '')
-
-// $('#joinButton').click(function() {
-//   $.ajax({
-//     url: 'Join',
-//     method: 'POST',
-//     success: function(response) {
-//       console.log(response);
-//     }
-//   });
-//   return false;
-// })
+$(document).on('submit', '#CancelButton', function(e) {
+  e.preventDefault();
+});

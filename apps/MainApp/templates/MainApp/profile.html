@@ -6,8 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>2Wheel Meetups - {{rider.FirstName}} {{rider.LastName}}</title>
         {% load static %}
-        <link rel="stylesheet" href="{% static 'MainApp/css/profile.css' %}">
-        <link href="https://fonts.googleapis.com/css?family=Cedarville+Cursive|Josefin+Sans|Pacifico" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'MainApp/css/profile.css' %}">        <link href="https://fonts.googleapis.com/css?family=Cedarville+Cursive|Josefin+Sans|Pacifico" rel="stylesheet">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -85,11 +84,12 @@
 
             </div>
         </div>
-
+        
         <div id="eventsAttending" class="eventsAttending">
             {% if UserAttending.count != 0 %}
             {% if rider.FirstName == request.session.FirstName %}<h2>Event's You Are Attending: </h2>{% endif %}
             {% if rider.FirstName != request.session.FirstName %}<h2>Event's {{rider.FirstName}} is Attending: </h2>{% endif %}
+            {% endif %}
 
             <table id="table" class="table">
                 <thead>
@@ -99,7 +99,6 @@
                         <th class="tabletDesktopOnly" scope="col">Details{% if rider.FirstName == request.session.FirstName %} / Cancel{% endif %}</th>
                     </tr>
                 </thead>
-
                 {% for event in UserAttending %}
                 <tbody id="tbodyID">
                     <tr>
@@ -107,71 +106,21 @@
                         <td>{{event.EventDate}}</td>
                         <td class="buttons">
 
-                            <a href="{% url 'Event' event.id %}"><button type="submit" class="btn btn-secondary joinButton">Details</button></a>
+                            <a class="aButton" href="{% url 'Event' event.id %}"><button type="submit" class="btn btn-secondary joinButton">Details</button></a>
                             
                             {% if rider.FirstName == request.session.FirstName %}
-                            <!-- <form id="CancelButton" class="joinButton tabletDesktopOnly" action="/RemoveProcess/{{event.id}}" method="POST">
+                            <form id="CancelButton" class="tabletDesktopOnly fButton" action="/RemoveProcess/{{event.id}}" method="POST">
                                 {% csrf_token %}
-                                <input type="hidden" name="Event" value="{{event.id}}"> -->
-                            <a href="{% url 'RemoveProcess' event.id %}"><button type="submit" id="cancel" class="btn btn-danger joinButton" >Leave</button></a>
-                            <!-- </form> -->
+                                <input type="hidden" name="Event" id="hidden" value="{{event.id}}">
+                                <button id="Button" type="submit" class="btn btn-danger">Leave</button>
+                            <!-- <a id="cancel" href="{% url 'RemoveProcess' event.id %}"><button type="submit" id="cancel" class="btn btn-danger joinButton">Leave</button></a> -->
+                            </form>
                             {% endif %}
-
-                            <!-- <script>
-                                $(document).ready(function(){
-                                // THE '.off' PREVENTS AJAX FROM RUNNING FORM MULTIPLE TIMES!!!
-                                    $(document).off('submit');
-                                    $(document).on('submit', '#CancelButton', function(event) {
-                                        event.preventDefault();
-
-                                        // THE BELOW GETS THE COOKIES FOR THE CSRF TOKEN, THAT IS REQUIRED FOR THE FORM TO ALLOW AJAX TO PASS THE ID VALUE!!!
-                                        function getCookie(name) {
-                                            var cookieValue = null;
-                                            if (document.cookie && document.cookie !== '') {
-                                                var cookies = document.cookie.split(';');
-                                                for (var i = 0; i < cookies.length; i++) {
-                                                    var cookie = cookies[i].trim();
-                                                    // Does this cookie string begin with the name we want?
-                                                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                                                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                                                        break;
-                                                    }
-                                                }
-                                            }
-                                            return cookieValue;
-                                        }
-                                        var csrftoken = getCookie('csrftoken');
-
-                                        // CREATES CSRF FUNCTION TO BE CALLED IN AJAX SETUP!!!
-                                        function csrfSafeMethod(method) {
-                                            return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
-                                        }
-                                        // AJAX SETUP FOR CSRF TOKEN TO BE PASSED FOR AJAX TO RUN!!
-                                        $.ajaxSetup({
-                                            beforeSend: function(xhr, settings) {
-                                                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
-                                                    xhr.setRequestHeader("X-CSRFToken", csrftoken);
-                                                }
-                                            }
-                                        });    
-                                                    
-                                        // AJAX CALL TO SUBMIT FORM!!
-                                        $.ajax({
-                                        url: "/RemoveProcess/{{event.id}}",
-                                        type: 'POST',
-                                        success: 
-                                            alert("YOU ARE NO LONGER ATTENDING --- {{event.Title}} ---")
-                                    
-                                        });
-                                    });
-                                });
-                            </script> -->
                         </td>
                     </tr>
                 </tbody>
                 {% endfor %}
             </table>
-            {% endif %}
         </div>
 
         <div id="footer">

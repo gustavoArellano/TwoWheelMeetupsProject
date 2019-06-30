@@ -212,6 +212,13 @@
         margin: 30px 100px;
     }
 
+    .formTitle {
+        font-family: 'Pacifico', cursive;
+        cursor: default;
+        color: #F53756;
+        text-decoration: underline;
+    }
+
     /* ***************FOOTER*************** */
     #footer .footer {
         font-size: 12px;
@@ -332,6 +339,13 @@
         
     }
 
+    .formTitle {
+        font-family: 'Pacifico', cursive;
+        cursor: default;
+        color: #F53756;
+        text-decoration: underline;
+    }
+
 }
 
 @media only screen and (min-width: 1024px) {
@@ -394,4 +408,10 @@
         padding-bottom: 15px;
     }
 
+    .formTitle {
+        font-family: 'Pacifico', cursive;
+        cursor: default;
+        color: #F53756;
+        text-decoration: underline;
+    }
 }

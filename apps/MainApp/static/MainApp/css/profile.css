@@ -179,6 +179,13 @@ body {
         margin-top: 120px;
     }
 
+    .title h2 {
+        font-family: 'Pacifico', cursive;
+        cursor: default;
+        color: #F53756;
+        text-decoration: underline;
+    }
+
     .details {
         padding: 20px;
         margin: 50px 0px;
@@ -203,13 +210,8 @@ body {
         margin-bottom: 200px;
     }
 
-    /* .table  tbody tr td {
-        font-size: 12px;
-    } */
-
     .btn {
         margin: 5px 0px;
-
     } 
 }
 
@@ -304,6 +306,17 @@ body {
         width: 100%;
     }
 
+    .title h2 {
+        font-family: 'Pacifico', cursive;
+        cursor: default;
+        color: #F53756;
+        text-decoration: underline;
+    }
+
+    .title p {
+        margin-top: 20px;
+    }
+
     #profileInfo .title img {
         margin: 0px 10px;
         width: 150px;
@@ -348,7 +361,7 @@ body {
         margin: 5px 0px;
     } 
 
-    .joinButton {
+    .buttons .aButton, .buttons .fButton {
         display: inline-block;
     }
 }
@@ -406,26 +419,32 @@ body {
     }
 
     /* ***************PROFILE VIEW*************** */
-    /* #profileInfo {
-        
-    } */
-
     .title h2 {
         font-size: 45pt;
+        font-family: 'Pacifico', cursive;
+        cursor: default;
+        color: #F53756;
+        text-decoration: underline;
     }
 
     .title p {
         font-size: 25pt;
+        margin-top: 30px;
     }
 
     #profileInfo .title img {
         width: 250px;
-        height: 250px;
+        height: 230px;
+        margin-top: 30px;
     }
 
     .details {
         margin: auto;
         margin-top: 50px;
         width: 500px;
+    }
+
+    .buttons .aButton, .buttons .fButton {
+        display: inline-block;
     }
 }

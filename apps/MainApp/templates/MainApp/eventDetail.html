@@ -29,7 +29,7 @@
                 <div id="links">
                     <ul>
                         <li><a href="/Home">Home</a></li>
-                        <li><a href="#">Explore</a></li>
+                        <li><a href="/Explore">Explore</a></li>
                         <li><a href="/CreateEvent">Create</a></li>
                         <li><a href="/Logout">Log Out</a></li>
                     </ul>
@@ -41,7 +41,7 @@
 
                     <div id="tabletDropdown" class="dropdown-content">
                         <a href="/Home">Home</a>
-                        <a href="#">Explore</a>
+                        <a href="/Explore">Explore</a>
                         <a href="/CreateEvent">Create</a>
                         <a href="/Logout">Log Out</a>
                     </div>
@@ -56,11 +56,11 @@
                     <i class="fas fa-home fa-2x"></i>
                     <p>Home</p>
                 </a>
-                <a href="#">
+                <a href="/Explore">
                     <i class="fas fa-search fa-2x"></i>
                     <p>Explore</p>
                 </a>
-                <a href="CreateEvent">
+                <a href="C/reateEvent">
                     <i class="fas fa-motorcycle fa-2x"></i>
                     <p>Create</p>
                 </a>
@@ -77,12 +77,17 @@
             <h2><strong>{{Event.Title}}</strong></h2>
             <h5><strong>{{Event.EventDate}}</strong></h5>
             <div id="map"></div>
-            <input id="address" type="hidden" value="{{Event.Address}} {{Event.City}} {{Event.State}} {{Event.ZipCode}}">
-            <p class="address"><strong><a href="http://maps.google.com/?q={{event.Address}}, {{event.City}}, {{event.State}} {{event.ZipCode}}" target="_blank">{{Event.Address}}, {{Event.City}}, {{Event.State}} {{Event.ZipCode}}</a></strong></p>
+            <p class="address"><strong><a href="http://maps.google.com/?q={{Event.Address}}, {{Event.City}}, {{Event.State}} {{Event.ZipCode}}" target="_blank">{{Event.Address}}, {{Event.City}}, {{Event.State}} {{Event.ZipCode}}</a></strong></p>
             <p class="descriptionTitle"><strong><u>DESCRIPTION: </u></strong></p>
             <p class="description">{{Event.Description}}</p>
-            <button type="submit" class="btn btn-danger"><i class="fas fa-arrow-circle-left"></i> Back To Profile </button>
-            <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i> CANCEL EVENT!</button>
+            <a href="{% url 'Rider' UserLoggedIn.id %}"><button type="submit" class="btn btn-danger profileButton"><i class="fas fa-arrow-circle-left"></i> Go To Profile </button></a>
+            {% if ThisUser.id == Event.EventByUser.id %}
+            <form action="/DeleteEvent/{{Event.id}}" method="POST">
+                {% csrf_token %}
+                <input type="hidden" value="{{Event.id}}" name="Event">
+                <button type="submit" class="btn btn-danger cancelButton"><i class="fas fa-trash-alt"></i> DELETE EVENT!</button>
+            </form> 
+            {% endif %}
         </div>
 
         <div id="footer">

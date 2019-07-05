@@ -327,6 +327,15 @@
         display: block;
     }
 
+    #tabletDropdown a {
+        text-decoration: none;
+        color: black;
+    }
+
+    #tabletDropdown a:hover {
+        color: #F53756;
+    }
+
     /* FORM */
     .createPage {
         padding-top: 20px;

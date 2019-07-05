@@ -226,6 +226,12 @@
         display: inline-block;
     }
 
+    .emptySpace {
+        height: 550px;
+        display: block;
+        background-color: whitesmoke;
+    }
+
     /* ***************FOOTER*************** */
     #footer .footer {
         font-size: 12px;
@@ -249,6 +255,10 @@
     }
 
     .roadImage {
+        display: none;
+    }
+
+    .emptySpace {
         display: none;
     }
 
@@ -317,6 +327,15 @@
     .dropdown a:hover {
         background-color: #ddd;
     }
+
+    #tabletDropdown a {
+        text-decoration: none;
+        color: black;
+    }
+
+    #tabletDropdown a:hover {
+        color: #F53756;
+    }
         
     .show {
         display: block;
@@ -373,6 +392,10 @@
 }
 
 @media only screen and (min-width: 1024px) {
+    .emptySpace {
+        display: none;
+    }
+
     #mobileLinks {
         display: none;
     }

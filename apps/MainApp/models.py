@@ -4,6 +4,8 @@ from datetime import datetime
 from time import strftime
 from django import forms
 import re, bcrypt
+from django.conf import settings
+
 
 EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 
@@ -97,12 +99,8 @@ class EventManager(models.Manager):
             errors['ZipCode'] = "Zip code cannot be blank!"
 
         return errors
-
-    # def UpdateValidaton(self, postData):
-    #     errors = {}
-    #     return errors
-
 class User(models.Model): 
+    Image = models.ImageField(default='/static/MainApp/images/placeholder.png', upload_to = 'Users/gustavo/Documents/Projects/Python/TwoWheelMeetups/apps/MainApp/media/RiderImages', blank = True)
     FirstName = models.CharField(max_length = 20) 
     LastName = models.CharField(max_length = 20)
     Email = models.CharField(max_length = 255)
@@ -118,15 +116,15 @@ class Event(models.Model):
     UsersGoing = models.ManyToManyField(User, related_name = "UsersGoingRelated")
     Title = models.CharField(max_length = 255)
     Description = models.CharField(max_length = 255)
-    EventDate = models.CharField(max_length = 255)
+    EventDate = models.DateField(null=True, blank=True)
     EventTime = models.TimeField(null=True, blank=True)
     Address = models.CharField(max_length = 255)
     City = models.CharField(max_length = 20)
     State = models.CharField(max_length = 3)
-    ZipCode = models.CharField(max_length = 6)
+    ZipCode = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add = True)
     updated_at = models.DateTimeField(auto_now = True)
-    EventByUser = models.ForeignKey(User, related_name = "EventsByUser")
+    EventByUser = models.ForeignKey(User, related_name = "EventsByUser", on_delete=models.CASCADE)
     objects = EventManager()
 
 # class EventComment(models.Model):

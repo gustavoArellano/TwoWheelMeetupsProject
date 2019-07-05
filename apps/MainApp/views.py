@@ -14,6 +14,8 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.core import serializers
 from django.db.models import Q
+from django.core.files.storage import FileSystemStorage
+
 
 
 
@@ -21,7 +23,12 @@ def Index(request):
     if 'LoggedIn' in request.session:
         return redirect('/Home')
     else:
-        return render(request, "MainApp/index.html")
+        AllEvents = Event.objects.all().order_by('EventDate')[:4]
+
+        context = {
+            'Events': AllEvents
+        }
+        return render(request, "MainApp/index.html", context)
 
 def RegistrationPage(request):
     if 'LoggedIn' in request.session:
@@ -92,18 +99,20 @@ def Home(request):
         return redirect('/Error')
     else:
         ThisUser = User.objects.get(id = request.session['LoggedIn'])
-        AllEvents = Event.objects.all()
+        AllEvents = Event.objects.all().order_by('EventDate')
         AllUsers = User.objects.all()
-        UserAttending = ThisUser.UsersGoingRelated.all()
-        EventsNotAttending = Event.objects.exclude(UsersGoing=ThisUser.id)
+        UserAttending = ThisUser.UsersGoingRelated.all().order_by('EventDate').first()
+        AllUserAttending = ThisUser.UsersGoingRelated.all()
+        EventsNotAttending = Event.objects.exclude(UsersGoing=ThisUser.id).order_by('EventDate', 'EventTime')
         apiKey = settings.API_KEY
 
         context = {
             'users': AllUsers,
             'events': AllEvents,
             'UserLoggedIn': User.objects.get(id = request.session['LoggedIn']),
-            'UserAttending': UserAttending,
+            'UpcomingEvent': UserAttending,
             'EventsNotAttending': EventsNotAttending,
+            'AllUserAttending': AllUserAttending,
             'myKey': apiKey
             }
         return render(request, "MainApp/home.html", context) 
@@ -113,14 +122,16 @@ def Rider(request, uuid):
         return redirect('/Error')
     else:
         ThisUser = User.objects.get(id = uuid)
-        UserAttending = ThisUser.UsersGoingRelated.all()
+        UserAttending = ThisUser.UsersGoingRelated.all().order_by('EventDate', 'EventTime')
         DateJoined = ThisUser.created_at
         FormatedDate = DateJoined.strftime("%B %Y")
+        print('***************')
+
 
         context = {
             'UserAttending': UserAttending,
             'rider': ThisUser,
-            'date': FormatedDate
+            'date': FormatedDate,
         }
         return render(request, "MainApp/profile.html", context)
 
@@ -230,3 +241,16 @@ def ExploreApi(request):
             'events': events
         }
         return render(request, "MainApp/exploreApi.html", context)
+
+def ImageUpload(request):
+    if request.method == 'POST' and request.FILES['myImage']:
+        thisUser = request.session['LoggedIn']
+        myImage = request.FILES['myImage']
+        fs = FileSystemStorage()
+        imageUploaded = fs.save(myImage.name, myImage)
+
+        User.objects.filter(id = thisUser).update(Image = imageUploaded)
+        print('***SUCCESS***')
+        print('***************')
+
+        return redirect('/Home')

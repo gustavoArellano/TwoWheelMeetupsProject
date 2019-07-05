@@ -1,5 +1,7 @@
 from django.conf.urls import url
 from . import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'^$', views.Index, name="Index"),
@@ -18,5 +20,6 @@ urlpatterns = [
     url(r'^Event/(?P<uuid>\d+)$', views.EventDetails, name="Event"),
     url(r'^Explore/$', views.Explore, name="Explore"),
     url(r'^Explore/Api$', views.ExploreApi, name="ExploreApi"),
-    url(r'^DeleteEvent/(?P<id>\d+)$', views.DeleteEvent, name="DeleteEvent")
-]
+    url(r'^DeleteEvent/(?P<id>\d+)$', views.DeleteEvent, name="DeleteEvent"),
+    url(r'^ImageUpload$', views.ImageUpload, name="ImageUpload")
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

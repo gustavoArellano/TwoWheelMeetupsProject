@@ -12,15 +12,12 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="{% static 'MainApp/js/eventDetail.js' %}"></script>
-        <script type='text/javascript' src="{% static '/MainApp/js/config.js' %}"></script>
         <script src="{% static 'MainApp/js/googleMaps.js' %}"></script>
-        <script async defer src="https://maps.googleapis.com/maps/api/js?&callback=initMap&key={{myKey}}"></script>
-        
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key={{myKey}}&callback=initMap"></script>
 
     </head>
 
-    <body onload="initialize() & codeAddress()">
-
+    <body onload="initMap() & codeAddress()">
         <!-- THE BELOW CONTAINER HOLDS ALL THE LINK STYLES -->
         <div id="container">
             <div id="header">
@@ -75,12 +72,14 @@
         <div id="event" style="height:100%; width:100%;">
             <h1><strong>Details</strong></h1>
             <h2><strong>{{Event.Title}}</strong></h2>
-            <h5><strong>{{Event.EventDate}}</strong></h5>
+            <h5><strong>{{Event.EventDate | date:"l, F d, Y"}} at {{Event.EventTime}}</strong></h5>
             <div id="map"></div>
+            <!-- ************IMPORTANT TO KEEP INPUT WITH VALUE FOR MAP************ -->
+            <input id="address" type="hidden" value="{{Event.Address}} {{Event.City}} {{Event.State}} {{Event.ZipCode}}">
             <p class="address"><strong><a href="http://maps.google.com/?q={{Event.Address}}, {{Event.City}}, {{Event.State}} {{Event.ZipCode}}" target="_blank">{{Event.Address}}, {{Event.City}}, {{Event.State}} {{Event.ZipCode}}</a></strong></p>
             <p class="descriptionTitle"><strong><u>DESCRIPTION: </u></strong></p>
             <p class="description">{{Event.Description}}</p>
-            <a href="{% url 'Rider' UserLoggedIn.id %}"><button type="submit" class="btn btn-danger profileButton"><i class="fas fa-arrow-circle-left"></i> Go To Profile </button></a>
+            <a href="{% url 'Rider' UserLoggedIn.id %}"><button type="submit" class="btn btn-danger profileButton"><i class="fas fa-arrow-circle-left"></i> Go To My Profile </button></a>
             {% if ThisUser.id == Event.EventByUser.id %}
             <form action="/DeleteEvent/{{Event.id}}" method="POST">
                 {% csrf_token %}

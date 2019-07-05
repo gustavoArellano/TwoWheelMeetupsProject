@@ -287,6 +287,15 @@ html, body, #map {
     .dropdown a:hover {
         background-color: #ddd;
     }
+
+    #tabletDropdown a {
+        text-decoration: none;
+        color: black;
+    }
+
+    #tabletDropdown a:hover {
+        color: #F53756;
+    }
       
     .show {
         display: block;

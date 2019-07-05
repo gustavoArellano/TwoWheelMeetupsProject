@@ -7,6 +7,7 @@
         <title>2Wheel Meetups - CREATE</title>
         {% load static %}
         <link rel="stylesheet" href="{% static 'MainApp/css/create.css' %}">
+        <link rel="stylesheet" href="{% static 'MainApp/css/DateTimePicker.css' %}">
         <link href="https://fonts.googleapis.com/css?family=Cedarville+Cursive|Josefin+Sans|Pacifico" rel="stylesheet">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
@@ -16,6 +17,10 @@
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <script type="text/javascript" src="wickedpicker.js"></script>
+        <!-- ****THE BELOW IS FOR THE TIME PICKER FUNCTIONS**** -->
+        <link rel="stylesheet" type="text/css" href="/DateTimePicker.css" />
+		<script type="text/javascript" src="jquery-1.11.0.min.js"></script>
+        <script type="text/javascript" src="{% static 'MainApp/js/DateTimePicker.js' %}"></script>
     </head>
 
     <body>
@@ -52,9 +57,9 @@
                     <i class="fas fa-home fa-2x"></i>
                     <p>Home</p>
                 </a>
-                <a href="javascript:{}" onclick="document.getElementById('ProfileForm').submit();">
+                <a href="{% url 'Rider' UserLoggedIn.id %}">
                     <i class="fas fa-user fa-2x"></i>
-                    <a href="{% url 'Rider' UserLoggedIn.id %}">Profile</a>
+                    <p>Profile</p>
                 </a>
                 <a href="/Explore">
                     <i class="fas fa-search fa-2x"></i>
@@ -87,7 +92,7 @@
                 <input type="textbox" name="Description">
 
                 <p>Date:</p>
-                <input type="text" id="datepicker" class="buttonImage" name="EventDate" autocomplete="off">
+                <input type="text" id="datepicker" class="buttonImage" name="EventDate" autocomplete="off" >
 
                 <script>
                     $( function() {
@@ -95,14 +100,27 @@
                             minDate: 1,
                             buttonImage: "../static/MainApp/images/calendar.png",
                             showOn: "both",
-                            buttonImageOnly: true
+                            buttonImageOnly: true,
+                            // dateFormat: 'DD, MM d, yy'
+                            dateFormat: 'yy-mm-dd'
                         });
                     });
                 </script>
 
                 <p>Time:</p>
-                <input type="Text" name="EventTime">
-        
+                <input type="text" data-field="time" data-format="hh:mm AA" readonly name="EventTime">
+		
+                <div id="dtBox"></div>
+                
+                <script type="text/javascript">
+                
+                    $(document).ready(function()
+                    {
+                        $("#dtBox").DateTimePicker();
+                    });
+                
+                </script>
+
                 <p>Address:</p>
                 <input type="text" name="Address">
 

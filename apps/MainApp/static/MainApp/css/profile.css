@@ -292,6 +292,15 @@ body {
     .dropdown a:hover {
         background-color: #ddd;
     }
+
+    #tabletDropdown a {
+        text-decoration: none;
+        color: black;
+    }
+
+    #tabletDropdown a:hover {
+        color: #F53756;
+    }
       
     .show {
         display: block;
@@ -438,6 +447,16 @@ body {
         margin-top: 30px;
     }
 
+    .uploadForm {
+        margin-top: 20px;
+    }
+
+    .uploadForm h6, .uploadForm input, .uploadForm button {
+        display: block;
+        margin: auto
+    }
+
+
     .details {
         margin: auto;
         margin-top: 50px;
@@ -447,4 +466,6 @@ body {
     .buttons .aButton, .buttons .fButton {
         display: inline-block;
     }
+
+
 }

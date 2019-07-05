@@ -38,76 +38,23 @@
         <div id="upcomingEvents">
 
             <h1><b>Upcoming Meetups</b></h1>
-
+            {% for event in Events %}
             <div class="event">
 
                 <div class="eventInfo">
 
-                    <p>Friday, December 25, 5:00 PM</p>
+                    <p>{{event.EventDate}}, {{event.EventTime}}</p>
 
-                    <h3><b>San felipe: Meet at the parking lot area at Evergreen.</b></h3>
-                    <h1>San Jose</h1>
+                    <h3><b>{{event.Title}}</b></h3>
+                    <h1>{{event.City}}</h1>
                     <div class="creator">
-                        <p><img class="userImage" src="{% static 'MainApp/images/placeholder.png' %}" alt="">Hosted by <b>Gustavo Arellano</b></p>
+                        <p>{% if event.EventByUser.Image|length == 0 %}<img class="userImage" src="{% static 'MainApp/images/placeholder.png' %}" alt="">{% else %}<img class="userImage" src="{{event.EventByUser.Image.url}}" alt="">{% endif %}Hosted by <b>{{event.EventByUser.FirstName}} {{event.EventByUser.LastName}}</b></p>
                     </div>
 
                 </div>
 
             </div>
-
-            <div class="event">
-
-                <div class="eventInfo">
-
-                    <p>Saturday, December 25, 5:00 PM</p>
-
-                    <h3><b>Bay Bridge - All the way to Half Moon Bay.</b></h3>
-
-                    <h1>San Francisco</h1>
-
-                    <div class="creator">
-                        <p><img class="userImage" src="{% static 'MainApp/images/placeholder.png' %}" alt=""> Hosted by <b>Gustavo Arellano</b></p>
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="event">
-
-                <div class="eventInfo">
-
-                    <p>Monday, December 25, 5:00 PM</p>
-
-                    <h3><b>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda cupiditate repellendus porro ducimus aliquam. Dolor aliquam porro, illum esse voluptatibus sapiente iusto ea, nisi harum inventore impedit blanditiis atque! Consequatur.</b></h3>
-
-                    <h1>American Canyon</h1>
-
-                    <div class="creator">
-                        <p><img class="userImage" src="{% static 'MainApp/images/placeholder.png' %}" alt=""> Hosted by <b>Gustavo Arellano</b></p>
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="event">
-
-                <div class="eventInfo">
-
-                    <p>Tuesday, December 25, 5:00 PM</p>
-
-                    <h3><b>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda cupiditate repellendus porro ducimus aliquam. Dolor aliquam porro, illum esse voluptatibus sapiente iusto ea, nisi harum inventore impedit blanditiis atque! Consequatur.</b></h3>
-
-                    <h1>San Luis Obispo</h1>
-
-                    <div class="creator">
-                        <p><img class="userImage" src="{% static 'MainApp/images/placeholder.png' %}" alt=""> Hosted by <b>Gustavo Arellano</b></p>
-                    </div>
-
-                </div>
-
-            </div>
+            {% endfor %}
                             
         </div> 
 

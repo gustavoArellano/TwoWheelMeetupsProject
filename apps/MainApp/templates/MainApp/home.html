@@ -72,17 +72,19 @@
 
             <h4><strong>Hi, {{request.session.FirstName}}!</strong></h4>
             <h5 class="secondHeader"><strong>YOUR NEXT MEETUP</strong></h5>
-
+            {% if AllUserAttending.count > 0 %}
             <div class="upcomingEvent">
 
-                <p class="upcomingDate">Friday, December 25, 2019, 1:15PM</p>
-                <img class="upcomingImage" src="{% static 'MainApp/images/routeImage.png' %}" alt="">
-                <p class="upcomingAddress"><a href="#">123 fake st, san jose, ca 95127</a></p>
-                <p class="upcomingTitle"><a href="#">test upcoming event</a></p>
-                <p class="upomingAttending"><i class="fas fa-motorcycle"></i> 0 Riders Going</p>
+                <p class="upcomingDate">{{UpcomingEvent.EventDate | date:"l, F d, Y"}}, {{UpcomingEvent.EventTime}}</p>
+                <img class="upcomingImage" src="https://maps.googleapis.com/maps/api/staticmap?center={{UpcomingEvent.Address}}+{{UpcomingEvent.City}}+{{UpcomingEvent.State}}+{{UpcomingEvent.ZipCode}}&zoom=18&size=600x300&maptype=roadmap&style=gama:10.0|lightness:-8&markers=color:red%7Clabel:2WM%7C{{UpcomingEvent.Address}},{{UpcomingEvent.City}},{{UpcomingEvent.State}},{{UpcomingEvent.ZipCode}}&key={{myKey}}" alt="">
+                <p class="upcomingAddress"><a href="http://maps.google.com/?q={{UpcomingEvent.Address}}, {{UpcomingEvent.City}}, {{UpcomingEvent.State}} {{UpcomingEvent.ZipCode}}" target="_blank">{{UpcomingEvent.Address}}, {{UpcomingEvent.City}}, {{UpcomingEvent.State}} {{UpcomingEvent.ZipCode}}</a></p>
+                <p class="upcomingTitle"><a href="{% url 'Event' UpcomingEvent.id %}">{{UpcomingEvent.Title}}</a></p>
+                <p class="upomingAttending"><i class="fas fa-motorcycle"></i> {{UpcomingEvent.UsersGoing.count}} Riders Going</p>
 
             </div>
-    
+            {% else %}
+                <h6 class="mobileUpcomingStatement">You are currently not attending any meetups! 😔</h6>
+            {% endif %}
         </div>
     
         <div id="tabletUpcoming">
@@ -90,9 +92,10 @@
             <h4>Hi, {{request.session.FirstName}}!</h4>
             <h6>YOUR NEXT MEETUP</h6>
             <hr>
+            {% if AllUserAttending.count > 0 %}
             <div class="infoLeft">
-                <h1><b>San Felipe Road</b></h1>
-                <h5>San Jose, CA <br><br> <i class="fas fa-motorcycle"></i> 30 Riders Going</h5>
+                <h1><b><a href="{% url 'Event' UpcomingEvent.id %}">{{UpcomingEvent.Title}}</a></b></h1>
+                <h5>{{UpcomingEvent.City}}, {{UpcomingEvent.State}} <br><br> <i class="fas fa-motorcycle"></i> {{UpcomingEvent.UsersGoing.count}} Riders Going</h5>
             </div>
 
             <img class="roadImage" src="{% static 'MainApp/images/roadImage.png' %}" alt="">
@@ -103,23 +106,28 @@
                 <i class="fas fa-map-marker-alt"></i>
             </div>
             <div class="infoRight">
-                <h5>Friday, December 25, 2019</h5>
+                <h5>{{UpcomingEvent.EventDate | date:"l, F d, Y"}} @ {{UpcomingEvent.EventTime}}</h5>
                 <br>
-                <h5><b>Evergreen Parking Lot A</b></h5>
-                <h5>3095 Yerba Buena Rd. <br> San Jose, CA 95127</h5>
+                <h5>{{UpcomingEvent.Address}} <br> {{UpcomingEvent.City}}, {{UpcomingEvent.State}} {{UpcomingEvent.ZipCode}}</h5>
                 
             </div>
+            {% else %}
+            <div>
+                <h4 class="upcomingStatement">You are currently not attending any meetups! 😔</h4>
+            </div>
+            {% endif %}
+            
         </div>
     
     
         <div id="available">
 
-            <h5><strong>MEETUPS</strong></h5>
+            <h5><strong>AVAILABLE MEETUPS</strong></h5>
 
             {% for event in EventsNotAttending %}
             <div class="availableEvent">
 
-                <p class="availableDate">{{event.EventDate}}, {{event.EventTime}} </p>
+                <p class="availableDate">{{event.EventDate | date:"l, F d, Y"}}, {{event.EventTime}} </p>
                 <img class="availableImage" src="https://maps.googleapis.com/maps/api/staticmap?center={{event.Address}}+{{event.City}}+{{event.State}}+{{event.ZipCode}}&zoom=18&size=600x300&maptype=roadmap&style=gama:10.0|lightness:-8&markers=color:red%7Clabel:2WM%7C{{event.Address}},{{event.City}},{{event.State}},{{event.ZipCode}}&key={{myKey}}" alt="">
                 <p class="availableAddress"><a href="http://maps.google.com/?q={{event.Address}}, {{event.City}}, {{event.State}} {{event.ZipCode}}" target="_blank">{{event.Address}}, {{event.City}}, {{event.State}} {{event.ZipCode}}</a></p>
                 <p class="availableTitle"><a href="{% url 'Event' event.id %}">{{event.Title}}</a></p>

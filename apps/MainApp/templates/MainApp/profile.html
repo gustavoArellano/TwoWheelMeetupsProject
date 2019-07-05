@@ -71,7 +71,20 @@
             <div class="title">
                 <h2>{{rider.FirstName}} {{rider.LastName}}</h2>
                 <p>{{rider.City}}, {{rider.State}}</p>
+                {% if rider.Image|length == 0 %}
                 <img src="{% static 'MainApp/images/placeholder.png' %}" alt="">
+                {% else %}
+                <img src="{{rider.Image.url}}" alt="">
+                {% endif %}
+
+                {% if rider.Image|length == 0 %}
+                <form class="uploadForm" action="/ImageUpload" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <h6 class="uploadTitle">Edit Profile Pic: </h6>
+                    <input id="image" name="myImage" type="file">
+                    <button type="submit" class="btn btn-danger">Upload</button>
+                </form>
+                {% endif %}
             </div>
             
             <div class="details">
@@ -89,7 +102,6 @@
             {% if UserAttending.count != 0 %}
             {% if rider.FirstName == request.session.FirstName %}<h2>Event's You Are Attending: </h2>{% endif %}
             {% if rider.FirstName != request.session.FirstName %}<h2>Event's {{rider.FirstName}} is Attending: </h2>{% endif %}
-            {% endif %}
 
             <table id="table" class="table">
                 <thead>
@@ -103,7 +115,7 @@
                 <tbody id="tbodyID">
                     <tr>
                         <td>{{event.Title}}</td>
-                        <td>{{event.EventDate}}</td>
+                        <td>{{event.EventDate | date:"l, F d, Y"}}</td>
                         <td class="buttons">
 
                             <a class="aButton" href="{% url 'Event' event.id %}"><button type="submit" class="btn btn-secondary joinButton">Details</button></a>
@@ -113,7 +125,6 @@
                                 {% csrf_token %}
                                 <input type="hidden" name="Event" id="hidden" value="{{event.id}}">
                                 <button id="Button" type="submit" class="btn btn-danger">Leave</button>
-                            <!-- <a id="cancel" href="{% url 'RemoveProcess' event.id %}"><button type="submit" id="cancel" class="btn btn-danger joinButton">Leave</button></a> -->
                             </form>
                             {% endif %}
                         </td>
@@ -121,6 +132,7 @@
                 </tbody>
                 {% endfor %}
             </table>
+            {% endif %}
         </div>
 
         <div id="footer">

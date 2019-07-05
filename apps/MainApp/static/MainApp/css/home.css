@@ -226,6 +226,12 @@ html, body {
         height: 20px;
         margin: 0px 10px 10px 10px;
     }
+
+    .mobileUpcomingStatement {
+        color: #F53756;
+        text-align: center;
+        margin-top: 30px;
+    }
     
     /* ***************ALL AVAILABLE MEETUPS*************** */
     #available {
@@ -402,7 +408,21 @@ html, body {
         display: block;
     }
 
+    #tabletDropdown a {
+        text-decoration: none;
+        color: black;
+    }
+
+    #tabletDropdown a:hover {
+        color: #F53756;
+    }
+
     /* ***************UPCOMING EVENT*************** */
+    .infoLeft h1 b a {
+        color: white;
+        /* text-decoration: none; */
+    }
+
     #tabletUpcoming {
         padding: 30px 50px;
         margin: 0px auto;
@@ -435,21 +455,24 @@ html, body {
         margin-left: 30px;
     }
 
+    .upcomingStatement {
+        text-align: center;
+        margin-top: 70px;
+    }
+
     /* ***************ALL AVAILABLE MEETUPS*************** */
     #available {
         display: flex;
         justify-content: space-evenly;
         flex-wrap: wrap;
-        background-color: whitesmoke;
         width: 100%;
         padding: 20px;
         padding-bottom: 100px;
-
     }
 
     #available h5 {
         width: 100%;
-        
+        background-color: white;
     }
 
     .availableEvent{
@@ -522,8 +545,6 @@ html, body {
         padding: 5px;
         width: 100%;
     }
-
-
 }
 
 @media only screen and (min-width: 1024px) {
@@ -601,6 +622,11 @@ html, body {
         padding: 0px;
     }
 
+    .infoLeft h1 b a {
+        color: white;
+        /* text-decoration: none; */
+    }
+
     /* ***************ALL AVAILABLE MEETUPS*************** */
     #available {
         background-color: white !important;
@@ -615,7 +641,7 @@ html, body {
 
     #available .availableEvent {
         width: 350px;
-        margin: 20px 5px;
+        height: 402px;
 
     }
     /* .ICON WILL KEEP UPCOMINGEVENT ITEMS INTACT */

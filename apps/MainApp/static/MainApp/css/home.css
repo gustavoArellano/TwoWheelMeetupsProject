@@ -447,6 +447,11 @@ html, body {
     
     .infoRight h5 {
         margin: 0px;
+        color: white;
+    }
+
+    .infoRight .addressYourUpcoming {
+        color: white;
     }
 
     .icons {
@@ -458,6 +463,11 @@ html, body {
     .upcomingStatement {
         text-align: center;
         margin-top: 70px;
+    }
+
+    /* YOUR UPCOMING EVENT */
+    .infoRight .addressYourUpcomings .addressYourUpcoming {
+        color: white;
     }
 
     /* ***************ALL AVAILABLE MEETUPS*************** */

@@ -61,7 +61,9 @@ class UserManager(models.Manager):
         if not user:
             errors['Email'] = "Invalid EMAIL or PASSWORD!"
 
-        if user and not bcrypt.checkpw(postData['LoginPassword'].encode('utf8'), user[0].Password.encode('utf8')):
+        HashPW = bcrypt.hashpw(postData['LoginPassword'].encode('utf-8'), bcrypt.gensalt())
+
+        if user and not bcrypt.checkpw(postData['LoginPassword'], HashPW):
             errors['Password'] = "Invalid EMAIL or PASSWORD!"
 
         return errors
@@ -100,7 +102,7 @@ class EventManager(models.Manager):
 
         return errors
 class User(models.Model): 
-    Image = models.ImageField(default='/static/MainApp/images/placeholder.png', upload_to = 'Users/gustavo/Documents/Projects/Python/TwoWheelMeetups/apps/MainApp/media/RiderImages', blank = True)
+    Image = models.ImageField(default='/static/MainApp/images/placeholder.png', upload_to = 'Users/gustavo/Documents/Projects/Python/TwoWheelMeetups/apps/MainApp/media/RiderImages', blank = True, null = True)
     FirstName = models.CharField(max_length = 20) 
     LastName = models.CharField(max_length = 20)
     Email = models.CharField(max_length = 255)

@@ -67,23 +67,17 @@
         </div>  
         
         <div id="profileInfo">
-
+            
             <div class="title">
                 <h2>{{rider.FirstName}} {{rider.LastName}}</h2>
                 <p>{{rider.City}}, {{rider.State}}</p>
-                {% if rider.Image|length == 0 %}
-                <img src="{% static 'MainApp/images/placeholder.png' %}" alt="">
-                {% else %}
+                {% if rider.Image.value == rider.Image.value %}
                 <img src="{{rider.Image.url}}" alt="">
+                {% else %}
+                <img src="{% static 'MainApp/images/placeholder.png' %}" alt="">
                 {% endif %}
-
-                {% if rider.Image|length == 0 %}
-                <form class="uploadForm" action="/ImageUpload" method="POST" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    <h6 class="uploadTitle">Edit Profile Pic: </h6>
-                    <input id="image" name="myImage" type="file">
-                    <button type="submit" class="btn btn-danger">Upload</button>
-                </form>
+                {% if rider.FirstName == request.session.FirstName %}
+                <a href="{% url 'EditRider' rider.id %}"><button id="Button" class="btn btn-danger">Edit My Profile</button></a>
                 {% endif %}
             </div>
             
@@ -108,7 +102,7 @@
                     <tr>
                         <th scope="col">Title</th>
                         <th scope="col">Date</th>
-                        <th class="tabletDesktopOnly" scope="col">Details{% if rider.FirstName == request.session.FirstName %} / Cancel{% endif %}</th>
+                        <th class="tabletDesktopOnly" scope="col">Details{% if rider.FirstName == request.session.FirstName %} / Leave Event{% endif %}</th>
                     </tr>
                 </thead>
                 {% for event in UserAttending %}

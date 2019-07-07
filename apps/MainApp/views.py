@@ -3,8 +3,7 @@ from django.http import HttpResponseRedirect
 from django.contrib import messages
 from django.conf import settings
 from django.contrib.messages import get_messages 
-from .models import User
-from .models import Event
+from .models import *
 from django import template
 import datetime
 register = template.Library()
@@ -45,7 +44,7 @@ def RegistrationProcess(request):
             for key, value in errors.items():
                 messages.error(request, value, extra_tags = key)
         else:
-            hash_pw = bcrypt.hashpw(request.POST['Password'].encode(), bcrypt.gensalt())
+            hash_pw = bcrypt.hashpw(request.POST['Password'].encode('utf-8'), bcrypt.gensalt())
             User.objects.create(
                 FirstName = request.POST['FirstName'], 
                 LastName = request.POST['LastName'], 
@@ -134,6 +133,14 @@ def Rider(request, uuid):
             'date': FormatedDate,
         }
         return render(request, "MainApp/profile.html", context)
+
+def EditRider(request, uuid):
+    if 'LoggedIn' not in request.session:
+        return redirect('/Error')
+    if User.objects.get(id = uuid) != User.objects.get(id = request.session['LoggedIn']):
+        return redirect('/Home')
+    else:
+        return render(request, 'MainApp/editProfile.html')
 
 def CreateEvent(request):
     if 'LoggedIn' not in request.session:
@@ -244,13 +251,10 @@ def ExploreApi(request):
 
 def ImageUpload(request):
     if request.method == 'POST' and request.FILES['myImage']:
-        thisUser = request.session['LoggedIn']
+        ThisUser = request.session['LoggedIn']
         myImage = request.FILES['myImage']
         fs = FileSystemStorage()
         imageUploaded = fs.save(myImage.name, myImage)
 
-        User.objects.filter(id = thisUser).update(Image = imageUploaded)
-        print('***SUCCESS***')
-        print('***************')
-
+        User.objects.filter(id = ThisUser).update(Image = imageUploaded)
         return redirect('/Home')

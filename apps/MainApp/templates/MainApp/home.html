@@ -108,7 +108,7 @@
             <div class="infoRight">
                 <h5>{{UpcomingEvent.EventDate | date:"l, F d, Y"}} @ {{UpcomingEvent.EventTime}}</h5>
                 <br>
-                <h5>{{UpcomingEvent.Address}} <br> {{UpcomingEvent.City}}, {{UpcomingEvent.State}} {{UpcomingEvent.ZipCode}}</h5>
+                <a class="addressYourUpcoming" href="http://maps.google.com/?q={{UpcomingEvent.Address}}, {{UpcomingEvent.City}}, {{UpcomingEvent.State}} {{UpcomingEvent.ZipCode}}" target="_blank"><h5 class="addressYourUpcomings">{{UpcomingEvent.Address}} <br> {{UpcomingEvent.City}}, {{UpcomingEvent.State}} {{UpcomingEvent.ZipCode}}</h5></a>
                 
             </div>
             {% else %}

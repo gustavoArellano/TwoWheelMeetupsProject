@@ -89,14 +89,7 @@
     position: relative;
 }
 
-.creator {
-    position: absolute;
-    bottom: 0;
-    margin: 0px;
-    padding: 0px;
-}
-
-.creator p .userImage {
+p .userImage {
     padding: 0px; 
     margin: 5px;
     width: 20px;
@@ -106,9 +99,10 @@
     border-radius: 50%;
 }
 
-.creator p {
+p {
     display: inline-block;
     vertical-align: top;
+    width: 100%;
 }
 
 .eventInfo  h1 {
@@ -345,15 +339,8 @@ a b {
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-    }
-
-    .creator {
-        text-align: center;
-        margin: 0px;
-    }
-
-    .creator p  b {
-        margin-right: 25px;
+        margin: auto;
+        margin-top: 15px;
     }
 
     .eventInfo h1 {
@@ -459,13 +446,7 @@ a b {
         text-overflow: ellipsis;
     }
 
-    .creator {
-        text-align: center;
-        margin: auto;
-        width: 100%;
-    }
-
-    .creator p b {
+    p b {
         margin-right: 15px;
     }
 }

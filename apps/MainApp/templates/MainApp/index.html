@@ -47,10 +47,7 @@
 
                     <h3><b>{{event.Title}}</b></h3>
                     <h1>{{event.City}}</h1>
-                    <div class="creator">
-                        <p>{% if event.EventByUser.Image|length == 0 %}<img class="userImage" src="{% static 'MainApp/images/placeholder.png' %}" alt="">{% else %}<img class="userImage" src="{{event.EventByUser.Image.url}}" alt="">{% endif %}Hosted by <b>{{event.EventByUser.FirstName}} {{event.EventByUser.LastName}}</b></p>
-                    </div>
-
+                    <p>{% if event.EventByUser.Image|length == 0 %}<img class="userImage" src="{% static 'MainApp/images/placeholder.png' %}" alt="">{% else %}<img class="userImage" src="{{event.EventByUser.Image.url}}" alt="">{% endif %}Hosted by <b>{{event.EventByUser.FirstName}} {{event.EventByUser.LastName}}</b></p>
                 </div>
 
             </div>

@@ -13,6 +13,7 @@ urlpatterns = [
     url(r'^Logout$', views.Logout, name="Logout"),
     url(r'^Home$', views.Home, name="Home"),
     url(r'^Rider/(?P<uuid>\d+)$', views.Rider, name="Rider"),
+    url(r'^EditProfile/(?P<uuid>\d+)$', views.EditRider, name="EditRider"),
     url(r'^CreateEvent$', views.CreateEvent, name="CreateEvent"),
     url(r'^CreateEventProcess$', views.CreateEventProcess, name="CreateEventProcess"),
     url(r'^Join/(?P<id>\d+)$', views.Join, name="Join"),

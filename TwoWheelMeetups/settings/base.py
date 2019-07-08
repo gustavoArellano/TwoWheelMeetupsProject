@@ -69,13 +69,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-# Static files (CSS, JavaScript, Images)
-# STATIC_URL = '/static/'
-# STATIC_ROOT = os.path.join(BASE_DIR, 'MainApp')
-
-# MEDIA_ROOT = '/Users/gustavo/Documents/Projects/Python/TwoWheelMeetups/apps/MainApp/media/'
-# MEDIA_URL = '/Users/gustavo/Documents/Projects/Python/TwoWheelMeetups/apps/MainApp/media/RiderImages/'
-
 STATIC_URL = config('myStaticURL')
 STATIC_ROOT = config('myStaticRoot')
 

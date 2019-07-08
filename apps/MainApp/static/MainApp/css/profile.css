@@ -383,6 +383,23 @@ body {
     .buttons .aButton, .buttons .fButton {
         display: inline-block;
     }
+
+    #footer {
+        margin-top: 300px;
+        display: block;
+        position: relative;
+        text-align: center;
+        color: white;
+        width: 100%;
+    } 
+    
+    #footer .footer {
+        font-size: 15px;
+        background-color: #363E47;
+        height: 35px;
+        margin: auto;
+        bottom: 0;
+    }
 }
 
 @media only screen and (min-width: 1024px) {

@@ -72,11 +72,7 @@
                 <h2>{{rider.FirstName}} {{rider.LastName}}</h2>
                 <p>{{rider.City}}, {{rider.State}}</p>
 
-                {% if rider.Image is NULL %}
-                <img src="{% static 'MainApp/images/placeholder.png' %}" alt="">
-                {% else %}
                 <img src="{{rider.Image.url}}" alt="">
-                {% endif %}
 
                 <a id="EditProfileButton" href="{% url 'EditRider' rider.id %}"><button id="Button" class="btn btn-danger">Edit My Profile</button></a>
             </div>

@@ -555,6 +555,24 @@ html, body {
         padding: 5px;
         width: 100%;
     }
+
+    #footer {
+        display: block;
+        position: relative;
+        text-align: center;
+        color: white;
+        width: 100%;
+    } 
+    
+    #footer .footer {
+        font-size: 15px;
+        display: inline-block;
+        background-color: #363E47;
+        height: 35px;
+        margin: auto;
+        padding: 10px;
+        bottom: 0;
+    }
 }
 
 @media only screen and (min-width: 1024px) {

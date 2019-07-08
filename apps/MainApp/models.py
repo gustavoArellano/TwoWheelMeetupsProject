@@ -139,7 +139,7 @@ class EventManager(models.Manager):
 
         return errors
 class User(models.Model): 
-    Image = models.ImageField(default='/static/MainApp/images/placeholder.png', upload_to = 'Users/gustavo/Documents/Projects/Python/TwoWheelMeetups/apps/MainApp/media/RiderImages', blank = True, null = True)
+    Image = models.ImageField(default='/default/placeholder.png', upload_to = 'Users/gustavo/Documents/Projects/Python/TwoWheelMeetups/apps/MainApp/media/RiderImages', blank = True, null = True)
     FirstName = models.CharField(max_length = 20) 
     LastName = models.CharField(max_length = 20)
     Email = models.CharField(max_length = 255)

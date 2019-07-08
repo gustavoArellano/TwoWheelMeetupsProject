@@ -3,7 +3,8 @@ from django.http import HttpResponseRedirect
 from django.contrib import messages
 from django.conf import settings
 from django.contrib.messages import get_messages 
-from .models import *
+from .models import User
+from .models import Event
 from django import template
 import datetime
 register = template.Library()
@@ -124,6 +125,7 @@ def Rider(request, uuid):
         UserAttending = ThisUser.UsersGoingRelated.all().order_by('EventDate', 'EventTime')
         DateJoined = ThisUser.created_at
         FormatedDate = DateJoined.strftime("%B %Y")
+        GetUser = User.objects.get(id = request.session['LoggedIn'])
         print('***************')
 
 
@@ -131,16 +133,59 @@ def Rider(request, uuid):
             'UserAttending': UserAttending,
             'rider': ThisUser,
             'date': FormatedDate,
+            'GetUser': GetUser
         }
         return render(request, "MainApp/profile.html", context)
 
-def EditRider(request, uuid):
+def EditRiderPage(request, uuid):
     if 'LoggedIn' not in request.session:
         return redirect('/Error')
     if User.objects.get(id = uuid) != User.objects.get(id = request.session['LoggedIn']):
         return redirect('/Home')
     else:
-        return render(request, 'MainApp/editProfile.html')
+        ThisUser = User.objects.get(id = uuid)
+
+        context = {
+            'rider': ThisUser
+        }
+
+        return render(request, 'MainApp/editProfile.html', context)
+
+def ImageUpload(request, id):
+    if request.method == 'POST' and request.FILES['myImage']:
+        ThisUser = request.session['LoggedIn']
+        myImage = request.FILES['myImage']
+        fs = FileSystemStorage()
+        imageUploaded = fs.save(myImage.name, myImage)
+
+        User.objects.filter(id = ThisUser).update(Image = imageUploaded)
+        return redirect('/Rider/' + id)
+
+        
+
+def UpdateInfo(request, id):
+    errors = User.objects.UserUpdateValidations(request.POST)
+    if len(errors):
+        for key, value in errors.items():
+            messages.error(request, value, extra_tags = key)
+
+    CheckUser = User.objects.get(id = id)        
+    if request.method == 'POST': 
+        ThisUser = User.objects.get(id = request.session['LoggedIn'])
+        ThisUserID = request.session['LoggedIn']
+
+        UserValues = {
+            'FirstName': request.POST['FirstName'],
+            'LastName': request.POST['LastName'],
+            'Email': request.POST['Email'],
+            'State': request.POST['State'],
+            'City': request.POST['City'],
+            'ZipCode': request.POST['ZipCode'],
+        }
+
+        User.objects.filter(id = ThisUser.id).update(**UserValues)
+        return redirect('/Rider/' + id)
+    return redirect('/EditProfile')
 
 def CreateEvent(request):
     if 'LoggedIn' not in request.session:
@@ -217,6 +262,46 @@ def EventDetails(request, uuid):
         }
         return render(request, 'MainApp/eventDetail.html', context)
 
+def EditEventPage(request, uuid):
+    if 'LoggedIn' not in request.session:
+        return redirect('/Error')
+    ThisEvent = Event.objects.get(id = uuid)
+    ThisUser = User.objects.get(id = request.session['LoggedIn'])
+    if ThisUser.id != ThisEvent.EventByUser.id:
+        return redirect('/Home')
+    else:
+
+        context = {
+            'ThisEvent': ThisEvent,
+            'rider': ThisUser
+        }
+  
+        return render(request, 'MainApp/editEvent.html', context)
+
+def UpdateEvent(request, id):
+    errors = Event.objects.EventValidation(request.POST)
+    if len(errors):
+        for key, value in errors.items():
+            messages.error(request, value, extra_tags = key)
+
+    if request.method == 'POST': 
+        ThisEvent = Event.objects.get(id = id)
+
+        EventValues = {
+            'Title': request.POST['Title'],
+            'Description': request.POST['Description'],
+            'EventDate': request.POST['EventDate'],
+            'EventTime': request.POST['EventTime'],
+            'Address': request.POST['Address'],
+            'City': request.POST['City'],
+            'State': request.POST['State'],
+            'ZipCode': request.POST['ZipCode']
+        }
+
+        Event.objects.filter(id = ThisEvent.id).update(**EventValues)
+        return redirect('/Event/' + id)
+    return redirect('/EditEvent/' + id)
+
 def DeleteEvent(request, id):
     if request.method == "POST":
         ThisEvent = Event.objects.get(id = request.POST['Event'])
@@ -249,12 +334,3 @@ def ExploreApi(request):
         }
         return render(request, "MainApp/exploreApi.html", context)
 
-def ImageUpload(request):
-    if request.method == 'POST' and request.FILES['myImage']:
-        ThisUser = request.session['LoggedIn']
-        myImage = request.FILES['myImage']
-        fs = FileSystemStorage()
-        imageUploaded = fs.save(myImage.name, myImage)
-
-        User.objects.filter(id = ThisUser).update(Image = imageUploaded)
-        return redirect('/Home')

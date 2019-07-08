@@ -57,7 +57,7 @@
                     <i class="fas fa-search fa-2x"></i>
                     <p>Explore</p>
                 </a>
-                <a href="C/reateEvent">
+                <a href="/CreateEvent">
                     <i class="fas fa-motorcycle fa-2x"></i>
                     <p>Create</p>
                 </a>
@@ -79,9 +79,12 @@
             <p class="address"><strong><a href="http://maps.google.com/?q={{Event.Address}}, {{Event.City}}, {{Event.State}} {{Event.ZipCode}}" target="_blank">{{Event.Address}}, {{Event.City}}, {{Event.State}} {{Event.ZipCode}}</a></strong></p>
             <p class="descriptionTitle"><strong><u>DESCRIPTION: </u></strong></p>
             <p class="description">{{Event.Description}}</p>
-            <a href="{% url 'Rider' UserLoggedIn.id %}"><button type="submit" class="btn btn-danger profileButton"><i class="fas fa-arrow-circle-left"></i> Go To My Profile </button></a>
+            <a id="option" href="{% url 'Rider' UserLoggedIn.id %}"><button type="submit" class="btn btn-danger profileButton"><i class="fas fa-arrow-circle-left"></i> Go To My Profile </button></a>
+
             {% if ThisUser.id == Event.EventByUser.id %}
-            <form action="/DeleteEvent/{{Event.id}}" method="POST">
+            <a id="option" href="{% url 'EditEvent' Event.id %}"><button type="submit" class="btn btn-danger profileButton"><i class="fas fa-edit"></i> EDIT MY EVENT!</button></a>
+
+            <form id="option" action="/DeleteEvent/{{Event.id}}" method="POST">
                 {% csrf_token %}
                 <input type="hidden" value="{{Event.id}}" name="Event">
                 <button type="submit" class="btn btn-danger cancelButton"><i class="fas fa-trash-alt"></i> DELETE EVENT!</button>

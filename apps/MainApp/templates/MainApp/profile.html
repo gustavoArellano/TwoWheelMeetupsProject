@@ -54,7 +54,7 @@
                     <i class="fas fa-search fa-2x"></i>
                     <p>Explore</p>
                 </a>
-                <a href="CreateEvent">
+                <a href="/CreateEvent">
                     <i class="fas fa-motorcycle fa-2x"></i>
                     <p>Create</p>
                 </a>
@@ -71,14 +71,14 @@
             <div class="title">
                 <h2>{{rider.FirstName}} {{rider.LastName}}</h2>
                 <p>{{rider.City}}, {{rider.State}}</p>
-                {% if rider.Image.value == rider.Image.value %}
-                <img src="{{rider.Image.url}}" alt="">
-                {% else %}
+
+                {% if rider.Image is NULL %}
                 <img src="{% static 'MainApp/images/placeholder.png' %}" alt="">
+                {% else %}
+                <img src="{{rider.Image.url}}" alt="">
                 {% endif %}
-                {% if rider.FirstName == request.session.FirstName %}
-                <a href="{% url 'EditRider' rider.id %}"><button id="Button" class="btn btn-danger">Edit My Profile</button></a>
-                {% endif %}
+
+                <a id="EditProfileButton" href="{% url 'EditRider' rider.id %}"><button id="Button" class="btn btn-danger">Edit My Profile</button></a>
             </div>
             
             <div class="details">

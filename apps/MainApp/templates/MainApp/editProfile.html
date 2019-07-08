@@ -4,17 +4,225 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Edit My Profile Info</title>
+        <title>2Wheel Meetups - Event Details</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'MainApp/css/editProfile.css' %}">
+        <link href="https://fonts.googleapis.com/css?family=Cedarville+Cursive|Josefin+Sans|Pacifico" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="{% static 'MainApp/js/editProfile.js' %}"></script>
     </head>
 
     <body>
 
-        <form class="uploadForm" action="/ImageUpload" method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            <h6 class="uploadTitle">Edit Profile Pic: </h6>
-            <input id="image" name="myImage" type="file">
-            <button type="submit" class="btn btn-danger">Upload</button>
-        </form>
+        <!-- THE BELOW CONTAINER HOLDS ALL THE LINK STYLES -->
+        <div id="container">
+            <div id="header">
+                <h1><strong>2Wheel Meetups</strong></h1>
+
+                <div id="links">
+                    <ul>
+                        <li><a href="/Home">Home</a></li>
+                        <li>
+                            <form id="ProfileForm" action="/Rider/{{rider.id}}" method="POST">
+                                {% csrf_token %}
+                                <input type="hidden" name="Rider" value="{{rider.id}}">
+                                <a href="javascript:{}" onclick="document.getElementById('ProfileForm').submit();">Profile</a>
+                            </form>
+                        </li>
+                        <li><a href="/CreateEvent">Create</a></li>
+                        <li><a href="/Logout">Log Out</a></li>
+                    </ul>
+                </div>
+            
+                <div class="dropdown">
+
+                    <button onclick="myFunction()" class="menuButton"><i class="fas fa-bars"></i> MENU</button>
+
+                    <div id="tabletDropdown" class="dropdown-content">
+                        <a href="/Home">Home</a>
+                        
+                        <form id="ProfileForm" action="/Rider/{{rider.id}}" method="POST">
+                            {% csrf_token %}
+                            <input type="hidden" name="Rider" value="{{rider.id}}">
+                            <a href="javascript:{}" onclick="document.getElementById('ProfileForm').submit();">Profile</a>
+                        </form>
+                        
+                        <a href="/CreateEvent">Create</a>
+                        <a href="/Logout">Log Out</a>
+                    </div>
+
+                </div>
+        
+            </div>
+            
+            <div id="mobileLinks">
+
+                <a href="/Home">
+                    <i class="fas fa-home fa-2x"></i>
+                    <p>Home</p>
+                </a>
+
+                <form id="ProfileForm" action="/Rider/{{rider.id}}" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="Rider" value="{{rider.id}}">
+                    <a href="javascript:{}" onclick="document.getElementById('ProfileForm').submit();">
+                        <i class="fas fa-user fa-2x"></i>
+                        <p>Profile</p>
+                    </a>
+                </form>
+                
+                <a href="/CreateEvent">
+                    <i class="fas fa-motorcycle fa-2x"></i>
+                    <p>Create</p>
+                </a>
+                <a href="/Logout">
+                    <i class="fas fa-sign-out-alt fa-2x"></i>
+                    <p>Log Out</p>
+                </a>
+                    
+            </div>
+        </div>  
+
+        <h1 id="editHeader">Edit Profile</h1>
+
+        <div class="containerForButton">
+            <a id="returnToProfileButton" href="{% url 'Rider' rider.id %}">
+                <button id="tabletDesktop" type="submit" class="btn btn-danger btn profileButton">
+                    <i class="fas fa-arrow-circle-left"></i> Back To My Profile 
+                </button>
+                <button id="mobileOnly" type="submit" class="btn btn-danger btn-sm profileButton">
+                    <i class="fas fa-arrow-circle-left"></i> Back To My Profile 
+                </button>
+            </a>
+        </div>
+
+        <div class="allFormsContainer">
+
+            <form id="uploadForm" class="uploadForm" action="/ImageUpload/{{rider.id}}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <h6 class="uploadTitle">Update Profile Picture: </h6>
+                <input type="hidden" id="Rider" value="{{rider.id}}">
+                <input id="image" name="myImage" type="file">
+                <button id="upload" type="submit" class="btn btn-danger btn-sm">Upload & Update</button>
+            </form>
+            <script>
+                $(document).ready(
+                    function(){
+                        $('#upload:submit').attr('disabled',true);
+                        $('#image:file').change(
+                            function(){
+                                if ($(this).val()){
+                                    $('#upload:submit').removeAttr('disabled'); 
+                                }
+                                else {
+                                    $('#upload:submit').attr('disabled',true);
+                                }
+                            });
+                    });
+            </script>
+
+            <form class="infoForm" action="/UpdateInfo/{{rider.id}}" method="POST" autocomplete="off">
+                {% csrf_token %}
+                <h6 class="infoTitle">Update Profile Information: </h6>
+
+                {% if messages %}
+                    {% for message in messages %}
+                        <p>{{message}}</p>
+                    {% endfor %}
+                {% endif %}
+
+                <input type="hidden" id="Rider" value="{{rider.id}}">
+
+                <p>First Name:</p>
+                <input type="text" name="FirstName" value="{{rider.FirstName}}">
+
+                <p>Last Name:</p>
+                <input type="text" name="LastName" value="{{rider.LastName}}">
+            
+                <p>Email:</p>
+                <input type="text" id="Email" name="Email" value="{{rider.Email}}">
+                    
+                <p>State:</p>
+                <select id="states" name="State">
+                    <option value="AL">AL</option>
+                    <option value="AK">AK</option>
+                    <option value="AR">AR</option>	
+                    <option value="AZ">AZ</option>
+                    <option value="CA">CA</option>
+                    <option value="CO">CO</option>
+                    <option value="CT">CT</option>
+                    <option value="DC">DC</option>
+                    <option value="DE">DE</option>
+                    <option value="FL">FL</option>
+                    <option value="GA">GA</option>
+                    <option value="HI">HI</option>
+                    <option value="IA">IA</option>	
+                    <option value="ID">ID</option>
+                    <option value="IL">IL</option>
+                    <option value="IN">IN</option>
+                    <option value="KS">KS</option>
+                    <option value="KY">KY</option>
+                    <option value="LA">LA</option>
+                    <option value="MA">MA</option>
+                    <option value="MD">MD</option>
+                    <option value="ME">ME</option>
+                    <option value="MI">MI</option>
+                    <option value="MN">MN</option>
+                    <option value="MO">MO</option>	
+                    <option value="MS">MS</option>
+                    <option value="MT">MT</option>
+                    <option value="NC">NC</option>	
+                    <option value="NE">NE</option>
+                    <option value="NH">NH</option>
+                    <option value="NJ">NJ</option>
+                    <option value="NM">NM</option>			
+                    <option value="NV">NV</option>
+                    <option value="NY">NY</option>
+                    <option value="ND">ND</option>
+                    <option value="OH">OH</option>
+                    <option value="OK">OK</option>
+                    <option value="OR">OR</option>
+                    <option value="PA">PA</option>
+                    <option value="RI">RI</option>
+                    <option value="SC">SC</option>
+                    <option value="SD">SD</option>
+                    <option value="TN">TN</option>
+                    <option value="TX">TX</option>
+                    <option value="UT">UT</option>
+                    <option value="VT">VT</option>
+                    <option value="VA">VA</option>
+                    <option value="WA">WA</option>
+                    <option value="WI">WI</option>	
+                    <option value="WV">WV</option>
+                    <option value="WY">WY</option>
+                </select>
+
+                <script>
+                    $(function() {
+                        var temp="{{rider.State}}"; 
+                        $("#states").val(temp);
+                    });
+                </script>
+                
+                <p>City:</p>
+                <input type="text" name="City" value="{{rider.City}}">
+            
+                <p>Zip Code:</p>
+                <input type="text" name="ZipCode" value="{{rider.ZipCode}}">
+
+                <button type="submit" class="btn btn-danger btn-sm">Update</button>
+            </form>
+        </div>
+
+        <div id="listContainer">
+            <div id="list"></div>
+        </div>   
+        <div class="emptySpace "></div>
+        <div id="footer">
+            <p class="footer">2Wheel Meetups &reg; by Gustavo Arellano</p>
+        </div> 
         
     </body>
 </html>

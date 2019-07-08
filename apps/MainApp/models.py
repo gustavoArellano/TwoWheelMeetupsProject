@@ -68,6 +68,43 @@ class UserManager(models.Manager):
 
         return errors
 
+    def UserUpdateValidations(self, postData): 
+        errors = {}
+
+        if len(postData['FirstName']) < 1:
+            errors['FirstName'] = "FIRST NAME cannot be BLANK!"
+        elif len(postData['FirstName']) < 2:
+            errors['FirstName'] = "FIRST NAME must contain at least 2 letters MINIMUM!"
+        elif not postData['FirstName'].isalpha():
+            errors['FirstName'] = "FIRST NAME must contain letter's ONLY!"
+
+        if len(postData['LastName']) < 1:
+            errors['LastName'] = "LAST NAME cannot be blank!"
+        elif len(postData['LastName']) < 2:
+            errors['LastName'] = "LAST NAME must contain at least 2 letters MINIMUM!" 
+        elif not postData['LastName'].isalpha():
+            errors['LastName'] = "LAST NAME must contain letter's ONLY"
+
+        if User.objects.filter(Email = postData['Email']):
+            errors['EmailExists'] = "An account has already been created with this EMAIL!"
+        if EMAIL_REGEX.match(postData['Email']) == None:
+            errors['EmailFormat'] = "Invalid EMAIL FORMAT!"
+        elif len(postData['Email']) < 1:
+            errors['Email'] = "EMAIL cannot be BLANK!"
+
+        if len(postData['State']) < 1:
+            errors['State'] = "You must select a STATE!"
+
+        if len(postData['City']) < 1:
+            errors['City'] = "You must select a City!"
+
+        if len(postData['ZipCode']) < 1:
+            errors['ZipCode'] = "You must enter your ZIP CODE!"
+        if len(postData['ZipCode']) != 5:
+            errors['ZipCode'] = "You must enter a valid ZIP CODE!" 
+
+        return errors
+
 class EventManager(models.Manager):
     def EventValidation(self, postData):
         errors = {}

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>2Wheel Meetups - Event Details</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'MainApp/css/editEvent.css' %}">
+        <link rel="stylesheet" href="{% static 'MainApp/css/DateTimePicker.css' %}">
+        <link href="https://fonts.googleapis.com/css?family=Cedarville+Cursive|Josefin+Sans|Pacifico" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="{% static 'MainApp/js/editEvent.js' %}"></script>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script type="text/javascript" src="wickedpicker.js"></script>
+        <link rel="stylesheet" type="text/css" href="/DateTimePicker.css" />
+		<script type="text/javascript" src="jquery-1.11.0.min.js"></script>
+        <script type="text/javascript" src="{% static 'MainApp/js/DateTimePicker.js' %}"></script>
+
+    </head>
+
+    <body>
+
+        <!-- THE BELOW CONTAINER HOLDS ALL THE LINK STYLES -->
+        <div id="container">
+            <div id="header">
+                <h1><strong>2Wheel Meetups</strong></h1>
+
+                <div id="links">
+                    <ul>
+                        <li><a href="/Home">Home</a></li>
+                        <li>
+                            <form id="ProfileForm" action="/Rider/{{rider.id}}" method="POST">
+                                {% csrf_token %}
+                                <input type="hidden" name="Rider" value="{{rider.id}}">
+                                <a href="javascript:{}" onclick="document.getElementById('ProfileForm').submit();">Profile</a>
+                            </form>
+                        </li>
+                        <li><a href="/CreateEvent">Create</a></li>
+                        <li><a href="/Logout">Log Out</a></li>
+                    </ul>
+                </div>
+            
+                <div class="dropdown">
+
+                    <button onclick="myFunction()" class="menuButton"><i class="fas fa-bars"></i> MENU</button>
+
+                    <div id="tabletDropdown" class="dropdown-content">
+                        <a href="/Home">Home</a>
+                        
+                        <form id="ProfileForm" action="/Rider/{{rider.id}}" method="POST">
+                            {% csrf_token %}
+                            <input type="hidden" name="Rider" value="{{rider.id}}">
+                            <a href="javascript:{}" onclick="document.getElementById('ProfileForm').submit();">Profile</a>
+                        </form>
+                        
+                        <a href="/CreateEvent">Create</a>
+                        <a href="/Logout">Log Out</a>
+                    </div>
+
+                </div>
+        
+            </div>
+            
+            <div id="mobileLinks">
+
+                <a href="/Home">
+                    <i class="fas fa-home fa-2x"></i>
+                    <p>Home</p>
+                </a>
+
+                <form id="ProfileForm" action="/Rider/{{rider.id}}" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="Rider" value="{{rider.id}}">
+                    <a href="javascript:{}" onclick="document.getElementById('ProfileForm').submit();">
+                        <i class="fas fa-user fa-2x"></i>
+                        <p>Profile</p>
+                    </a>
+                </form>
+                
+                <a href="/CreateEvent">
+                    <i class="fas fa-motorcycle fa-2x"></i>
+                    <p>Create</p>
+                </a>
+                <a href="/Logout">
+                    <i class="fas fa-sign-out-alt fa-2x"></i>
+                    <p>Log Out</p>
+                </a>
+                    
+            </div>
+        </div>  
+
+        <h1 id="editHeader">Edit Event</h1>
+
+        <!-- DIV IS USED TO FORCE ALIGN RETURN BUTTON  AS WELL AS SET MOBILE BACKGROUND COLOR NOT TO NOT OVERFILL HEADER COLORS-->
+        <div class="formContainer">
+            <a id="returnButton" href="{% url 'Event' ThisEvent.id %}"><button type="submit" class="btn btn-danger profileButton"><i class="fas fa-arrow-circle-left"></i> Go To Event Details</button></a>
+
+            <form class="editForm" action="/UpdateEvent/{{ThisEvent.id}}" method="POST" autocomplete="off">
+                {% csrf_token %}
+
+                {% if messages %}
+                    {% for message in messages %}
+                        <p>{{message}}</p>
+                    {% endfor %}
+                {% endif %}
+
+                <p>Title:</p>
+                <input type="text" name="Title" value="{{ThisEvent.Title}}">
+
+                <p>Description:</p>
+                <textarea class="description" type="textbox" name="Description">{{ThisEvent.Description}}</textarea>
+
+                <p>Date:</p>
+                <input type="text" id="datepicker" class="buttonImage" name="EventDate" value="{{ThisEvent.EventDate | date:'Y-m-d'}}" autocomplete="off" >
+
+                <script>
+                    $( function() {
+                        $( "#datepicker" ).datepicker({
+                            minDate: 1,
+                            buttonImage: "../static/MainApp/images/calendar.png",
+                            showOn: "both",
+                            buttonImageOnly: true,
+                            // dateFormat: 'DD, MM d, yy'
+                            dateFormat: 'yy-mm-dd'
+                        });
+                    });
+                </script>
+
+                <p>Time:</p>
+                <input type="text" name="EventTime" data-field="time" data-format="hh:mm AA" readonly value="{{ThisEvent.EventTime}}">
+        
+                <div id="dtBox"></div>
+                
+                <script type="text/javascript">
+                
+                    $(document).ready(function()
+                    {
+                        $("#dtBox").DateTimePicker();
+                    });
+                
+                </script>
+
+                <p>Address:</p>
+                <input type="text" name="Address" value="{{ThisEvent.Address}}">
+
+                <p>City:</p>
+                <input type="text" name="City" value="{{ThisEvent.City}}"> 
+
+                <p>State:</p>
+                <input type="text" name="State" value="{{ThisEvent.State}}">
+
+                <p>Zip Code:</p>
+                <input type="text" name="ZipCode" class="zipCode" value="{{ThisEvent.ZipCode}}">
+
+                <button type="submit" class="btn btn-danger">UPDATE</button>
+                
+            </form>
+        </div>
+
+        <div id="listContainer">
+            <div id="list"></div>
+        </div>   
+        <div class="emptySpace "></div>
+        <div id="footer">
+            <p class="footer">2Wheel Meetups &reg; by Gustavo Arellano</p>
+        </div> 
+        
+    </body>
+</html>

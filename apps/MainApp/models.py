@@ -3,7 +3,8 @@ from django.db import models
 from datetime import datetime
 from time import strftime
 from django import forms
-import re, bcrypt
+import re
+from django import bcrypt
 from django.conf import settings
 
 

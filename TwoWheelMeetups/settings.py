@@ -1,6 +1,5 @@
 import os
-from TwoWheelMeetups import config
-
+from .settings import ConfigKey
 
 BOOTSTRAP4 = {
     'include_jquery': True,
@@ -8,9 +7,8 @@ BOOTSTRAP4 = {
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
-SECRET_KEY = config.SECRET_KEY
-API_KEY = config.API
+SECRET_KEY = ConfigKey.SECRET_KEY
+API_KEY = ConfigKey.API
 
 
 DEBUG = True

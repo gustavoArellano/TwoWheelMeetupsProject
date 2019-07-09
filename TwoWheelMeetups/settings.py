@@ -1,5 +1,6 @@
 import os
-from decouple import config
+from TwoWheelMeetups import config
+
 
 BOOTSTRAP4 = {
     'include_jquery': True,
@@ -8,9 +9,10 @@ BOOTSTRAP4 = {
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
-
-SECRET_KEY = config('SECRET_KEY')
-API_KEY = config('API')
+SECRET_KEY = config.SECRET_KEY
+API_KEY = config.API
+# SECRET_KEY = config('SECRET_KEY')
+# API_KEY = config('API')
 
 DEBUG = True
 ALLOWED_HOSTS = []
@@ -91,8 +93,13 @@ USE_TZ = True
 
 
 
-STATIC_URL = config('myStaticURL')
-STATIC_ROOT = config('myStaticRoot')
+# STATIC_URL = config('myStaticURL')
+STATIC_URL = '/static/'
+# STATIC_ROOT = config('myStaticRoot')
+STATIC_ROOT = "os.path.join(BASE_DIR, 'MainApp')"
 
-MEDIA_ROOT = config('myMediaRoot')
-MEDIA_URL = config('myMediaURL')
+# MEDIA_ROOT = config('myMediaRoot')
+# MEDIA_URL = config('myMediaURL')
+MEDIA_ROOT = '/Users/gustavo/Documents/Projects/Python/TwoWheelMeetups/apps/MainApp/media/RiderImages'
+
+MEDIA_URL= '/Users/gustavo/Documents/Projects/Python/TwoWheelMeetups/apps/MainApp/media/RiderImages/'

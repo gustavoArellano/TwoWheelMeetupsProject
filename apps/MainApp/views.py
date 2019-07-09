@@ -9,7 +9,7 @@ from django import template
 import datetime
 register = template.Library()
 from time import strftime
-from django import bcrypt
+import bcrypt
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.core import serializers

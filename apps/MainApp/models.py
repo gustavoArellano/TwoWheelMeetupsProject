@@ -4,7 +4,7 @@ from datetime import datetime
 from time import strftime
 from django import forms
 import re
-from django import bcrypt
+import bcrypt
 from django.conf import settings
 
 

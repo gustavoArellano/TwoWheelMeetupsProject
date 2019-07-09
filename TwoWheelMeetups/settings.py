@@ -1,5 +1,5 @@
 import os
-from .settings import ConfigKey
+##from .settings import ConfigKey
 
 BOOTSTRAP4 = {
     'include_jquery': True,
@@ -7,12 +7,13 @@ BOOTSTRAP4 = {
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-SECRET_KEY = ConfigKey.SECRET_KEY
-API_KEY = ConfigKey.API
+##SECRET_KEY = ConfigKey.SECRET_KEY
+##API_KEY = ConfigKey.API
+SECRET_KEY = 'fed4-twef1i0a3%)ppik9(0yi$th36-*4z=)w32b&#_c@l+ejf'
+API_KEY = 'AIzaSyCSeG71PUMkzYwuvUkyD-_fJB9DjjoAYAo'
 
-
-DEBUG = True
-ALLOWED_HOSTS = []
+DEBUG = False
+ALLOWED_HOSTS = ["52.14.183.249"]
 
 INSTALLED_APPS = [
     'apps.MainApp',
@@ -91,7 +92,7 @@ USE_TZ = True
 
 
 STATIC_URL = '/static/'
-STATIC_ROOT = "os.path.join(BASE_DIR, 'MainApp')"
+STATIC_ROOT = os.path.join(BASE_DIR, "MainApp")
 
-MEDIA_ROOT = '/Users/gustavo/Documents/Projects/Python/TwoWheelMeetups/apps/MainApp/media/RiderImages'
-MEDIA_URL= '/Users/gustavo/Documents/Projects/Python/TwoWheelMeetups/apps/MainApp/media/RiderImages/'
+MEDIA_ROOT = '/ubuntu/TwoWheelMeetups/apps/MainApp/media/RiderImages'
+MEDIA_URL= '/ubuntu/TwoWheelMeetups/apps/MainApp/media/RiderImages/'

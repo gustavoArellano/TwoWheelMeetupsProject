@@ -1,0 +1,681 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    scroll-behavior: smooth;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+#container {
+    width: 100%
+}
+
+/* ***************HEADER*************** */
+#header {
+    background-color: whitesmoke;
+    display: flex;
+    /* flex-wrap: wrap; */
+    justify-content: space-between;
+    width: 100%;
+}
+
+#header h1, h1 strong {
+    font-family: 'Pacifico', cursive;
+    cursor: default;
+    color: #F53756;
+}
+
+#links {
+    margin-top: 15px;
+    margin-right: 20px;
+}
+
+#links ul li{
+    display: inline-block;
+    margin: 0px 10px;
+}
+
+#links ul li a {
+    padding: 5px;
+    text-decoration: none;
+    color: gray;
+    border-bottom: 0px solid gray; 
+    transition: border 150ms, padding 150ms;
+}
+
+#links ul li a:hover {
+    border-bottom: 2px solid gray;
+    padding-bottom: 15px;
+}
+
+/* ***************UPCOMING*************** */
+#upcoming {
+    background-color: whitesmoke;
+}
+
+
+/* ***************FOOTER*************** */
+#footer {
+    display: block;
+    position: fixed;
+    bottom: 0;
+    background-color: #363E47;
+    text-align: center;
+    color: white;
+    width: 100%;
+} 
+
+#footer .footer {
+    display: inline-block;
+    background-color: #363E47;
+    margin: auto;
+    padding: 10px
+}
+
+
+@media only screen and (max-width: 700px) {
+    .tablet {
+        display: none;
+    }
+    .desktop {
+        display: none;
+    }
+
+    #desktopUpcomingEvent {
+        display: none;
+    }
+
+    .dropdown {
+        display: none;
+    }
+
+    #tabletUpcoming {
+        display: none;
+    }
+
+    #container { 
+        position: fixed;
+        width: 100%
+    }
+
+    /* ***************HEADER*************** */
+    #header {
+        background-color: whitesmoke;
+        padding: 5px;
+        width: 100%;
+        
+    } 
+
+    #header h1{
+        margin: auto;
+        font-size: 15px;
+    }
+
+    #links {
+        display: none;
+    }
+
+    #mobileLinks {
+        background-color: white;
+        text-align: center;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        width: 100%;
+        margin: auto;
+        padding: 5px 0px;
+        border-top: 1px solid gray;
+        border-bottom: 1px solid gray;
+    }
+
+    #mobileLinks a {
+        text-decoration: none;
+        color: gray;
+        padding: 0px;
+        margin: 10px 22px 0px 22px;
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    #mobileLinks p {
+        font-size: 9pt;
+    }
+
+    #mobileLinks a:hover {
+        filter: brightness(25%);
+    }
+
+    #mobileLinks a p, i {
+        display: block;
+    }
+
+    /* ***************UPCOMING EVENT*************** */
+    #upcoming {
+        display: block;
+        margin: 0px;
+        background-color: whitesmoke;
+        width: 100%;
+        padding: 20px;
+    }
+
+    #upcoming h4 {
+        margin-top: 110px;
+    }
+
+    #upcoming .secondHeader {
+        margin-top: 30px;
+    }
+
+    .upcomingEvent {
+        padding: 0px;
+        background-color: white;
+        border: 1px solid gray;
+        border-radius: 10px;
+        box-shadow: 1px 1px 6px gray;
+        text-align: center;
+    }
+
+    .upcomingEvent .upcomingDate {
+        border-radius: 8px;
+        margin-bottom: 0px;
+        padding: 10px 5px;
+        background-color: #F53756;
+        color: white;
+    }
+
+    .upcomingEvent .upcomingImage {
+        border-top: 1px gray solid;
+        border-bottom: 1px gray solid;
+        width: 100%;
+        height: 250px;
+    }
+
+    .upcomingEvent .upcomingAddress {
+        font-size: 15px;
+        margin: 10px;
+        height: 20px;
+    }
+
+    .upcomingEvent .upcomingAddress a {
+        color: black;
+        margin-top: 10px;
+    }
+
+
+    .upcomingEvent .upcomingTitle {
+        margin: 0px 10px 10px 10px;
+        height: 20px;
+    }
+
+    .upcomingEvent .upcomingTitle a {
+        color: black;
+        text-decoration: none;
+    }
+
+    .upcomingEvent .upcomingTitle a:hover {
+        color: gray;
+    }
+
+    .upcomingEvent .upcomingAttending {
+        height: 20px;
+        margin: 0px 10px 10px 10px;
+    }
+
+    .mobileUpcomingStatement {
+        color: #F53756;
+        text-align: center;
+        margin-top: 30px;
+    }
+    
+    /* ***************ALL AVAILABLE MEETUPS*************** */
+    #available {
+        display: block;
+        margin: 0px;
+        background-color: whitesmoke;
+        width: 100%;
+        padding: 20px;
+    }
+
+    #available h5 {
+        margin-top: 10px;
+    }
+
+    .availableEvent {
+        padding: 0px;
+        background-color: white;
+        border: 1px solid gray;
+        border-radius: 10px;
+        box-shadow: 1px 1px 6px gray;
+        text-align: center;
+        margin-bottom: 25px;
+    }
+
+    .availableEvent .availableDate {
+        border-radius: 8px;
+        margin-bottom: 0px;
+        padding: 10px 5px;
+    }
+
+    
+
+    .availableEvent .availableImage {
+        border-top: 1px gray solid;
+        border-bottom: 1px gray solid;
+        width: 100%;
+        height: 250px;
+    }
+
+    .availableEvent .availableAddress {
+        font-size: 15px;
+        margin: 10px 0px;
+        height: 20px;
+    }
+
+    .availableEvent .availableAddress a {
+        color: black;
+        margin-top: 10px;
+    }
+
+    .availableEvent .availableAddress a:hover {
+        color: gray;
+    }
+
+
+    .availableEvent .availableTitle {
+        margin: 10px 0px;
+        height: 20px;
+    }
+
+    .availableEvent .availableTitle a {
+        color: black;
+        text-decoration: none;
+    }
+
+    .availableEvent .availableTitle a:hover {
+        color: gray;
+    }
+
+    .availableEvent .availableAttending {
+        height: 20px;
+        margin: 0px 10px 10px 10px;
+    }
+
+    .joinButton, .btn{
+        width: 100%;
+    } 
+
+    /* ***************FOOTER*************** */
+    #footer .footer {
+        font-size: 12px;
+        background-color: #363E47;
+        padding: 2px;
+        margin: 0;
+    }
+
+
+}
+
+@media only screen and (min-width: 701px) {
+    #mobileLinks {
+        display: none;
+    }
+
+    #links {
+        display: none;
+    }
+
+    #upcoming {
+        display: none;
+    }
+
+    .roadImage {
+        display: none;
+    }
+
+    /* ***************HEADER*************** */
+    #container {
+        /* position: fixed; */
+        width: 100%
+    } 
+
+    #header {
+        margin: 0px;
+        padding: 12px;
+        background-color: whitesmoke;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    #header h1{
+        margin: 0px;
+        font-size: 25pt;
+    }
+
+    /* ***************DROPDOWN MENU FOR TABLET*************** */
+    .dropdown {
+        position: fixed;
+        top: 0;
+        right: 0;
+        margin-top: 5px;
+    }
+
+    .menuButton {
+        background-color: gray;
+        color: white;
+        margin: 5px 20px;
+        padding: 10px;
+        font-size: 16px;
+        width: 200px;
+        height: 45px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+      
+    .menuButton:hover, .menuButton:focus {
+        filter: brightness(120%);
+    }
+      
+    .dropdown-content {
+        margin-left: 20px;
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 200px;
+        overflow: auto;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+      
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+      
+    .dropdown a:hover {
+        background-color: #ddd;
+    }
+      
+    .show {
+        display: block;
+    }
+
+    #tabletDropdown a {
+        text-decoration: none;
+        color: black;
+    }
+
+    #tabletDropdown a:hover {
+        color: #F53756;
+    }
+
+    /* ***************UPCOMING EVENT*************** */
+    .infoLeft h1 b a {
+        color: white;
+        /* text-decoration: none; */
+    }
+
+    #tabletUpcoming {
+        padding: 30px 50px;
+        margin: 0px auto;
+        height: 300px;
+        background-color: #F53756;
+        color: whitesmoke;
+    }
+
+    hr {
+        background-color: white;
+    }
+
+    .infoLeft, .infoRight {
+        display: inline-block;
+        vertical-align: top;
+        width: 45%;
+    }
+
+    .infoRight {
+        white-space: nowrap;
+    }
+    
+    .infoRight h5 {
+        margin: 0px;
+        color: white;
+    }
+
+    .infoRight .addressYourUpcoming {
+        color: white;
+    }
+
+    .icons {
+        display: inline-block;
+        vertical-align: top;
+        margin-left: 30px;
+    }
+
+    .upcomingStatement {
+        text-align: center;
+        margin-top: 70px;
+    }
+
+    /* YOUR UPCOMING EVENT */
+    .infoRight .addressYourUpcomings .addressYourUpcoming {
+        color: white;
+    }
+
+    /* ***************ALL AVAILABLE MEETUPS*************** */
+    #available {
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        width: 100%;
+        padding: 20px;
+        padding-bottom: 100px;
+    }
+
+    #available h5 {
+        width: 100%;
+        background-color: white;
+    }
+
+    .availableEvent{
+        display: inline-block;
+        vertical-align: top;
+        width: 45%;
+        padding: 0px;
+        margin: 20px 10px; 
+        background-color: white;
+        border: 1px solid gray;
+        border-radius: 5px;
+        box-shadow: 1px 1px 6px gray;
+        text-align: center;
+    }
+
+    .availableEvent .availableDate {
+        border-radius: 8px;
+        margin-bottom: 0px;
+        padding: 5px;
+
+    }
+
+    .availableEvent .availableImage {
+        border-top: 1px gray solid;
+        border-bottom: 1px gray solid;
+        width: 100%;
+        height: 200px;
+        margin: 5px 0px;
+    }
+
+    .availableEvent .availableAddress {
+        font-size: 15px;
+        margin: 15px 0px;
+        height: 20px;
+    }
+
+    .availableEvent .availableAddress a {
+        color: black;
+    }
+
+    .availableEvent .availableAddress a:hover {
+        color: gray;
+    }
+
+    .availableEvent .availableTitle {
+        font-size: 15px;
+        margin: 15px 0px;
+        height: 20px;
+    }
+
+    .availableEvent .availableTitle a {
+        color: black;        
+    }
+
+    .availableEvent .availableTitle a:hover {
+        color: gray;
+    }
+
+    .availableEvent .availableAttending {
+        display: block;
+        color: black;
+        font-size: 15px;
+        margin: 15px 0px;
+        height: 20px;
+
+    }
+
+    .joinButton .btn{
+        display: block;
+        padding: 5px;
+        width: 100%;
+    }
+
+    #footer {
+        display: block;
+        position: relative;
+        text-align: center;
+        color: white;
+        width: 100%;
+    } 
+    
+    #footer .footer {
+        font-size: 15px;
+        display: inline-block;
+        background-color: #363E47;
+        height: 35px;
+        margin: auto;
+        padding: 10px;
+        bottom: 0;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    #mobileLinks {
+        display: none;
+    }
+
+    #mobileUpcomingEvent{
+        display: none;
+    }
+
+    .mobile {
+        display: none;
+    }
+
+    .tablet {
+        display: none;
+    }
+
+    .dropdown {
+        display: none;
+    }
+
+    /* ***************HEADER*************** */
+    #container #header {
+        background-color: whitesmoke;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    #header h1, h1 strong {
+        font-family: 'Pacifico', cursive;
+        cursor: default;
+        color: #F53756;
+    }
+
+    #links {
+        display: initial;
+        margin-top: 15px;
+        margin-right: 20px;
+    }
+
+    #links ul li{
+        display: inline-block;
+        margin: 0px 10px;
+    }
+
+    #links ul li a {
+        padding: 5px;
+        text-decoration: none;
+        color: gray;
+        border-bottom: 0px solid gray; 
+        transition: border 150ms, padding 150ms;
+    }
+
+    #links ul li a:hover {
+        border-bottom: 2px solid gray;
+        padding-bottom: 15px;
+    }
+
+    /* ***************UPCOMING EVENT*************** */
+    .infoLeft, .infoRight {
+        display: inline-block;
+        vertical-align: top;
+        width: 300px;
+    }
+
+    .roadImage {
+        display: inline-block;
+        width: 20%;
+        height: 130px;
+        margin: 0px 50px;
+        padding: 0px;
+    }
+
+    .infoLeft h1 b a {
+        color: white;
+        /* text-decoration: none; */
+    }
+
+    /* ***************ALL AVAILABLE MEETUPS*************** */
+    #available {
+        background-color: white !important;
+        padding: 0px;
+        margin-bottom: 500px;
+    }
+
+    #available h5 {
+        padding-top: 20px;
+        margin-left: 25px;
+    }
+
+    #available .availableEvent {
+        width: 350px;
+        height: 402px;
+
+    }
+    /* .ICON WILL KEEP UPCOMINGEVENT ITEMS INTACT */
+    .icons {
+        display: inline-block;
+        vertical-align: top;
+        margin: 0px;
+    }
+}

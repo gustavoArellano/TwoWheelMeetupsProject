@@ -4,7 +4,7 @@ from datetime import datetime
 from time import strftime
 from django import forms
 import re
-from django import bcrypt
+import bcrypt
 from django.conf import settings
 
 
@@ -64,7 +64,7 @@ class UserManager(models.Manager):
 
         HashPW = bcrypt.hashpw(postData['LoginPassword'].encode('utf-8'), bcrypt.gensalt())
 
-        if user and not bcrypt.checkpw(postData['LoginPassword'], HashPW):
+        if user and not bcrypt.checkpw(postData['LoginPassword'].encode('utf-8'), HashPW):
             errors['Password'] = "Invalid EMAIL or PASSWORD!"
 
         return errors

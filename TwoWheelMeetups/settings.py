@@ -1,5 +1,5 @@
 import os
-from .settings import ConfigKey
+import myKeys
 
 BOOTSTRAP4 = {
     'include_jquery': True,
@@ -7,8 +7,10 @@ BOOTSTRAP4 = {
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-SECRET_KEY = ConfigKey.SECRET_KEY
-API_KEY = ConfigKey.API
+map = myKeys
+
+SECRET_KEY = map.SECRET_KEY
+API_KEY = map.API
 
 
 DEBUG = True

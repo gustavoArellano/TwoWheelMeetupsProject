@@ -2,7 +2,8 @@
 *.env
 *pyc
 venv/
-config
-config.py
-*config
 db.sqlite3
+*myKeys
+*myKeys.py
+myKeys
+myKeys.py

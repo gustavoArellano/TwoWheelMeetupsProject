@@ -3,14 +3,12 @@ from django.http import HttpResponseRedirect
 from django.contrib import messages
 from django.conf import settings
 from django.contrib.messages import get_messages 
-from .models import User
-from .models import Event
+from .models import *
 from django import template
 import datetime
 register = template.Library()
 from time import strftime
-from django import bcrypt
-from django.contrib.auth import authenticate, login
+import bcrypt
 from django.contrib.auth.decorators import login_required
 from django.core import serializers
 from django.db.models import Q

@@ -1,5 +1,5 @@
 import os
-import myKeys
+# import myKeys
 
 BOOTSTRAP4 = {
     'include_jquery': True,
@@ -7,14 +7,13 @@ BOOTSTRAP4 = {
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-map = myKeys
 
-SECRET_KEY = map.SECRET_KEY
-API_KEY = map.API
+SECRET_KEY = os.getenv('SECRET_KEY')
+API_KEY = os.getenv('API')
 
 DEBUG = True
-# DEBUG = False
-# ALLOWED_HOSTS = ["52.14.183.249"]
+
+ALLOWED_HOSTS = [os.getenv('HOST')]
 
 
 INSTALLED_APPS = [

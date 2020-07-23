@@ -8,12 +8,12 @@ BOOTSTRAP4 = {
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
-SECRET_KEY = os.getenv('SECRET_KEY')
-API_KEY = os.getenv('API')
+SECRET_KEY = os.environ.get('SECRET_KEY')
+API_KEY = os.environ.get('API')
 
 DEBUG = True
 
-ALLOWED_HOSTS = [os.getenv('HOST')]
+ALLOWED_HOSTS = [os.environ.get('HOST')]
 
 
 INSTALLED_APPS = [

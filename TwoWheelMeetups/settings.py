@@ -95,5 +95,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "MainApp")
 
-MEDIA_ROOT = '/ubuntu/TwoWheelMeetups/apps/MainApp/media/RiderImages'
-MEDIA_URL= '/ubuntu/TwoWheelMeetups/apps/MainApp/media/RiderImages/'
+MEDIA_ROOT = '/TwoWheelMeetups/apps/MainApp/media/RiderImages'
+MEDIA_URL= '/TwoWheelMeetups/apps/MainApp/media/RiderImages/'
